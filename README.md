@@ -39,3 +39,11 @@
 11. Go to View > Show Face Inspector, open Texture Collections
 12. Setup is successful if there are textures available
 
+## More about
+
+Godot: https://docs.godotengine.org/en/stable/
+
+Trenchbroom: https://trenchbroom.github.io/manual/latest/
+
+Qodot: https://qodotplugin.github.io/
+
