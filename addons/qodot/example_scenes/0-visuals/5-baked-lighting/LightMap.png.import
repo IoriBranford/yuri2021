@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/icon.png-859001d62588b6d9cb01a8eba79b6466.s3tc.stex"
-path.etc2="res://.import/icon.png-859001d62588b6d9cb01a8eba79b6466.etc2.stex"
+path.s3tc="res://.import/LightMap.png-1e5f86e1725ae01e697c44b20949e43a.s3tc.stex"
+path.etc2="res://.import/LightMap.png-1e5f86e1725ae01e697c44b20949e43a.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/img/icon.png"
-dest_files=[ "res://.import/icon.png-859001d62588b6d9cb01a8eba79b6466.s3tc.stex", "res://.import/icon.png-859001d62588b6d9cb01a8eba79b6466.etc2.stex" ]
+source_file="res://addons/qodot/example_scenes/0-visuals/5-baked-lighting/LightMap.png"
+dest_files=[ "res://.import/LightMap.png-1e5f86e1725ae01e697c44b20949e43a.s3tc.stex", "res://.import/LightMap.png-1e5f86e1725ae01e697c44b20949e43a.etc2.stex" ]
 
 [params]
 
@@ -21,11 +21,11 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=true
+flags/repeat=false
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=true
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
