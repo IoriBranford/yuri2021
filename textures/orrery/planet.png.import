@@ -3,16 +3,15 @@
 importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/planet.png-fc0cad698dcd11777b5860de997f83eb.s3tc.stex"
-path.etc2="res://.import/planet.png-fc0cad698dcd11777b5860de997f83eb.etc2.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
+"imported_formats": [ "s3tc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/orrery/planet.png"
-dest_files=[ "res://.import/planet.png-fc0cad698dcd11777b5860de997f83eb.s3tc.stex", "res://.import/planet.png-fc0cad698dcd11777b5860de997f83eb.etc2.stex" ]
+dest_files=[ "res://.import/planet.png-fc0cad698dcd11777b5860de997f83eb.s3tc.stex" ]
 
 [params]
 

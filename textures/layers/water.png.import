@@ -3,16 +3,15 @@
 importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/water.png-a528f10afaacf621d40a7bfa1d3f72c1.s3tc.stex"
-path.etc2="res://.import/water.png-a528f10afaacf621d40a7bfa1d3f72c1.etc2.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
+"imported_formats": [ "s3tc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/layers/water.png"
-dest_files=[ "res://.import/water.png-a528f10afaacf621d40a7bfa1d3f72c1.s3tc.stex", "res://.import/water.png-a528f10afaacf621d40a7bfa1d3f72c1.etc2.stex" ]
+dest_files=[ "res://.import/water.png-a528f10afaacf621d40a7bfa1d3f72c1.s3tc.stex" ]
 
 [params]
 
