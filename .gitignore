@@ -310,3 +310,8 @@ platform/windows/godot_res.res
 
 *.zip
 *.7z
+
+# Wwise
+!wwise/[Bb]in/
+!wwise/[Bb]in/**
+wwise/**/*.DS_Store

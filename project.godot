@@ -10,6 +10,16 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Reference",
+"class": "AK",
+"language": "GDScript",
+"path": "res://wwise/GeneratedSoundBanks/wwise_ids.gd"
+}, {
+"base": "Reference",
+"class": "AkUtils",
+"language": "GDScript",
+"path": "res://wwise/runtime/helpers/ak_utils.gd"
+}, {
+"base": "Reference",
 "class": "DTS",
 "language": "GDScript",
 "path": "res://addons/dialogic/Localization/translation_service.gd"
@@ -200,6 +210,8 @@ _global_script_classes=[ {
 "path": "res://addons/qodot/game_definitions/worldspawn_layers/liquid/water.gd"
 } ]
 _global_script_class_icons={
+"AK": "",
+"AkUtils": "",
 "DTS": "",
 "Dialogic": "",
 "DialogicBackgroundMusic": "",
@@ -249,19 +261,22 @@ config/icon="res://icon.png"
 [autoload]
 
 CsvToDictionaryParser="*res://addons/godot-csv-to-dictionary/csv_to_dictionary_parser.gd"
+WwiseSettings="*res://wwise/wwise_settings.gd"
+Wwise="*res://wwise/bin/wwise-gdnative.gdns"
+Waapi="res://wwise/bin/waapi-gdnative-debug.gdns"
 
 [display]
 
-window/size/width=1920
-window/size/height=1080
-window/size/test_width=1024
-window/size/test_height=600
+window/size/width="1920"
+window/size/height="1080"
+window/size/test_width="1024"
+window/size/test_height="600"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg", "res://addons/godot-csv-to-dictionary/plugin.cfg", "res://addons/qodot/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg", "res://addons/godot-csv-to-dictionary/plugin.cfg", "res://addons/qodot/plugin.cfg", "res://addons/wwise_build_export/plugin.cfg", "res://addons/wwise_custom_nodes/plugin.cfg", "res://addons/wwise_ids_converter/plugin.cfg" )
 
 [importer_defaults]
 
