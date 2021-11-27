@@ -3,16 +3,15 @@
 importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/slime.png-0b0fa37c8aa74ad002fb80d8be4c9f82.s3tc.stex"
-path.etc2="res://.import/slime.png-0b0fa37c8aa74ad002fb80d8be4c9f82.etc2.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
+"imported_formats": [ "s3tc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/layers/slime.png"
-dest_files=[ "res://.import/slime.png-0b0fa37c8aa74ad002fb80d8be4c9f82.s3tc.stex", "res://.import/slime.png-0b0fa37c8aa74ad002fb80d8be4c9f82.etc2.stex" ]
+dest_files=[ "res://.import/slime.png-0b0fa37c8aa74ad002fb80d8be4c9f82.s3tc.stex" ]
 
 [params]
 
