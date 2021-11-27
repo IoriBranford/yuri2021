@@ -5,7 +5,7 @@
 3. Open project's `trenchbroom/games` folder, find `Yuri2021` folder
 4. Copy the `Yuri2021` folder into Trenchbroom's `games` folder
 
-![](C:\Users\Kevin\yuri2021\readme\copy-game-folder.png)
+![](readme/copy-game-folder.png)
 
 5. Run Trenchbroom and click New Map
 6. In Select Game, Open Preferences
@@ -13,7 +13,7 @@
 8. Set Yuri2021 game path to where you cloned the project
 9. Click OK to go back to Select Game
 
-![](C:\Users\Kevin\yuri2021\readme\set-game-path.png)
+![](readme/set-game-path.png)
 
 10. Select Yuri2021 and click OK to start new map
 11. Go to View > Show Face Inspector, open Texture Collections
