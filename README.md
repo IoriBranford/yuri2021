@@ -18,32 +18,13 @@
 2. Download and install templates if you don't have them
 3. To make builds, go to Project > Export...
 
-### For 3D world editing
+## 3D world editing
 
-1. Install Trenchbroom latest release https://github.com/TrenchBroom/TrenchBroom/releases
-2. Open folder where you installed Trenchbroom, find and open its `games` folder
-3. Open project's `trenchbroom/games` folder, find `Yuri2021` folder
-4. Copy the `Yuri2021` folder into Trenchbroom's `games` folder
+Grid-based 3D worlds can be made with Gridmaps and the included mesh library. https://docs.godotengine.org/en/stable/tutorials/3d/using_gridmaps.html
 
-![](readme/copy-game-folder.png)
-
-5. Run Trenchbroom and click New Map
-6. In Select Game, Open Preferences
-7. In Preferences click Yuri2021 in the game list
-8. Set Yuri2021 game path to where you cloned the project
-9. Click OK to go back to Select Game
-
-![](readme/set-game-path.png)
-
-10. Select Yuri2021 and click OK to start new map
-11. Go to View > Show Face Inspector, open Texture Collections
-12. Setup is successful if there are textures available
+You can also use Trenchbroom editor to make custom 3D geometry with some setup. Read [README-Trenchbroom.md](README-Trenchbroom.md)
 
 ## More about
 
 Godot: https://docs.godotengine.org/en/stable/
-
-Trenchbroom: https://trenchbroom.github.io/manual/latest/
-
-Qodot: https://qodotplugin.github.io/
 
