@@ -2,8 +2,8 @@
 
 [ext_resource path="res://models/MeshLibrary.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://scenes/World.gd" type="Script" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://scenes/MagicGirl.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/Hud.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 6, 2, 20 )
@@ -69,38 +69,4 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 0, 0
 [node name="MagicGirl" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 1.04216e-14, 1.74846e-07, 0, 1, -5.96046e-08, -1.74846e-07, 5.96046e-08, 1, -4, 4, -10 )
 
-[node name="UI" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="UI"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -96.0
-margin_bottom = 14.0
-text = "Transform: 000"
-
-[node name="Label3" type="Label" parent="UI"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_top = -14.0
-margin_right = 121.0
-text = "Date Checklist: 0/5"
-
-[node name="DateMeter" type="TextureProgress" parent="UI"]
-margin_right = 40.0
-margin_bottom = 40.0
-value = 50.0
-texture_progress = ExtResource( 3 )
-fill_mode = 4
-
-[node name="DateStatus" type="Label" parent="UI"]
-margin_right = 115.0
-margin_bottom = 14.0
-text = "Chill"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Hud" parent="." instance=ExtResource( 5 )]
