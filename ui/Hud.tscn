@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/radial_progress/RadialProgressBar.gd" type="Script" id=1]
+
+[node name="Hud" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GirlfriendClock" type="Control" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -192.0
+margin_top = 192.0
+margin_right = -192.0
+margin_bottom = 192.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+bg_radius = 128
+progress = 100
+bg_color = Color( 0.25098, 0.25098, 0.25098, 1 )
+bar_color = Color( 0.9, 0.198, 0.2448, 1 )
+angle0 = 180.0
+
+[node name="GirlfriendPortrait" type="TextureRect" parent="GirlfriendClock"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MyTransformationClock" type="Control" parent="."]
+margin_left = 192.0
+margin_top = 192.0
+margin_right = 232.0
+margin_bottom = 232.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+bg_radius = 128
+progress = 17
+bg_color = Color( 0.25098, 0.25098, 0.25098, 1 )
+bar_color = Color( 1, 0.733333, 0.356863, 1 )
+angle0 = 180.0
+
+[node name="MyPortrait" type="TextureRect" parent="MyTransformationClock"]
+margin_right = 40.0
+margin_bottom = 40.0
