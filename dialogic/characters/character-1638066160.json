@@ -5,7 +5,7 @@
 	"display_name_bool": false,
 	"id": "character-1638066160.json",
 	"mirror_portraits": false,
-	"name": "Earth Kaiju",
+	"name": "D'Vine",
 	"nickname": "",
 	"nickname_bool": false,
 	"offset_x": 0,
@@ -13,7 +13,19 @@
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://icon.png"
+			"path": "res://textures/portraits/LAND_KAIJU_PORTRAIT_NORMAL_01.png"
+		},
+		{
+			"name": "Talk",
+			"path": "res://textures/portraits/LAND_KAIJU_PORTRAIT_NORMAL_TALKING_01.png"
+		},
+		{
+			"name": "Angry",
+			"path": "res://textures/portraits/LAND_KAIJU_PORTRAIT_MAD_01.png"
+		},
+		{
+			"name": "Worried",
+			"path": "res://textures/portraits/LAND_KAIJU_PORTRAIT_CONCERNED_01.png"
 		}
 	],
 	"scale": 100

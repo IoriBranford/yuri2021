@@ -2,9 +2,10 @@ extends KinematicBody
 
 enum MagGirlState {PATROL, SEARCH, CHASE, ENGAGE}
 
-const MOVE_SPEED = 2
+export var MOVE_SPEED = 2
 
 onready var mesh = $Mesh
+onready var think_timer = $ThinkTimer
 
 var move_dir = Vector3.BACK
 var think_time = 5.0
@@ -16,13 +17,11 @@ var target_los = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$ThinkTimer.start(think_time)
+	think_timer.start(think_time)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	target_los = check_los()
-	$MeshInstance.visible = target_in_cone
-	$MeshInstance2.visible = target_los
 	match state:
 		MagGirlState.PATROL:
 			mesh.material_override.albedo_color = Color(0, 0, 1)
@@ -52,7 +51,7 @@ func check_los():
 
 func _on_ThinkTimer_timeout():
 	move_dir = move_dir * -1
-	$ThinkTimer.start(think_time)
+	think_timer.start(think_time)
 
 func _on_SightArea_body_entered(body):
 	target_in_cone = (body == player)

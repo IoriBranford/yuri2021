@@ -5,7 +5,7 @@
 	"display_name_bool": false,
 	"id": "character-1638066149.json",
 	"mirror_portraits": false,
-	"name": "Water Kaiju",
+	"name": "Vepa",
 	"nickname": "",
 	"nickname_bool": false,
 	"offset_x": 0,
@@ -13,7 +13,35 @@
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://icon.png"
+			"path": "res://textures/portraits/WATER_KAIJU_PORTRAIT_NORMAL_01.png"
+		},
+		{
+			"name": "Kaiju Nervous",
+			"path": "res://textures/portraits/WATER_KAIJU_PORTRAIT_NERVOUS_01.png"
+		},
+		{
+			"name": "Kaiju Panic",
+			"path": "res://textures/portraits/WATER_KAIJU_PORTRAIT_PANIC_01.png"
+		},
+		{
+			"name": "Kaiju Freakout",
+			"path": "res://textures/portraits/WATER_KAIJU_PORTRAIT_FREAKING_01.png"
+		},
+		{
+			"name": "Human Freakout",
+			"path": "res://textures/portraits/WATER_KAIJU_PORTRAIT_HUMAN_FREAKING_01.png"
+		},
+		{
+			"name": "Human Nervous",
+			"path": "res://textures/portraits/WATER_KAIJU_PORTRAIT_HUMAN_NERVOUS_01.png"
+		},
+		{
+			"name": "Human Normal",
+			"path": "res://textures/portraits/WATER_KAIJU_PORTRAIT_HUMAN_NORMAL_01.png"
+		},
+		{
+			"name": "Human Panic",
+			"path": "res://textures/portraits/WATER_KAIJU_PORTRAIT_HUMAN_PANIC_01.png"
 		}
 	],
 	"scale": 100

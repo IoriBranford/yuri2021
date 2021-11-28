@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/MagicGirl.gd" type="Script" id=1]
 
@@ -14,9 +14,6 @@ albedo_color = Color( 1, 1, 0, 0.282353 )
 
 [sub_resource type="ConvexPolygonShape" id=10]
 points = PoolVector3Array( 0, 0, 0, 2, 0, 4, 1.4, 1.4, 4, 0, 2, 4, -1.4, 1.4, 4, -2, 0, 4, -1.4, -1.4, 4, 0, -2, 4, 1.4, -1.4, 4 )
-
-[sub_resource type="CubeMesh" id=11]
-size = Vector3( 1, 1, 1 )
 
 [node name="MagicGirl" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -43,16 +40,6 @@ transform = Transform( 1, 0, 0, 0, -5.96046e-08, -1, 0, 1, -5.96046e-08, 0, 2, 1
 
 [node name="CollisionShape" type="CollisionShape" parent="SightCone/SightArea"]
 shape = SubResource( 10 )
-
-[node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1 )
-mesh = SubResource( 11 )
-material/0 = null
-
-[node name="MeshInstance2" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1 )
-mesh = SubResource( 11 )
-material/0 = null
 
 [connection signal="timeout" from="ThinkTimer" to="." method="_on_ThinkTimer_timeout"]
 [connection signal="body_entered" from="SightCone/SightArea" to="." method="_on_SightArea_body_entered"]

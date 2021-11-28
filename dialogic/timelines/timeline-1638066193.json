@@ -5,7 +5,7 @@
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_002",
 			"mirror": false,
-			"portrait": "",
+			"portrait": "Human Freakout",
 			"position": {
 				"0": true,
 				"1": false,
@@ -17,7 +17,7 @@
 		{
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "Human Panic",
 			"text": "Ah geez, I'm late!"
 		},
 		{
@@ -25,7 +25,7 @@
 			"character": "character-1638066160.json",
 			"event_id": "dialogic_002",
 			"mirror": false,
-			"portrait": "",
+			"portrait": "Default",
 			"position": {
 				"0": false,
 				"1": false,
@@ -37,13 +37,13 @@
 		{
 			"character": "character-1638066160.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "Worried",
 			"text": "Nah, this is about normal for you..."
 		},
 		{
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_001",
-			"portrait": "",
+			"portrait": "Human Nervous",
 			"text": "So mean..."
 		}
 	],
