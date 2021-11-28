@@ -1,5 +1,7 @@
 extends Spatial
 
+const MOVE_SPEED = 5
+
 var move_dir = Vector3.ZERO
 var hunter_dir = Vector3.FORWARD
 var think_time = 5.0
@@ -12,6 +14,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	move_dir = Vector3.ZERO
+#	if Input.is_action_just_pressed("ui_select"):
+#		var new_dialog = Dialogic.start("Intro")
+#		add_child(new_dialog)
 	if Input.is_action_pressed("ui_left"):
 		move_dir += Vector3.BACK
 	if Input.is_action_pressed("ui_right"):
@@ -20,8 +25,8 @@ func _process(delta):
 		move_dir += Vector3.LEFT
 	if Input.is_action_pressed("ui_down"):
 		move_dir += Vector3.RIGHT
-	move_dir = move_dir.normalized()
-	$Player.move_and_slide(move_dir * 5, Vector3.UP)
+	move_dir = move_dir.normalized() * MOVE_SPEED
+	$Player.move_and_slide(move_dir, Vector3.UP)
 	$CamBase.translation = $Player.translation
 	$Hunter.move_and_slide(hunter_dir * 4)
 
