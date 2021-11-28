@@ -12,9 +12,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	move_dir = Vector3.ZERO
-	if Input.is_action_just_pressed("ui_select"):
-		var new_dialog = Dialogic.start("Intro")
-		add_child(new_dialog)
+#	if Input.is_action_just_pressed("ui_select"):
+#		var new_dialog = Dialogic.start("Intro")
+#		add_child(new_dialog)
 	if Input.is_action_pressed("ui_left"):
 		move_dir += Vector3.BACK
 	if Input.is_action_pressed("ui_right"):
