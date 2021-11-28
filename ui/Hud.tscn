@@ -55,7 +55,6 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="GirlfriendTimer" type="Timer" parent="."]
-wait_time = 120.0
 one_shot = true
 
 [node name="MyTransformationTimer" type="Timer" parent="."]
