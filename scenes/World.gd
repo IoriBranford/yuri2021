@@ -3,12 +3,10 @@ extends Spatial
 const MOVE_SPEED = 5
 
 var move_dir = Vector3.ZERO
-var hunter_dir = Vector3.FORWARD
-var think_time = 5.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Hunter/HunterThink.start(think_time)
+	$MagicGirl.player = $Player
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,8 +26,3 @@ func _process(delta):
 	move_dir = move_dir.normalized() * MOVE_SPEED
 	$Player.move_and_slide(move_dir, Vector3.UP)
 	$CamBase.translation = $Player.translation
-	$Hunter.move_and_slide(hunter_dir * 4)
-
-func _on_HunterThink_timeout():
-	hunter_dir = hunter_dir * -1
-	$Hunter/HunterThink.start(think_time)

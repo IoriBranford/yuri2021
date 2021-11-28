@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://models/MeshLibrary.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://scenes/World.gd" type="Script" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://scenes/MagicGirl.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 6, 2, 20 )
@@ -18,10 +19,6 @@ radius = 0.5
 
 [sub_resource type="CapsuleShape" id=5]
 radius = 0.5
-
-[sub_resource type="CapsuleShape" id=6]
-
-[sub_resource type="CapsuleMesh" id=7]
 
 [node name="World" type="Spatial"]
 script = ExtResource( 2 )
@@ -50,6 +47,7 @@ material/0 = SubResource( 2 )
 shape = SubResource( 3 )
 
 [node name="Player" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9 )
 
 [node name="PlayerMesh" type="MeshInstance" parent="Player"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0 )
@@ -68,17 +66,8 @@ transform = Transform( 0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0 )
 [node name="Camera" type="Camera" parent="CamBase/CamPivot"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 0, 0 )
 
-[node name="Hunter" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 4, 10 )
-
-[node name="HunterCollision" type="CollisionShape" parent="Hunter"]
-shape = SubResource( 6 )
-
-[node name="HunterMesh" type="MeshInstance" parent="Hunter"]
-mesh = SubResource( 7 )
-material/0 = null
-
-[node name="HunterThink" type="Timer" parent="Hunter"]
+[node name="MagicGirl" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 1.04216e-14, 1.74846e-07, 0, 1, -5.96046e-08, -1.74846e-07, 5.96046e-08, 1, -4, 4, -10 )
 
 [node name="UI" type="Control" parent="."]
 anchor_right = 1.0
@@ -115,5 +104,3 @@ text = "Chill"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[connection signal="timeout" from="Hunter/HunterThink" to="." method="_on_HunterThink_timeout"]
