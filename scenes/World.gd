@@ -6,6 +6,7 @@ var move_dir = Vector3.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$MagicGirl.connect("patrol_done", self, "new_patrol")
 	$MagicGirl.player = $Player
 	$Hud.mag_girl = $MagicGirl
 	$NextPatrol.start((randi() % 3) + 1)
@@ -29,6 +30,9 @@ func _process(delta):
 	$Player.move_and_slide(move_dir, Vector3.UP)
 	$CamBase.translation = $Player.translation
 
+func new_patrol():
+	$NextPatrol.start((randi() % 3) + 1)
+
 func _on_NextPatrol_timeout():
 	$NextPatrol.stop()
-	$MagicGirl.fly_in(Vector3.UP * 4, 5, 10)
+	$MagicGirl.fly_in(Vector3(-3, 4, 0), 5, 10)

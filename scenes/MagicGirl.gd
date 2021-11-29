@@ -66,6 +66,7 @@ func _process(delta):
 			if global_transform.origin == HOME_POS:
 				global_transform.origin = HOME_POS
 				state = MagGirlState.IDLE
+				emit_signal("patrol_done")
 			else:
 				global_transform.origin = global_transform.origin.move_toward(HOME_POS, delta * MOVE_SPEED)
 
