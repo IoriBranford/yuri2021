@@ -2,6 +2,8 @@ extends KinematicBody
 
 export var speed = 2.0
 
+signal got_item(item)
+
 func _ready():
 	pass
 
@@ -17,3 +19,7 @@ func _physics_process(delta):
 	else:
 		var scaley = move_toward(scale.y, 1, delta*4)
 		scale.y = scaley
+
+func _on_SalonArea_body_entered(body):
+	if self == body:
+		emit_signal("got_item", "stylist")
