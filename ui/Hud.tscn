@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://addons/radial_progress/RadialProgressBar.gd" type="Script" id=1]
 [ext_resource path="res://ui/Hud.gd" type="Script" id=2]
@@ -17,9 +17,10 @@
 [ext_resource path="res://textures/portraits/LAND_KAIJU_PORTRAIT_KAIJU_MAD_01.png" type="Texture" id=15]
 [ext_resource path="res://models/Chocolatebox.fbx" type="PackedScene" id=16]
 [ext_resource path="res://default_env.tres" type="Environment" id=17]
+[ext_resource path="res://ui/env_item_dont_have.tres" type="Environment" id=18]
 
 [sub_resource type="World" id=1]
-environment = ExtResource( 17 )
+environment = ExtResource( 18 )
 
 [node name="Hud" type="Control"]
 anchor_right = 1.0
@@ -28,6 +29,8 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_default_env = ExtResource( 17 )
+item_missing_env = ExtResource( 18 )
 
 [node name="GirlfriendTimer" type="Timer" parent="."]
 one_shot = true
@@ -118,19 +121,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="InventoryViewport" type="Viewport" parent="InventoryHUD"]
+[node name="GiftViewport" type="Viewport" parent="InventoryHUD"]
 size = Vector2( 1280, 320 )
 own_world = true
 world = SubResource( 1 )
 transparent_bg = true
+handle_input_locally = false
 render_target_update_mode = 3
 
-[node name="Chocolatebox" parent="InventoryHUD/InventoryViewport" instance=ExtResource( 16 )]
+[node name="Gift" parent="InventoryHUD/GiftViewport" instance=ExtResource( 16 )]
 
-[node name="CameraPivot" type="Spatial" parent="InventoryHUD/InventoryViewport"]
+[node name="Camera" type="Camera" parent="InventoryHUD/GiftViewport"]
 transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 5, 10 )
-
-[node name="Camera" type="Camera" parent="InventoryHUD/InventoryViewport/CameraPivot"]
 current = true
 
 [node name="InventoryScene" type="Spatial" parent="."]

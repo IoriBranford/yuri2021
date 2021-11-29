@@ -7,6 +7,8 @@ export var revert_warning_timeleft = 2.5
 export var transformation_start_color = Color.aqua
 export var transformation_finish_color = Color.bisque
 export var revert_warning_color = Color.red
+export var item_default_env:Environment = load("res://default_env.tres")
+export var item_missing_env:Environment = load("res://ui/env_item_dont_have.tres")
 
 signal transformation_finished
 signal transformation_canceled
@@ -21,6 +23,7 @@ onready var player_face = $PlayerHUD/MyPortrait
 onready var gf_timer = $GirlfriendTimer
 onready var gf_clock = $GirlfriendHUD/GirlfriendClock
 onready var gf_face = $GirlfriendHUD/GirlfriendPortrait
+onready var inv_gift = $InventoryHUD/GiftViewport
 
 func _ready():
 	player_clock.max_value = revert_time
@@ -28,6 +31,7 @@ func _ready():
 	gf_clock.max_value = girlfriend_time
 	gf_clock.progress = girlfriend_time
 	gf_timer.start(girlfriend_time)
+	inv_gift.world.environment = item_missing_env
 
 func _physics_process(delta):
 	var mtc_progress = player_clock.progress
