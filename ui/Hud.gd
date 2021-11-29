@@ -23,15 +23,38 @@ onready var player_face = $PlayerHUD/MyPortrait
 onready var gf_timer = $GirlfriendTimer
 onready var gf_clock = $GirlfriendHUD/GirlfriendClock
 onready var gf_face = $GirlfriendHUD/GirlfriendPortrait
-onready var inv_gift = $InventoryHUD/GiftViewport
+onready var inv_gift = $GiftHUD/Viewport
+onready var inv_outfit = $OutfitHUD/Viewport
+onready var inv_stylist = $StylistHUD/Viewport
+onready var inv_magazine = $MagazineHUD/Viewport
+onready var inv_music = $MusicHUD/Viewport
+onready var inv_icons = {
+	outfit = inv_outfit,
+	stylist = inv_stylist,
+	gift = inv_gift,
+	magazine = inv_magazine,
+	music = inv_music
+}
 
+func set_inv(inv:Control, has:bool):
+	var viewport:Viewport = inv.get_node("Viewport")
+	if viewport:
+		if has:
+			viewport.world.environment = item_default_env
+		else:
+			viewport.world.environment = item_missing_env
+	
 func _ready():
 	player_clock.max_value = revert_time
 	player_clock.progress = 0
 	gf_clock.max_value = girlfriend_time
 	gf_clock.progress = girlfriend_time
 	gf_timer.start(girlfriend_time)
-	inv_gift.world.environment = item_missing_env
+	set_inv(inv_gift, false)
+	set_inv(inv_outfit, false)
+	set_inv(inv_stylist, false)
+	set_inv(inv_magazine, false)
+	set_inv(inv_music, false)
 
 func _physics_process(delta):
 	var mtc_progress = player_clock.progress
@@ -82,3 +105,8 @@ func _on_GirlfriendTimer_timeout():
 func _on_MyTransformationTimer_timeout():
 	emit_signal("transformation_timeout")
 	_on_cancel_transformation()
+
+func _on_item_get(item:String):
+	var icon = inv_icons[item]
+	if icon:
+		set_inv(icon, true)
