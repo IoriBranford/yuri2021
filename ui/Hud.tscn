@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://addons/radial_progress/RadialProgressBar.gd" type="Script" id=1]
 [ext_resource path="res://ui/Hud.gd" type="Script" id=2]
@@ -20,6 +20,18 @@
 [ext_resource path="res://ui/env_item_dont_have.tres" type="Environment" id=18]
 
 [sub_resource type="World" id=1]
+environment = ExtResource( 17 )
+
+[sub_resource type="World" id=2]
+environment = ExtResource( 17 )
+
+[sub_resource type="World" id=3]
+environment = ExtResource( 17 )
+
+[sub_resource type="World" id=4]
+environment = ExtResource( 17 )
+
+[sub_resource type="World" id=5]
 environment = ExtResource( 17 )
 
 [node name="Hud" type="Control"]
@@ -148,7 +160,7 @@ __meta__ = {
 [node name="Viewport" type="Viewport" parent="OutfitHUD"]
 size = Vector2( 256, 256 )
 own_world = true
-world = SubResource( 1 )
+world = SubResource( 2 )
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3
@@ -172,7 +184,7 @@ __meta__ = {
 [node name="Viewport" type="Viewport" parent="StylistHUD"]
 size = Vector2( 256, 256 )
 own_world = true
-world = SubResource( 1 )
+world = SubResource( 3 )
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3
@@ -196,7 +208,7 @@ __meta__ = {
 [node name="Viewport" type="Viewport" parent="MagazineHUD"]
 size = Vector2( 256, 256 )
 own_world = true
-world = SubResource( 1 )
+world = SubResource( 4 )
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3
@@ -220,7 +232,7 @@ __meta__ = {
 [node name="Viewport" type="Viewport" parent="MusicHUD"]
 size = Vector2( 256, 256 )
 own_world = true
-world = SubResource( 1 )
+world = SubResource( 5 )
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3
