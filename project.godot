@@ -276,7 +276,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg", "res://addons/godot-csv-to-dictionary/plugin.cfg", "res://addons/qodot/plugin.cfg", "res://addons/waapi_picker/plugin.cfg", "res://addons/wwise_build_export/plugin.cfg", "res://addons/wwise_custom_nodes/plugin.cfg", "res://addons/wwise_ids_converter/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg", "res://addons/godot-csv-to-dictionary/plugin.cfg", "res://addons/qodot/plugin.cfg", "res://addons/radial_progress/plugin.cfg", "res://addons/waapi_picker/plugin.cfg", "res://addons/wwise_build_export/plugin.cfg", "res://addons/wwise_custom_nodes/plugin.cfg", "res://addons/wwise_ids_converter/plugin.cfg" )
 
 [importer_defaults]
 
