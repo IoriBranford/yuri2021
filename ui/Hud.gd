@@ -23,11 +23,11 @@ onready var player_face = $PlayerHUD/MyPortrait
 onready var gf_timer = $GirlfriendTimer
 onready var gf_clock = $GirlfriendHUD/GirlfriendClock
 onready var gf_face = $GirlfriendHUD/GirlfriendPortrait
-onready var inv_gift = $GiftHUD/Viewport
-onready var inv_outfit = $OutfitHUD/Viewport
-onready var inv_stylist = $StylistHUD/Viewport
-onready var inv_magazine = $MagazineHUD/Viewport
-onready var inv_music = $MusicHUD/Viewport
+onready var inv_gift = $GiftHUD
+onready var inv_outfit = $OutfitHUD
+onready var inv_stylist = $StylistHUD
+onready var inv_magazine = $MagazineHUD
+onready var inv_music = $MusicHUD
 onready var inv_icons = {
 	outfit = inv_outfit,
 	stylist = inv_stylist,
@@ -106,7 +106,7 @@ func _on_MyTransformationTimer_timeout():
 	emit_signal("transformation_timeout")
 	_on_cancel_transformation()
 
-func _on_item_get(item:String):
+func _on_player_got_item(item):
 	var icon = inv_icons[item]
 	if icon:
 		set_inv(icon, true)
