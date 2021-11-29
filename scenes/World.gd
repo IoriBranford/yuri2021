@@ -7,10 +7,12 @@ var move_dir = Vector3.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$MagicGirl.player = $Player
-	pass # Replace with function body.
+	$Hud.mag_girl = $MagicGirl
+	$NextPatrol.start((randi() % 3) + 1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$DebugLabel.text = "Time to next patrol: " + str($NextPatrol.time_left)
 	move_dir = Vector3.ZERO
 #	if Input.is_action_just_pressed("ui_select"):
 #		var new_dialog = Dialogic.start("Intro")
@@ -26,3 +28,7 @@ func _process(delta):
 	move_dir = move_dir.normalized() * MOVE_SPEED
 	$Player.move_and_slide(move_dir, Vector3.UP)
 	$CamBase.translation = $Player.translation
+
+func _on_NextPatrol_timeout():
+	$NextPatrol.stop()
+	$MagicGirl.fly_in(Vector3.UP * 4, 5, 10)

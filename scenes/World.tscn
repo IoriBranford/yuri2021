@@ -47,7 +47,6 @@ material/0 = SubResource( 2 )
 shape = SubResource( 3 )
 
 [node name="Player" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9 )
 
 [node name="PlayerMesh" type="MeshInstance" parent="Player"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0 )
@@ -67,6 +66,18 @@ transform = Transform( 0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0 )
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 0, 0 )
 
 [node name="MagicGirl" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 1.04216e-14, 1.74846e-07, 0, 1, -5.96046e-08, -1.74846e-07, 5.96046e-08, 1, -4, 4, -10 )
+transform = Transform( 1, 1.04216e-14, 1.74846e-07, 0, 1, -5.96046e-08, -1.74846e-07, 5.96046e-08, 1, -4, 12, 0 )
 
 [node name="Hud" parent="." instance=ExtResource( 5 )]
+
+[node name="NextPatrol" type="Timer" parent="."]
+
+[node name="DebugLabel" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "TIME TO NEXT PATROL: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="timeout" from="NextPatrol" to="." method="_on_NextPatrol_timeout"]

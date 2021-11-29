@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://addons/radial_progress/RadialProgressBar.gd" type="Script" id=1]
 [ext_resource path="res://ui/Hud.gd" type="Script" id=2]
@@ -15,6 +15,9 @@
 [ext_resource path="res://textures/portraits/LAND_KAIJU_PORTRAIT_KAIJU_WAITING_01.png" type="Texture" id=13]
 [ext_resource path="res://textures/portraits/LAND_KAIJU_PORTRAIT_KAIJU_NORMAL_01.png" type="Texture" id=14]
 [ext_resource path="res://textures/portraits/LAND_KAIJU_PORTRAIT_KAIJU_MAD_01.png" type="Texture" id=15]
+[ext_resource path="res://textures/alerts/alert_red.png" type="Texture" id=16]
+[ext_resource path="res://textures/alerts/alert_yellow.png" type="Texture" id=17]
+[ext_resource path="res://textures/alerts/alert_clear.png" type="Texture" id=18]
 
 [node name="Hud" type="Control"]
 anchor_right = 1.0
@@ -102,6 +105,61 @@ stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Alert" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -114.5
+margin_top = -180.0
+margin_right = 114.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Alert"]
+margin_right = 229.0
+margin_bottom = 14.0
+text = "A PASTEL ENEMY IS APPROACHING"
+align = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Alert"]
+margin_top = 18.0
+margin_right = 229.0
+margin_bottom = 146.0
+
+[node name="AlertBar" type="TextureProgress" parent="Alert/CenterContainer"]
+margin_left = 50.0
+margin_right = 178.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_under = ExtResource( 18 )
+texture_progress = ExtResource( 17 )
+fill_mode = 4
+nine_patch_stretch = true
+
+[node name="AlertRed" type="TextureRect" parent="Alert/CenterContainer"]
+visible = false
+margin_left = 50.0
+margin_right = 178.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Alert"]
+margin_top = 150.0
+margin_right = 229.0
+margin_bottom = 164.0
+text = "IT IS IDENTIFIED AS 'MAGICAL GIRL'"
+align = 1
 
 [connection signal="timeout" from="GirlfriendTimer" to="." method="_on_GirlfriendTimer_timeout"]
 [connection signal="timeout" from="MyTransformationTimer" to="." method="_on_MyTransformationTimer_timeout"]
