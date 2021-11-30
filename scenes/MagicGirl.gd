@@ -22,7 +22,7 @@ onready var voice = $Voice
 var obj_bullet = preload("res://scenes/PushWave.tscn")
 var move_dir = Vector3.FORWARD
 var think_time = 5.0
-var state = MagGirlState.IDLE
+var state = MagGirlState.IDLE setget set_state
 var alert = 0.0
 var patrol_time = 10
 var patrol_length = 5
@@ -30,6 +30,22 @@ var patrol_point = Vector3.ZERO
 var start_pos = Vector3.ZERO
 var target_in_cone = false
 var target_los = false
+
+func set_state(value):
+	match value:
+		MagGirlState.PATROL:
+			mesh.material_override.albedo_color = Color(0, 0, 1)
+			$SightCone.visible = true
+		MagGirlState.SEARCH:
+			mesh.material_override.albedo_color = Color(1, 1, 0)
+			$SightCone.visible = true
+		MagGirlState.CHASE:
+			mesh.material_override.albedo_color = Color(1, 0, 0)
+			$SightCone.visible = false
+		_:
+			mesh.material_override.albedo_color = Color(1, 1, 1)
+			$SightCone.visible = false
+	state = value
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,9 +59,7 @@ func _process(delta):
 			if global_transform.origin == start_pos:
 				patrol_point = global_transform.origin + move_dir * patrol_length
 				patrol_timer.start(patrol_time)
-				$SightCone.visible = true
-				mesh.material_override.albedo_color = Color(0, 0, 1)
-				state = MagGirlState.PATROL
+				self.state = MagGirlState.PATROL
 			else:
 				global_transform.origin = global_transform.origin.move_toward(start_pos, delta * MOVE_SPEED)
 		MagGirlState.PATROL:
@@ -56,8 +70,7 @@ func _process(delta):
 				patrol_point = global_transform.origin + move_dir * patrol_length
 			if target_in_cone && target_los:
 				patrol_timer.paused = true
-				mesh.material_override.albedo_color = Color(1, 1, 0)
-				state = MagGirlState.SEARCH
+				self.state = MagGirlState.SEARCH
 		MagGirlState.SEARCH:
 			target_los = check_los()
 			if target_in_cone && target_los:
@@ -65,14 +78,12 @@ func _process(delta):
 			else:
 				alert = 0
 				patrol_timer.paused = false
-				state = MagGirlState.PATROL
+				self.state = MagGirlState.PATROL
 			if alert > 100:
 				voice.stream = res.get_resource("predictabo")
 				voice.play()
-				$SightCone.visible = false
 				attack_timer.start(FIRE_RATE)
-				mesh.material_override.albedo_color = Color(1, 0, 0)
-				state = MagGirlState.CHASE
+				self.state = MagGirlState.CHASE
 		MagGirlState.CHASE:
 			var my_pos = global_transform.origin
 			var player_pos = get_tree().get_nodes_in_group("player")[0].global_transform.origin
@@ -85,7 +96,7 @@ func _process(delta):
 		MagGirlState.FLY_OUT:
 			if global_transform.origin == HOME_POS:
 				global_transform.origin = HOME_POS
-				state = MagGirlState.IDLE
+				self.state = MagGirlState.IDLE
 				emit_signal("patrol_done")
 			else:
 				global_transform.origin = global_transform.origin.move_toward(HOME_POS, delta * MOVE_SPEED)
@@ -114,7 +125,7 @@ func fly_in(pos, time, length):
 	patrol_length = length
 	patrol_time = time
 	start_pos = pos
-	state = MagGirlState.FLY_IN
+	self.state = MagGirlState.FLY_IN
 
 func _on_SightArea_body_entered(body):
 	target_in_cone = body.is_in_group("player")
@@ -125,9 +136,7 @@ func _on_SightArea_body_exited(body):
 
 func _on_PatrolTimer_timeout():
 	patrol_timer.stop()
-	$SightCone.visible = false
-	mesh.material_override.albedo_color = Color(1, 1, 1)
-	state = MagGirlState.FLY_OUT
+	self.state = MagGirlState.FLY_OUT
 
 func _on_AttackTimer_timeout():
 	var my_pos = global_transform.origin
