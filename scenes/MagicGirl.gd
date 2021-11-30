@@ -11,6 +11,7 @@ export var FRONT_DEPTH = 0
 export var ENGAGE_DISTANCE = 6
 
 signal patrol_done
+signal update_hud()
 
 # Accessor vars
 onready var res = $Resources
@@ -46,6 +47,7 @@ func set_state(value):
 			mesh.material_override.albedo_color = Color(1, 1, 1)
 			$SightCone.visible = false
 	state = value
+	emit_signal("update_hud", self)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -79,11 +81,13 @@ func _process(delta):
 				alert = 0
 				patrol_timer.paused = false
 				self.state = MagGirlState.PATROL
-			if alert > 100:
+			if alert >= 100:
 				voice.stream = res.get_resource("predictabo")
 				voice.play()
 				attack_timer.start(FIRE_RATE)
 				self.state = MagGirlState.CHASE
+			else:
+				emit_signal("update_hud", self)
 		MagGirlState.CHASE:
 			var my_pos = global_transform.origin
 			var player_pos = get_tree().get_nodes_in_group("player")[0].global_transform.origin

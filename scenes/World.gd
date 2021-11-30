@@ -1,10 +1,12 @@
 extends Spatial
 
+onready var hud = $Hud
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Player.add_to_group("player")
 	$MagicGirl.connect("patrol_done", self, "new_patrol")
-	$Hud.mag_girl = $MagicGirl
+	$MagicGirl.connect("update_hud", $Hud, "update_alert")
 	$NextPatrol.start((randi() % 3) + 1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
