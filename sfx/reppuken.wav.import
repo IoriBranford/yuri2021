@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/reppuken.wav-4d5b0339f72558e7365d5da106dcdaec.sample"
+
+[deps]
+
+source_file="res://sfx/reppuken.wav"
+dest_files=[ "res://.import/reppuken.wav-4d5b0339f72558e7365d5da106dcdaec.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

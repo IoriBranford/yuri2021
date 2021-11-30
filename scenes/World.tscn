@@ -80,4 +80,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Attack" type="Timer" parent="."]
+
 [connection signal="timeout" from="NextPatrol" to="." method="_on_NextPatrol_timeout"]
+[connection signal="timeout" from="Attack" to="." method="_on_Attack_timeout"]

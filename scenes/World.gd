@@ -2,14 +2,14 @@ extends Spatial
 
 const MOVE_SPEED = 5
 
+var obj_bullet = preload("res://scenes/PushWave.tscn")
 var move_dir = Vector3.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Player.add_to_group("player")
 	$MagicGirl.connect("patrol_done", self, "new_patrol")
-	$MagicGirl.player = $Player
 	$Hud.mag_girl = $MagicGirl
-	$NextPatrol.start((randi() % 3) + 1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -18,6 +18,8 @@ func _process(delta):
 #	if Input.is_action_just_pressed("ui_select"):
 #		var new_dialog = Dialogic.start("Intro")
 #		add_child(new_dialog)
+	if Input.is_action_just_pressed("ui_select"):
+		$NextPatrol.start((randi() % 3) + 1)
 	if Input.is_action_pressed("ui_left"):
 		move_dir += Vector3.BACK
 	if Input.is_action_pressed("ui_right"):
@@ -35,4 +37,4 @@ func new_patrol():
 
 func _on_NextPatrol_timeout():
 	$NextPatrol.stop()
-	$MagicGirl.fly_in(Vector3(-3, 4, 0), 5, 10)
+	$MagicGirl.fly_in(Vector3(-3, 2, 0), 5, 15)
