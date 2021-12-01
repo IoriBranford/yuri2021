@@ -23,11 +23,12 @@ onready var player_face = $PlayerHUD/MyPortrait
 onready var gf_timer = $GirlfriendTimer
 onready var gf_clock = $GirlfriendHUD/GirlfriendClock
 onready var gf_face = $GirlfriendHUD/GirlfriendPortrait
-onready var inv_gift = $GiftHUD
-onready var inv_outfit = $OutfitHUD
-onready var inv_stylist = $StylistHUD
-onready var inv_magazine = $MagazineHUD
-onready var inv_music = $MusicHUD
+
+onready var inv_gift = $InventoryHUD/Gift
+onready var inv_outfit = $InventoryHUD/Outfit
+onready var inv_stylist = $InventoryHUD/Stylist
+onready var inv_magazine = $InventoryHUD/Magazine
+onready var inv_music = $InventoryHUD/Music
 onready var inv_icons = {
 	outfit = inv_outfit,
 	stylist = inv_stylist,
@@ -35,6 +36,10 @@ onready var inv_icons = {
 	magazine = inv_magazine,
 	music = inv_music
 }
+
+onready var alert_hud = $Alert
+onready var alert_bar = $Alert/CenterContainer/AlertBar
+onready var alert_red = $Alert/CenterContainer/AlertRed
 
 func set_inv(inv:Control, has:bool):
 	var viewport:Viewport = inv.get_node("Viewport")
@@ -80,6 +85,7 @@ func _physics_process(delta):
 			player_clock.progress = mtt_timeleft
 			if mtt_timeleft <= revert_warning_timeleft:
 				player_clock.bar_color = lerp(transformation_start_color, revert_warning_color, (1 + sin(6*PI*mtt_timeleft)) / 2)
+	# Update girlfriend timer and HUD element
 	gf_clock.progress = gf_timer.time_left
 	var timer_pct = gf_timer.time_left / girlfriend_time
 	if timer_pct >= 0.75:
@@ -90,6 +96,26 @@ func _physics_process(delta):
 		gf_face.texture = portraits.get_resource("gf_worry")
 	else:
 		gf_face.texture = portraits.get_resource("gf_mad")
+
+# Update alert HUD element
+func update_alert(mag_girl):
+	match mag_girl.state:
+		mag_girl.MagGirlState.IDLE:
+			alert_hud.visible = false
+		mag_girl.MagGirlState.FLY_IN:
+			alert_hud.visible = true
+		mag_girl.MagGirlState.PATROL:
+			alert_hud.visible = true
+			alert_bar.value = 0
+		mag_girl.MagGirlState.SEARCH:
+			alert_hud.visible = true
+			alert_bar.value = mag_girl.alert
+		mag_girl.MagGirlState.CHASE:
+			print("Chase trigger")
+			alert_hud.visible = true
+			alert_red.visible = true
+		mag_girl.MagGirlState.FLY_OUT:
+			alert_hud.visible = false
 
 func _on_game_start():
 	gf_timer.start(girlfriend_time)

@@ -1,61 +1,150 @@
 extends KinematicBody
 
-enum MagGirlState {PATROL, SEARCH, CHASE, ENGAGE}
+enum MagGirlState {IDLE, FLY_IN, PATROL, SEARCH, CHASE, FLY_OUT}
 
-export var MOVE_SPEED = 2
+# Editor vars
+export var MOVE_SPEED = 4
+export var ALERT_RATE = 1.0
+export var FIRE_RATE = 2.0
+export var HOME_POS = Vector3(0, 10, 0)
+export var FRONT_DEPTH = 0
+export var ENGAGE_DISTANCE = 6
 
+signal patrol_done
+signal update_hud()
+
+# Accessor vars
+onready var res = $Resources
 onready var mesh = $Mesh
-onready var think_timer = $ThinkTimer
+onready var patrol_timer = $PatrolTimer
+onready var attack_timer = $AttackTimer
+onready var voice = $Voice
 
-var move_dir = Vector3.BACK
+var obj_bullet = preload("res://scenes/PushWave.tscn")
+var move_dir = Vector3.FORWARD
 var think_time = 5.0
-var state = MagGirlState.PATROL
+var state = MagGirlState.IDLE setget set_state
 var alert = 0.0
-var player = null
+var patrol_time = 10
+var patrol_length = 5
+var patrol_point = Vector3.ZERO
+var start_pos = Vector3.ZERO
 var target_in_cone = false
 var target_los = false
 
+func set_state(value):
+	match value:
+		MagGirlState.PATROL:
+			mesh.material_override.albedo_color = Color(0, 0, 1)
+			$SightCone.visible = true
+		MagGirlState.SEARCH:
+			mesh.material_override.albedo_color = Color(1, 1, 0)
+			$SightCone.visible = true
+		MagGirlState.CHASE:
+			mesh.material_override.albedo_color = Color(1, 0, 0)
+			$SightCone.visible = false
+		_:
+			mesh.material_override.albedo_color = Color(1, 1, 1)
+			$SightCone.visible = false
+	state = value
+	emit_signal("update_hud", self)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	think_timer.start(think_time)
+	global_transform.origin = HOME_POS
+	patrol_timer.start(patrol_time)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	target_los = check_los()
 	match state:
+		MagGirlState.FLY_IN:
+			if global_transform.origin == start_pos:
+				patrol_point = global_transform.origin + move_dir * patrol_length
+				patrol_timer.start(patrol_time)
+				self.state = MagGirlState.PATROL
+			else:
+				global_transform.origin = global_transform.origin.move_toward(start_pos, delta * MOVE_SPEED)
 		MagGirlState.PATROL:
-			mesh.material_override.albedo_color = Color(0, 0, 1)
-			move_and_slide(move_dir * MOVE_SPEED)
+			target_los = check_los()
+			global_transform.origin = global_transform.origin.move_toward(patrol_point, delta * MOVE_SPEED)
+			if global_transform.origin == patrol_point:
+				move_dir = -move_dir
+				patrol_point = global_transform.origin + move_dir * patrol_length
 			if target_in_cone && target_los:
-				state = MagGirlState.SEARCH
+				patrol_timer.paused = true
+				self.state = MagGirlState.SEARCH
 		MagGirlState.SEARCH:
-			mesh.material_override.albedo_color = Color(1, (100 - alert)/100, 0)
+			target_los = check_los()
 			if target_in_cone && target_los:
-				alert += 1.0
+				alert += ALERT_RATE
 			else:
 				alert = 0
-				state = MagGirlState.PATROL
-			if alert > 100:
-				state = MagGirlState.CHASE
+				patrol_timer.paused = false
+				self.state = MagGirlState.PATROL
+			if alert >= 100:
+				voice.stream = res.get_resource("predictabo")
+				voice.play()
+				attack_timer.start(FIRE_RATE)
+				self.state = MagGirlState.CHASE
+			else:
+				emit_signal("update_hud", self)
 		MagGirlState.CHASE:
-			mesh.material_override.albedo_color = Color(1, 0, 0)
-		MagGirlState.ENGAGE:
-			mesh.material_override.albedo_color = Color(1, 1, 1)
+			var my_pos = global_transform.origin
+			var player_pos = get_tree().get_nodes_in_group("player")[0].global_transform.origin
+			var move_to = player_pos + Vector3.FORWARD * ENGAGE_DISTANCE
+			move_to.x = FRONT_DEPTH
+			if my_pos.x != FRONT_DEPTH:
+				global_transform.origin = my_pos.move_toward(move_to, delta * MOVE_SPEED * 2)
+			elif abs(player_pos.z - my_pos.z) > ENGAGE_DISTANCE:
+				global_transform.origin = my_pos.move_toward(move_to, delta * MOVE_SPEED)
+		MagGirlState.FLY_OUT:
+			if global_transform.origin == HOME_POS:
+				global_transform.origin = HOME_POS
+				self.state = MagGirlState.IDLE
+				emit_signal("patrol_done")
+			else:
+				global_transform.origin = global_transform.origin.move_toward(HOME_POS, delta * MOVE_SPEED)
+
+func shoot():
+	voice.stream = res.get_resource("reppuken")
+	voice.play()
+	var inst_bullet = obj_bullet.instance()
+	add_child(inst_bullet)
+	inst_bullet.move_dir = Vector3.BACK
 
 func check_los():
-	var from = global_transform.origin
-	var to = player.global_transform.origin + Vector3.UP
-	var space_state = get_world().direct_space_state
-	var raycast = space_state.intersect_ray(from, to, [self, player], 1)
-	return raycast.empty()
+	var player = get_tree().get_nodes_in_group("player")[0]
+	if player != null:
+		var from = global_transform.origin
+		var to = player.global_transform.origin + Vector3.UP
+		var space_state = get_world().direct_space_state
+		var raycast = space_state.intersect_ray(from, to, [self, player], 1)
+		return raycast.empty()
+	else:
+		return false
 
-func _on_ThinkTimer_timeout():
-	move_dir = move_dir * -1
-	think_timer.start(think_time)
+func fly_in(pos, time, length):
+	voice.stream = res.get_resource("noescape")
+	voice.play()
+	patrol_length = length
+	patrol_time = time
+	start_pos = pos
+	self.state = MagGirlState.FLY_IN
 
 func _on_SightArea_body_entered(body):
-	target_in_cone = (body == player)
+	target_in_cone = body.is_in_group("player")
 
 func _on_SightArea_body_exited(body):
-	if body == player:
+	if body.is_in_group("player"):
 		target_in_cone = false
+
+func _on_PatrolTimer_timeout():
+	patrol_timer.stop()
+	self.state = MagGirlState.FLY_OUT
+
+func _on_AttackTimer_timeout():
+	var my_pos = global_transform.origin
+	var player_pos = get_tree().get_nodes_in_group("player")[0].global_transform.origin
+	if (global_transform.origin.x == FRONT_DEPTH && 
+	abs(player_pos.z - my_pos.z) <= ENGAGE_DISTANCE):
+		shoot()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://addons/radial_progress/RadialProgressBar.gd" type="Script" id=1]
 [ext_resource path="res://ui/Hud.gd" type="Script" id=2]
@@ -15,24 +15,12 @@
 [ext_resource path="res://textures/portraits/LAND_KAIJU_PORTRAIT_KAIJU_WAITING_01.png" type="Texture" id=13]
 [ext_resource path="res://textures/portraits/LAND_KAIJU_PORTRAIT_KAIJU_NORMAL_01.png" type="Texture" id=14]
 [ext_resource path="res://textures/portraits/LAND_KAIJU_PORTRAIT_KAIJU_MAD_01.png" type="Texture" id=15]
-[ext_resource path="res://models/Chocolatebox.fbx" type="PackedScene" id=16]
-[ext_resource path="res://default_env.tres" type="Environment" id=17]
-[ext_resource path="res://ui/env_item_dont_have.tres" type="Environment" id=18]
-
-[sub_resource type="World" id=1]
-environment = ExtResource( 17 )
-
-[sub_resource type="World" id=2]
-environment = ExtResource( 17 )
-
-[sub_resource type="World" id=3]
-environment = ExtResource( 17 )
-
-[sub_resource type="World" id=4]
-environment = ExtResource( 17 )
-
-[sub_resource type="World" id=5]
-environment = ExtResource( 17 )
+[ext_resource path="res://textures/alerts/alert_red.png" type="Texture" id=16]
+[ext_resource path="res://textures/alerts/alert_yellow.png" type="Texture" id=17]
+[ext_resource path="res://textures/alerts/alert_clear.png" type="Texture" id=18]
+[ext_resource path="res://default_env.tres" type="Environment" id=19]
+[ext_resource path="res://ui/env_item_dont_have.tres" type="Environment" id=20]
+[ext_resource path="res://ui/InventoryHUD.tscn" type="PackedScene" id=21]
 
 [node name="Hud" type="Control"]
 anchor_right = 1.0
@@ -41,8 +29,8 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-item_default_env = ExtResource( 17 )
-item_missing_env = ExtResource( 18 )
+item_default_env = ExtResource( 19 )
+item_missing_env = ExtResource( 20 )
 
 [node name="GirlfriendTimer" type="Timer" parent="."]
 one_shot = true
@@ -54,18 +42,17 @@ one_shot = true
 resources = [ PoolStringArray( "gf_mad", "gf_normal", "gf_wait", "gf_worry", "player_human_freakout", "player_human_normal", "player_human_panic", "player_human_worry", "player_kaiju_freakout", "player_kaiju_normal", "player_kaiju_panic", "player_kaiju_worry" ), [ ExtResource( 15 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 7 ) ] ]
 
 [node name="PlayerHUD" type="CenterContainer" parent="."]
-margin_right = 320.0
-margin_bottom = 320.0
-rect_min_size = Vector2( 320, 320 )
+margin_right = 256.0
+margin_bottom = 256.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MyTransformationClock" type="Control" parent="PlayerHUD"]
-margin_left = 160.0
-margin_top = 160.0
-margin_right = 160.0
-margin_bottom = 160.0
+margin_left = 128.0
+margin_top = 128.0
+margin_right = 128.0
+margin_bottom = 128.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -77,9 +64,9 @@ bar_color = Color( 1, 0.733333, 0.356863, 1 )
 angle0 = 180.0
 
 [node name="MyPortrait" type="TextureRect" parent="PlayerHUD"]
-margin_right = 320.0
-margin_bottom = 320.0
-rect_min_size = Vector2( 320, 320 )
+margin_right = 256.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 256, 256 )
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
@@ -90,18 +77,17 @@ __meta__ = {
 [node name="GirlfriendHUD" type="CenterContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -320.0
-margin_bottom = 320.0
-rect_min_size = Vector2( 320, 320 )
+margin_left = -256.0
+margin_bottom = 256.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GirlfriendClock" type="Control" parent="GirlfriendHUD"]
-margin_left = 160.0
-margin_top = 160.0
-margin_right = 160.0
-margin_bottom = 160.0
+margin_left = 128.0
+margin_top = 128.0
+margin_right = 128.0
+margin_bottom = 128.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -113,9 +99,9 @@ bar_color = Color( 0.9, 0.198, 0.2448, 1 )
 angle0 = 180.0
 
 [node name="GirlfriendPortrait" type="TextureRect" parent="GirlfriendHUD"]
-margin_right = 320.0
-margin_bottom = 320.0
-rect_min_size = Vector2( 320, 320 )
+margin_right = 256.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 256, 256 )
 texture = ExtResource( 9 )
 expand = true
 stretch_mode = 6
@@ -123,127 +109,63 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GiftHUD" type="ViewportContainer" parent="."]
+[node name="Alert" type="VBoxContainer" parent="."]
+visible = false
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-margin_left = -128.0
-margin_right = 128.0
-margin_bottom = 256.0
+anchor_bottom = 1.0
+margin_left = -114.5
+margin_top = -180.0
+margin_right = 114.5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Viewport" type="Viewport" parent="GiftHUD"]
-size = Vector2( 256, 256 )
-own_world = true
-world = SubResource( 1 )
-transparent_bg = true
-handle_input_locally = false
-render_target_update_mode = 3
+[node name="Label" type="Label" parent="Alert"]
+margin_right = 229.0
+margin_bottom = 14.0
+text = "A PASTEL ENEMY IS APPROACHING"
+align = 1
 
-[node name="Gift" parent="GiftHUD/Viewport" instance=ExtResource( 16 )]
+[node name="CenterContainer" type="CenterContainer" parent="Alert"]
+margin_top = 18.0
+margin_right = 229.0
+margin_bottom = 146.0
 
-[node name="Camera" type="Camera" parent="GiftHUD/Viewport"]
-transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 5, 10 )
-current = true
+[node name="AlertBar" type="TextureProgress" parent="Alert/CenterContainer"]
+margin_left = 50.0
+margin_right = 178.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_under = ExtResource( 18 )
+texture_progress = ExtResource( 17 )
+fill_mode = 4
+nine_patch_stretch = true
 
-[node name="OutfitHUD" type="ViewportContainer" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -640.0
-margin_right = -384.0
-margin_bottom = 256.0
+[node name="AlertRed" type="TextureRect" parent="Alert/CenterContainer"]
+visible = false
+margin_left = 50.0
+margin_right = 178.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Viewport" type="Viewport" parent="OutfitHUD"]
-size = Vector2( 256, 256 )
-own_world = true
-world = SubResource( 2 )
-transparent_bg = true
-handle_input_locally = false
-render_target_update_mode = 3
+[node name="Label2" type="Label" parent="Alert"]
+margin_top = 150.0
+margin_right = 229.0
+margin_bottom = 164.0
+text = "IT IS IDENTIFIED AS 'MAGICAL GIRL'"
+align = 1
 
-[node name="Gift" parent="OutfitHUD/Viewport" instance=ExtResource( 16 )]
-
-[node name="Camera" type="Camera" parent="OutfitHUD/Viewport"]
-transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 5, 10 )
-current = true
-
-[node name="StylistHUD" type="ViewportContainer" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -384.0
-margin_right = -128.0
-margin_bottom = 256.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Viewport" type="Viewport" parent="StylistHUD"]
-size = Vector2( 256, 256 )
-own_world = true
-world = SubResource( 3 )
-transparent_bg = true
-handle_input_locally = false
-render_target_update_mode = 3
-
-[node name="Gift" parent="StylistHUD/Viewport" instance=ExtResource( 16 )]
-
-[node name="Camera" type="Camera" parent="StylistHUD/Viewport"]
-transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 5, 10 )
-current = true
-
-[node name="MagazineHUD" type="ViewportContainer" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = 128.0
-margin_right = 384.0
-margin_bottom = 256.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Viewport" type="Viewport" parent="MagazineHUD"]
-size = Vector2( 256, 256 )
-own_world = true
-world = SubResource( 4 )
-transparent_bg = true
-handle_input_locally = false
-render_target_update_mode = 3
-
-[node name="Gift" parent="MagazineHUD/Viewport" instance=ExtResource( 16 )]
-
-[node name="Camera" type="Camera" parent="MagazineHUD/Viewport"]
-transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 5, 10 )
-current = true
-
-[node name="MusicHUD" type="ViewportContainer" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = 384.0
-margin_right = 640.0
-margin_bottom = 256.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Viewport" type="Viewport" parent="MusicHUD"]
-size = Vector2( 256, 256 )
-own_world = true
-world = SubResource( 5 )
-transparent_bg = true
-handle_input_locally = false
-render_target_update_mode = 3
-
-[node name="Gift" parent="MusicHUD/Viewport" instance=ExtResource( 16 )]
-
-[node name="Camera" type="Camera" parent="MusicHUD/Viewport"]
-transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 5, 10 )
-current = true
-
-[node name="InventoryScene" type="Spatial" parent="."]
+[node name="InventoryHUD" parent="." instance=ExtResource( 21 )]
 
 [connection signal="timeout" from="GirlfriendTimer" to="." method="_on_GirlfriendTimer_timeout"]
 [connection signal="timeout" from="MyTransformationTimer" to="." method="_on_MyTransformationTimer_timeout"]
