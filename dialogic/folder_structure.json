@@ -39,14 +39,15 @@
 			},
 			"metadata": {
 				"color": null,
-				"folded": false
+				"folded": true
 			}
 		},
 		"Timelines": {
 			"files": [
 				"timeline-1638066193.json",
 				"timeline-1638066225.json",
-				"timeline-1638247514.json"
+				"timeline-1638247514.json",
+				"timeline-1638330261.json"
 			],
 			"folders": {
 

@@ -54,7 +54,7 @@ transform = Transform( 1, 0, 0, 0, -5.96046e-08, -1, 0, 1, -5.96046e-08, 0, 2, 1
 shape = SubResource( 10 )
 
 [node name="Voice" type="AudioStreamPlayer" parent="."]
-volume_db = -5.0
+volume_db = -10.0
 
 [connection signal="timeout" from="PatrolTimer" to="." method="_on_PatrolTimer_timeout"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]

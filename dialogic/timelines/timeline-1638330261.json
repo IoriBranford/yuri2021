@@ -2,7 +2,7 @@
 	"events": [
 		{
 			"action": "join",
-			"character": "character-1638066167.json",
+			"character": "character-1638066175.json",
 			"event_id": "dialogic_002",
 			"mirror": false,
 			"portrait": "",
@@ -29,47 +29,21 @@
 			}
 		},
 		{
-			"character": "character-1638066167.json",
+			"character": "character-1638066175.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "So like, can you go away and like, never return?"
+			"text": "Yeah, that's right! Don't let me catch you creeping around here again, dirtbag!"
 		},
 		{
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_001",
 			"portrait": "Kaiju Nervous",
-			"text": "Gawd, gag me with a spoon..."
-		},
-		{
-			"character": "",
-			"event_id": "dialogic_010",
-			"options": [
-
-			],
-			"portrait": "",
-			"question": ""
-		},
-		{
-			"choice": "",
-			"condition": "",
-			"definition": "",
-			"event_id": "dialogic_011",
-			"value": ""
-		},
-		{
-			"choice": "",
-			"condition": "",
-			"definition": "",
-			"event_id": "dialogic_011",
-			"value": ""
-		},
-		{
-			"event_id": "dialogic_013"
+			"text": "S-s-scary..."
 		}
 	],
 	"metadata": {
 		"dialogic-version": "1.3",
-		"file": "timeline-1638247514.json",
-		"name": "Micah Eject"
+		"file": "timeline-1638330261.json",
+		"name": "Rafa Eject"
 	}
 }
