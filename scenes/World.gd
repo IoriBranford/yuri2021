@@ -21,8 +21,10 @@ func set_state(value):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Hud.connect("transformation_finished", $Player, "change_form")
+	$Hud.connect("transformation_canceled", $Player, "change_form")
+	$Hud.connect("transformation_timeout", $Player, "change_form")
 	$Player.add_to_group("player")
-	$Player.connect("ejected", self, "cutscene_eject")
 	$MagicGirl.add_to_group("enemy")
 	$MagicGirl.connect("patrol_done", self, "new_patrol")
 	$MagicGirl.connect("update_hud", $Hud, "update_alert")
@@ -62,6 +64,8 @@ func cutscene_ending():
 
 func _on_NextPatrol_timeout():
 	$NextPatrol.stop()
+	$MagicGirl.global_transform.origin = Vector3(-3, 10, $Player.global_transform.origin.z) 
+	$MagicGirl.home_pos = Vector3(-3, 10, $Player.global_transform.origin.z)
 	$MagicGirl.fly_in(Vector3(-3, 2, $Player.global_transform.origin.z), 15, 5)
 
 func _on_OceanEnd_body_exited(body):

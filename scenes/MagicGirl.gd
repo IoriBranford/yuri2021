@@ -6,7 +6,6 @@ enum MagGirlState {IDLE, FLY_IN, PATROL, SEARCH, CHASE, FLY_OUT, SWATTED}
 export var MOVE_SPEED = 4
 export var ALERT_RATE = 1.0
 export var FIRE_RATE = 2.0
-export var HOME_POS = Vector3(0, 10, 0)
 export var FRONT_DEPTH = 0
 export var ENGAGE_DISTANCE = 6
 
@@ -28,6 +27,7 @@ var alert = 0.0
 var patrol_time = 10
 var patrol_length = 5
 var patrol_point = Vector3.ZERO
+var home_pos = Vector3(0, 10, 0)
 var start_pos = Vector3.ZERO
 var target_in_cone = false
 var target_los = false
@@ -54,7 +54,7 @@ func set_state(value):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	global_transform.origin = HOME_POS
+	global_transform.origin = home_pos
 	patrol_timer.start(patrol_time)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -100,22 +100,20 @@ func _process(delta):
 			elif abs(player_pos.z - my_pos.z) > ENGAGE_DISTANCE:
 				global_transform.origin = my_pos.move_toward(move_to, delta * MOVE_SPEED)
 		MagGirlState.FLY_OUT:
-			if global_transform.origin == HOME_POS:
-				global_transform.origin = HOME_POS
+			if global_transform.origin == home_pos:
 				self.state = MagGirlState.IDLE
 				emit_signal("patrol_done")
 			else:
-				global_transform.origin = global_transform.origin.move_toward(HOME_POS, delta * MOVE_SPEED * 2)
+				global_transform.origin = global_transform.origin.move_toward(home_pos, delta * MOVE_SPEED * 2)
 		MagGirlState.SWATTED:
-			if global_transform.origin == HOME_POS:
+			if global_transform.origin == home_pos:
 				mesh.rotation_degrees = Vector3(-90, 0, 0)
-				global_transform.origin = HOME_POS
 				self.state = MagGirlState.IDLE
 				emit_signal("patrol_done")
 			else:
 				var rand_vector = Vector3(randf()-0.5, randf()-0.5, randf()-0.5).normalized()
 				mesh.rotate_object_local(rand_vector, PI)
-				global_transform.origin = global_transform.origin.move_toward(HOME_POS, delta * MOVE_SPEED * 2)
+				global_transform.origin = global_transform.origin.move_toward(home_pos, delta * MOVE_SPEED * 2)
 
 func shoot():
 	voice.stream = res.get_resource("reppuken")
@@ -127,7 +125,7 @@ func shoot():
 func check_los():
 	var player = get_tree().get_nodes_in_group("player")[0]
 	if player != null:
-		var from = global_transform.origin
+		var from = $SightPoint.global_transform.origin
 		var to = player.global_transform.origin + Vector3.UP
 		var space_state = get_world().direct_space_state
 		var raycast = space_state.intersect_ray(from, to, [self, player], 1)

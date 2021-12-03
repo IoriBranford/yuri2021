@@ -1,21 +1,55 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/PlayerObj.gd" type="Script" id=1]
 [ext_resource path="res://models/oceankaiju_human_form.fbx" type="PackedScene" id=2]
+[ext_resource path="res://textures/particles/smoke_01.png" type="Texture" id=3]
 
-[sub_resource type="CapsuleShape" id=5]
-radius = 1.25
+[sub_resource type="CapsuleShape" id=1]
+height = 1.5
+
+[sub_resource type="CapsuleMesh" id=2]
+mid_height = 1.5
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_transparent = true
+flags_unshaded = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="QuadMesh" id=4]
+material = SubResource( 3 )
+size = Vector2( 2, 2 )
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
 
-[node name="PlayerCollision" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.75, 0 )
-shape = SubResource( 5 )
-
 [node name="Knockback" type="Timer" parent="."]
 
-[node name="oceankaiju_human_form" parent="." instance=ExtResource( 2 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+[node name="PlayerCollision" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.75, 0 )
+shape = SubResource( 1 )
+
+[node name="HumanForm" parent="." instance=ExtResource( 2 )]
+transform = Transform( -0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, 0 )
+visible = false
+
+[node name="KaijuForm" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.75, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="SmokePuff" type="CPUParticles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource( 4 )
+direction = Vector3( 0, 1, 0 )
+gravity = Vector3( 0, 1, 0 )
+initial_velocity = 5.0
 
 [connection signal="timeout" from="Knockback" to="." method="_on_Knockback_timeout"]
