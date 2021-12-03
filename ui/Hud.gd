@@ -104,14 +104,17 @@ func update_alert(mag_girl):
 			alert_hud.visible = false
 		mag_girl.MagGirlState.FLY_IN:
 			alert_hud.visible = true
+			alert_bar.value = 0
+			alert_red.visible = false
 		mag_girl.MagGirlState.PATROL:
 			alert_hud.visible = true
 			alert_bar.value = 0
+			alert_red.visible = false
 		mag_girl.MagGirlState.SEARCH:
 			alert_hud.visible = true
 			alert_bar.value = mag_girl.alert
+			alert_red.visible = false
 		mag_girl.MagGirlState.CHASE:
-			print("Chase trigger")
 			alert_hud.visible = true
 			alert_red.visible = true
 		mag_girl.MagGirlState.FLY_OUT:

@@ -7,6 +7,7 @@
 [ext_resource path="res://sfx/predictabo.wav" type="AudioStream" id=6]
 
 [sub_resource type="CapsuleShape" id=6]
+radius = 0.5
 
 [sub_resource type="SpatialMaterial" id=8]
 
@@ -40,21 +41,27 @@ material/0 = null
 
 [node name="AttackTimer" type="Timer" parent="."]
 
+[node name="SightPoint" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.9, 0 )
+
 [node name="SightCone" type="CSGCylinder" parent="."]
-transform = Transform( -4.37114e-08, -0.707107, 0.707107, 0, 0.707107, 0.707107, -1, 3.09086e-08, -3.09086e-08, 2, 1, -1.19209e-07 )
+transform = Transform( -4.37114e-08, -0.707107, 0.707107, 4.23516e-22, 0.707107, 0.707107, -1, 3.09086e-08, -3.09086e-08, 2, 0.5, -1.19209e-07 )
+calculate_tangents = false
 radius = 2.0
 height = 4.0
 cone = true
+smooth_faces = false
 material = SubResource( 9 )
 
 [node name="SightArea" type="Area" parent="SightCone"]
-transform = Transform( 1, 0, 0, 0, -5.96046e-08, -1, 0, 1, -5.96046e-08, 0, 2, 1.78814e-07 )
+transform = Transform( 1, -3.55271e-15, -3.55271e-15, -3.55271e-15, -8.9407e-08, -1, 3.55271e-15, 1, -8.9407e-08, -7.10543e-15, 2, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="SightCone/SightArea"]
+transform = Transform( 1, 3.55271e-15, 0, -3.55271e-15, 1, 9.55342e-16, 0, 9.55342e-16, 1, 0, 0, 0 )
 shape = SubResource( 10 )
 
 [node name="Voice" type="AudioStreamPlayer" parent="."]
-volume_db = -5.0
+volume_db = -10.0
 
 [connection signal="timeout" from="PatrolTimer" to="." method="_on_PatrolTimer_timeout"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://addons/radial_progress/RadialProgressBar.gd" type="Script" id=1]
 [ext_resource path="res://ui/Hud.gd" type="Script" id=2]
@@ -21,6 +21,23 @@
 [ext_resource path="res://default_env.tres" type="Environment" id=19]
 [ext_resource path="res://ui/env_item_dont_have.tres" type="Environment" id=20]
 [ext_resource path="res://ui/InventoryHUD.tscn" type="PackedScene" id=21]
+[ext_resource path="res://ui/Kenney Mini Square.ttf" type="DynamicFontData" id=22]
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 22 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 22 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 22 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 22 )
 
 [node name="Hud" type="Control"]
 anchor_right = 1.0
@@ -115,27 +132,30 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -114.5
-margin_top = -180.0
-margin_right = 114.5
+margin_left = -228.0
+margin_top = -196.0
+margin_right = 228.0
+custom_constants/separation = -16
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Alert"]
-margin_right = 229.0
-margin_bottom = 14.0
-text = "A PASTEL ENEMY IS APPROACHING"
+margin_right = 456.0
+margin_bottom = 30.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "A LARGE PASTEL ENEMY IS APPROACHING"
 align = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="Alert"]
-margin_top = 18.0
-margin_right = 229.0
-margin_bottom = 146.0
+margin_top = 14.0
+margin_right = 456.0
+margin_bottom = 142.0
 
 [node name="AlertBar" type="TextureProgress" parent="Alert/CenterContainer"]
-margin_left = 50.0
-margin_right = 178.0
+margin_left = 164.0
+margin_right = 292.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
 size_flags_horizontal = 4
@@ -147,8 +167,8 @@ nine_patch_stretch = true
 
 [node name="AlertRed" type="TextureRect" parent="Alert/CenterContainer"]
 visible = false
-margin_left = 50.0
-margin_right = 178.0
+margin_left = 164.0
+margin_right = 292.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
 texture = ExtResource( 16 )
@@ -158,14 +178,58 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label3" type="Label" parent="Alert/CenterContainer/AlertRed"]
+margin_left = -48.0
+margin_top = 44.0
+margin_right = 176.0
+margin_bottom = 84.0
+custom_fonts/font = SubResource( 4 )
+text = "N O  R E F U G E"
+align = 1
+
 [node name="Label2" type="Label" parent="Alert"]
-margin_top = 150.0
-margin_right = 229.0
-margin_bottom = 164.0
-text = "IT IS IDENTIFIED AS 'MAGICAL GIRL'"
+margin_top = 126.0
+margin_right = 456.0
+margin_bottom = 189.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "IT IS IDENTIFIED AS
+ 'MAGICAL GIRL'"
 align = 1
 
 [node name="InventoryHUD" parent="." instance=ExtResource( 21 )]
+
+[node name="BigMessage" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -280.0
+margin_top = -83.5
+margin_right = 280.0
+margin_bottom = 83.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="BigMessage"]
+margin_right = 560.0
+margin_bottom = 80.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "DATE SUCCESSFUL"
+align = 1
+
+[node name="Label2" type="Label" parent="BigMessage"]
+margin_top = 84.0
+margin_right = 560.0
+margin_bottom = 167.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Hell yeah, you crushed it!
+Press Attack (Z) to restart!"
+align = 1
 
 [connection signal="timeout" from="GirlfriendTimer" to="." method="_on_GirlfriendTimer_timeout"]
 [connection signal="timeout" from="MyTransformationTimer" to="." method="_on_MyTransformationTimer_timeout"]

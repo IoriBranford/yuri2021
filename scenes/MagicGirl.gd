@@ -1,12 +1,11 @@
 extends KinematicBody
 
-enum MagGirlState {IDLE, FLY_IN, PATROL, SEARCH, CHASE, FLY_OUT}
+enum MagGirlState {IDLE, FLY_IN, PATROL, SEARCH, CHASE, FLY_OUT, SWATTED}
 
 # Editor vars
 export var MOVE_SPEED = 4
 export var ALERT_RATE = 1.0
 export var FIRE_RATE = 2.0
-export var HOME_POS = Vector3(0, 10, 0)
 export var FRONT_DEPTH = 0
 export var ENGAGE_DISTANCE = 6
 
@@ -28,6 +27,7 @@ var alert = 0.0
 var patrol_time = 10
 var patrol_length = 5
 var patrol_point = Vector3.ZERO
+var home_pos = Vector3(0, 10, 0)
 var start_pos = Vector3.ZERO
 var target_in_cone = false
 var target_los = false
@@ -35,6 +35,7 @@ var target_los = false
 func set_state(value):
 	match value:
 		MagGirlState.PATROL:
+			alert = 0
 			mesh.material_override.albedo_color = Color(0, 0, 1)
 			$SightCone.visible = true
 		MagGirlState.SEARCH:
@@ -44,6 +45,8 @@ func set_state(value):
 			mesh.material_override.albedo_color = Color(1, 0, 0)
 			$SightCone.visible = false
 		_:
+			patrol_timer.stop()
+			attack_timer.stop()
 			mesh.material_override.albedo_color = Color(1, 1, 1)
 			$SightCone.visible = false
 	state = value
@@ -51,7 +54,7 @@ func set_state(value):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	global_transform.origin = HOME_POS
+	global_transform.origin = home_pos
 	patrol_timer.start(patrol_time)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -63,7 +66,7 @@ func _process(delta):
 				patrol_timer.start(patrol_time)
 				self.state = MagGirlState.PATROL
 			else:
-				global_transform.origin = global_transform.origin.move_toward(start_pos, delta * MOVE_SPEED)
+				global_transform.origin = global_transform.origin.move_toward(start_pos, delta * MOVE_SPEED * 2)
 		MagGirlState.PATROL:
 			target_los = check_los()
 			global_transform.origin = global_transform.origin.move_toward(patrol_point, delta * MOVE_SPEED)
@@ -78,7 +81,6 @@ func _process(delta):
 			if target_in_cone && target_los:
 				alert += ALERT_RATE
 			else:
-				alert = 0
 				patrol_timer.paused = false
 				self.state = MagGirlState.PATROL
 			if alert >= 100:
@@ -98,12 +100,20 @@ func _process(delta):
 			elif abs(player_pos.z - my_pos.z) > ENGAGE_DISTANCE:
 				global_transform.origin = my_pos.move_toward(move_to, delta * MOVE_SPEED)
 		MagGirlState.FLY_OUT:
-			if global_transform.origin == HOME_POS:
-				global_transform.origin = HOME_POS
+			if global_transform.origin == home_pos:
 				self.state = MagGirlState.IDLE
 				emit_signal("patrol_done")
 			else:
-				global_transform.origin = global_transform.origin.move_toward(HOME_POS, delta * MOVE_SPEED)
+				global_transform.origin = global_transform.origin.move_toward(home_pos, delta * MOVE_SPEED * 2)
+		MagGirlState.SWATTED:
+			if global_transform.origin == home_pos:
+				mesh.rotation_degrees = Vector3(-90, 0, 0)
+				self.state = MagGirlState.IDLE
+				emit_signal("patrol_done")
+			else:
+				var rand_vector = Vector3(randf()-0.5, randf()-0.5, randf()-0.5).normalized()
+				mesh.rotate_object_local(rand_vector, PI)
+				global_transform.origin = global_transform.origin.move_toward(home_pos, delta * MOVE_SPEED * 2)
 
 func shoot():
 	voice.stream = res.get_resource("reppuken")
@@ -115,13 +125,17 @@ func shoot():
 func check_los():
 	var player = get_tree().get_nodes_in_group("player")[0]
 	if player != null:
-		var from = global_transform.origin
+		var from = $SightPoint.global_transform.origin
 		var to = player.global_transform.origin + Vector3.UP
 		var space_state = get_world().direct_space_state
 		var raycast = space_state.intersect_ray(from, to, [self, player], 1)
 		return raycast.empty()
 	else:
 		return false
+
+func swat():
+	patrol_timer.stop()
+	self.state = MagGirlState.SWATTED
 
 func fly_in(pos, time, length):
 	voice.stream = res.get_resource("noescape")
@@ -131,6 +145,9 @@ func fly_in(pos, time, length):
 	start_pos = pos
 	self.state = MagGirlState.FLY_IN
 
+func fly_out():
+	self.state = MagGirlState.FLY_OUT
+
 func _on_SightArea_body_entered(body):
 	target_in_cone = body.is_in_group("player")
 
@@ -139,8 +156,7 @@ func _on_SightArea_body_exited(body):
 		target_in_cone = false
 
 func _on_PatrolTimer_timeout():
-	patrol_timer.stop()
-	self.state = MagGirlState.FLY_OUT
+	fly_out()
 
 func _on_AttackTimer_timeout():
 	var my_pos = global_transform.origin

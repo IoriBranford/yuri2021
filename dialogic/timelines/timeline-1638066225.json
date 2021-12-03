@@ -1,6 +1,57 @@
 {
 	"events": [
-
+		{
+			"action": "join",
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "Kaiju Panic",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"action": "join",
+			"character": "character-1638066160.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "Worried",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			}
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "AAAACK! Sorry, I was getting stuff together and there were these flying girls and--"
+		},
+		{
+			"character": "character-1638066160.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": "Ah don't worry about it, babe. You made it, didnt'cha? Anyway, y'look good! LOVE the haircut!"
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Default",
+			"text": "Hehe, thanks! Want some chocolates?"
+		},
+		{
+			"character": "character-1638066160.json",
+			"event_id": "dialogic_001",
+			"portrait": "Talk",
+			"text": "Aww, you got me truffles? You're the best!"
+		}
 	],
 	"metadata": {
 		"dialogic-version": "1.3",
