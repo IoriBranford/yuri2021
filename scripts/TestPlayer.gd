@@ -12,6 +12,9 @@ var visited_shops = {
 	music = false,
 	gift = false
 }
+onready var visited_fx = {
+	Salon = $oceankaiju_human_form/SalonSparkle
+}
 
 func connect_to_shop(nodepath:NodePath):
 	var shop:Area = get_node(nodepath) as Area
@@ -23,10 +26,15 @@ func _ready():
 	connect_to_shop("../Salon")
 	connect_to_shop("../GiftShopArea")
 	connect_to_shop("../MusicArea")
+	for fx in visited_fx:
+		visited_fx[fx].visible = false
 
 func _physics_process_input(delta):
 	var movement_x = Input.get_axis("player_left", "player_right")
-	move_and_slide(speed * Vector3(movement_x, 0, 0), Vector3.UP)
+	var movement = Vector3(movement_x, 0, 0)
+	move_and_slide(speed * movement, Vector3.UP)
+	if movement_x != 0:
+		$oceankaiju_human_form.look_at(translation + movement, Vector3.UP)
 	var scaley
 	if Input.is_action_pressed("player_hide"):
 		scaley = move_toward(scale.y, .5, delta*4)
@@ -40,26 +48,35 @@ func co_visit_shop():
 	var delta
 	var x = translation.x
 	var shopx = nearby_shop.translation.x
+		
 	while x != shopx:
+		$oceankaiju_human_form.look_at(translation + Vector3(shopx-x, 0, 0), Vector3.UP)
 		delta = yield()
 		x = move_toward(x, shopx, delta*speed)
 		translation.x = x
 		
 	var mask = collision_mask
 	collision_mask = 0
+
 	$AnimationPlayer.play("enter_shop")
 	yield(get_tree(), "idle_frame")
 	yield($AnimationPlayer, "animation_finished")
+
 	var shopname = nearby_shop.name
 	var dialogue = Dialogic.start(shopname)
 	if dialogue:
 		get_tree().root.add_child(dialogue)
 		yield(dialogue, "timeline_end")
+	var fx = visited_fx[shopname]
+	if fx:
+		fx.visible = true
 	visited_shops[shopname] = true
 	emit_signal("got_item", shopname)
+
 	$AnimationPlayer.play("exit_shop")
 	yield(get_tree(), "idle_frame")
 	yield($AnimationPlayer, "animation_finished")
+
 	current_physics_process = funcref(self, "_physics_process_input")
 	collision_mask = mask
 	

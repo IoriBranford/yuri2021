@@ -1,34 +1,43 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/TestPlayer.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://models/oceankaiju_human_form.fbx" type="PackedScene" id=3]
 
 [sub_resource type="SphereShape" id=3]
-
-[sub_resource type="PlaneMesh" id=1]
-
-[sub_resource type="SpatialMaterial" id=2]
-albedo_texture = ExtResource( 2 )
 
 [sub_resource type="Animation" id=4]
 resource_name = "enter_shop"
 tracks/0/type = "transform"
-tracks/0/path = NodePath("MeshInstance")
+tracks/0/path = NodePath("oceankaiju_human_form")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/keys = PoolRealArray( 0, 1, 0, 1, 0, 0.707107, 0, 0, 0.707107, 1, 1, 1, 1, 1, 0, 1, -8, 0.707107, 0, 0, 0.707107, 1, 1, 1 )
+tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, -8, 0, 0, 0, 1, 1, 1, 1 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "exit_shop"
 tracks/0/type = "transform"
-tracks/0/path = NodePath("MeshInstance")
+tracks/0/path = NodePath("oceankaiju_human_form")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/keys = PoolRealArray( 0, 1, 0, 1, -8, 0.707107, 0, 0, 0.707107, 1, 1, 1, 1, 1, 0, 1, 0, 0.707107, 0, 0, 0.707107, 1, 1, 1 )
+tracks/0/keys = PoolRealArray( 0, 1, 0, 0, -8, 0, 1, 0, -4.37114e-08, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, -4.37114e-08, 1, 1, 1 )
+
+[sub_resource type="Curve" id=9]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.498874, 0.107362 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=8]
+curve = SubResource( 9 )
+
+[sub_resource type="ParticlesMaterial" id=10]
+emission_shape = 1
+emission_sphere_radius = 1.5
+gravity = Vector3( 0, 0, 0 )
+scale_curve = SubResource( 8 )
+
+[sub_resource type="SphereMesh" id=11]
 
 [node name="TestPlayer" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -37,11 +46,18 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 3 )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 1, 0 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 2 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/enter_shop = SubResource( 4 )
 anims/exit_shop = SubResource( 5 )
+
+[node name="oceankaiju_human_form" parent="." instance=ExtResource( 3 )]
+
+[node name="RootNode" parent="oceankaiju_human_form" index="0"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[node name="SalonSparkle" type="Particles" parent="oceankaiju_human_form"]
+transform = Transform( 1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 2, 0 )
+process_material = SubResource( 10 )
+draw_pass_1 = SubResource( 11 )
+
+[editable path="oceankaiju_human_form"]
