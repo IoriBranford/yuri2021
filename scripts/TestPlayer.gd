@@ -20,7 +20,7 @@ func connect_to_shop(nodepath:NodePath):
 		shop.connect("body_exited", self, "_on_shoparea_body_exited", [shop], 0)
 
 func _ready():
-	connect_to_shop("../SalonArea")
+	connect_to_shop("../Salon")
 	connect_to_shop("../GiftShopArea")
 	connect_to_shop("../MusicArea")
 
@@ -50,6 +50,10 @@ func co_visit_shop():
 	$AnimationPlayer.play("enter_shop")
 	yield(get_tree(), "idle_frame")
 	yield($AnimationPlayer, "animation_finished")
+	var dialogue = Dialogic.start(nearby_shop.name)
+	if dialogue:
+		get_tree().root.add_child(dialogue)
+		yield(dialogue, "timeline_end")
 	$AnimationPlayer.play("exit_shop")
 	yield(get_tree(), "idle_frame")
 	yield($AnimationPlayer, "animation_finished")

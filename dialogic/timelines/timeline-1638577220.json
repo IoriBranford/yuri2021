@@ -1,0 +1,46 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "Human Normal",
+			"position": {
+				"0": false,
+				"1": true,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "o hai pls maek pritteh"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "lol okeh"
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "thx"
+		},
+		{
+			"action": "leaveall",
+			"character": "[All]",
+			"event_id": "dialogic_003"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1638577220.json",
+		"name": "Salon"
+	}
+}
