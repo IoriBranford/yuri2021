@@ -31,7 +31,7 @@ onready var inv_magazine = $InventoryHUD/Magazine
 onready var inv_music = $InventoryHUD/Music
 onready var inv_icons = {
 	outfit = inv_outfit,
-	stylist = inv_stylist,
+	Salon = inv_stylist,
 	gift = inv_gift,
 	magazine = inv_magazine,
 	music = inv_music
@@ -135,7 +135,7 @@ func _on_MyTransformationTimer_timeout():
 	emit_signal("transformation_timeout")
 	_on_cancel_transformation()
 
-func _on_player_got_item(item):
-	var icon = inv_icons[item]
+func _on_player_got_item(shopname):
+	var icon = inv_icons[shopname]
 	if icon:
 		set_inv(icon, true)

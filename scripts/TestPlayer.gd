@@ -7,8 +7,8 @@ signal got_item(item)
 var current_physics_process = funcref(self, "_physics_process_input")
 var co_state = null
 var nearby_shop:Area = null
-var inv_items = {
-	stylist = false,
+var visited_shops = {
+	Salon = false,
 	music = false,
 	gift = false
 }
@@ -50,10 +50,13 @@ func co_visit_shop():
 	$AnimationPlayer.play("enter_shop")
 	yield(get_tree(), "idle_frame")
 	yield($AnimationPlayer, "animation_finished")
-	var dialogue = Dialogic.start(nearby_shop.name)
+	var shopname = nearby_shop.name
+	var dialogue = Dialogic.start(shopname)
 	if dialogue:
 		get_tree().root.add_child(dialogue)
 		yield(dialogue, "timeline_end")
+	visited_shops[shopname] = true
+	emit_signal("got_item", shopname)
 	$AnimationPlayer.play("exit_shop")
 	yield(get_tree(), "idle_frame")
 	yield($AnimationPlayer, "animation_finished")
@@ -67,7 +70,7 @@ func _physics_process_coroutine(delta):
 		co_state = null
 
 func visit_shop():
-	if nearby_shop:
+	if nearby_shop and not visited_shops.get(nearby_shop.name, false):
 		co_state = co_visit_shop()
 		current_physics_process = funcref(self, "_physics_process_coroutine")
 
