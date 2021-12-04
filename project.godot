@@ -1398,6 +1398,5 @@ player_attack={
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 vram_compression/import_etc2=false
 environment/default_environment="res://default_env.tres"
