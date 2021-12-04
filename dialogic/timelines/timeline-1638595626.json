@@ -1,0 +1,40 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1638066160.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			}
+		},
+		{
+			"character": "character-1638066160.json",
+			"event_id": "dialogic_001",
+			"portrait": "Worried",
+			"text": "Man, where IS she? That girl, swear..."
+		},
+		{
+			"character": "character-1638066160.json",
+			"event_id": "dialogic_001",
+			"portrait": "Angry",
+			"text": "Ah, screw it, I'm outta here."
+		},
+		{
+			"action": "leaveall",
+			"character": "[All]",
+			"event_id": "dialogic_003"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1638595626.json",
+		"name": "Fail"
+	}
+}

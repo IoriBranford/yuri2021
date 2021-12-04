@@ -5,7 +5,7 @@
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_002",
 			"mirror": false,
-			"portrait": "Human Freakout",
+			"portrait": "Kaiju Nervous",
 			"position": {
 				"0": true,
 				"1": false,
@@ -17,34 +17,25 @@
 		{
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_001",
-			"portrait": "Human Panic",
-			"text": "Ah geez, I'm late!"
-		},
-		{
-			"action": "join",
-			"character": "character-1638066160.json",
-			"event_id": "dialogic_002",
-			"mirror": false,
-			"portrait": "Default",
-			"position": {
-				"0": false,
-				"1": false,
-				"2": false,
-				"3": false,
-				"4": true
-			}
-		},
-		{
-			"character": "character-1638066160.json",
-			"event_id": "dialogic_001",
-			"portrait": "Worried",
-			"text": "Nah, this is about normal for you..."
+			"portrait": "Kaiju Nervous",
+			"text": "OK Vepa, don't panic, you GOT this! Gotta get the stuff for the date, get done up at the salon, and meet D'Vine at the mountains!"
 		},
 		{
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_001",
-			"portrait": "Human Nervous",
-			"text": "So mean..."
+			"portrait": "Kaiju Freakout",
+			"text": "Hopefully WITHOUT getting caught by those flying weirdos! What's their deal, anyway?"
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Kaiju Nervous",
+			"text": "Well, I guess I could just slap them out of the way...\nBut I'd rather hide with my transformation magic..."
+		},
+		{
+			"action": "leaveall",
+			"character": "[All]",
+			"event_id": "dialogic_003"
 		}
 	],
 	"metadata": {
