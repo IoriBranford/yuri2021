@@ -14,10 +14,6 @@ var move_dir = Vector3.ZERO
 var in_knockback = false
 var is_transformed = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	pass
@@ -68,3 +64,87 @@ func knockback():
 func _on_Knockback_timeout():
 	in_knockback = false
 	knock_timer.stop()
+
+signal shop_entered(shop)
+signal shop_exited(shop)
+signal got_item(item)
+
+var visited_shops = {
+	Salon = false,
+	GiftShop = false,
+	RecordShop = false
+}
+onready var visited_fx_human = {
+	Salon = $HumanForm/SalonSparkle,
+	GiftShop = $HumanForm/Chocolatebox,
+	RecordShop = $HumanForm/MusicNotes
+}
+onready var visited_fx_kaiju = {
+	Salon = $KaijuForm/SalonSparkle,
+	GiftShop = $KaijuForm/Chocolatebox,
+	RecordShop = $KaijuForm/MusicNotes
+}
+
+func connect_to_shop(nodepath:NodePath):
+	var shop:Area = get_node(nodepath) as Area
+	if shop:
+		shop.connect("body_entered", self, "_on_shoparea_body_entered", [shop], 0)
+
+func _ready():
+	connect_to_shop("../Salon")
+	connect_to_shop("../GiftShop")
+	connect_to_shop("../RecordShop")
+	for fx in visited_fx_human:
+		visited_fx_human[fx].visible = false
+	for fx in visited_fx_kaiju:
+		visited_fx_kaiju[fx].visible = false
+
+func co_visit_shop(shop):
+	emit_signal("shop_entered", shop)
+	var mask = collision_mask
+	collision_mask = 0
+
+	var delta
+	var x = translation.z
+	var shopx = shop.translation.z
+		
+	while x != shopx:
+		$HumanForm.look_at(translation + Vector3(shopx-x, 0, 0), Vector3.UP)
+		delta = yield()
+		x = move_toward(x, shopx, delta*MOVE_SPEED)
+		translation.x = x
+
+	$AnimationPlayer.play("enter_shop")
+	yield(get_tree(), "idle_frame")
+	yield($AnimationPlayer, "animation_finished")
+
+	var shopname = shop.name
+	var dialogue = Dialogic.start(shopname)
+	if dialogue:
+		get_tree().root.add_child(dialogue)
+		yield(dialogue, "timeline_end")
+	var fx = visited_fx_human[shopname]
+	if fx:
+		fx.visible = true
+	fx = visited_fx_kaiju[shopname]
+	if fx:
+		fx.visible = true
+	visited_shops[shopname] = true
+	emit_signal("got_item", shopname)
+
+	$AnimationPlayer.play("exit_shop")
+	yield(get_tree(), "idle_frame")
+	yield($AnimationPlayer, "animation_finished")
+
+	collision_mask = mask
+	emit_signal("shop_exited", shop)
+
+func visit_shop(shop):
+	if is_transformed and !in_knockback:
+		if not visited_shops.get(shop.name, false):
+			co_visit_shop(shop)
+	
+func _on_shoparea_body_entered(body, shop):
+	if self == body and !visited_shops[shop.name]:
+		pass
+		# visit_shop(shop)

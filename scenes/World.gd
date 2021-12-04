@@ -113,3 +113,9 @@ func _on_FinishLine_body_exited(body):
 			self.state = WorldState.ACTIVE
 		elif body.translation.z < $OceanEnd.translation.z:
 			cutscene_ending()
+
+func _on_Player_shop_entered(shop):
+	self.state = WorldState.CUTSCENE
+
+func _on_Player_shop_exited(shop):
+	self.state = WorldState.ACTIVE

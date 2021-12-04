@@ -1,11 +1,26 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/PlayerObj.gd" type="Script" id=1]
 [ext_resource path="res://models/oceankaiju_human_form.fbx" type="PackedScene" id=2]
 [ext_resource path="res://textures/particles/smoke_01.png" type="Texture" id=3]
+[ext_resource path="res://models/Chocolatebox.fbx" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape" id=1]
 height = 1.5
+
+[sub_resource type="Curve" id=9]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.498874, 0.107362 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=8]
+curve = SubResource( 9 )
+
+[sub_resource type="ParticlesMaterial" id=10]
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3( 0, 0, 0 )
+scale_curve = SubResource( 8 )
+
+[sub_resource type="SphereMesh" id=11]
 
 [sub_resource type="CapsuleMesh" id=2]
 mid_height = 1.5
@@ -23,6 +38,26 @@ albedo_texture = ExtResource( 3 )
 material = SubResource( 3 )
 size = Vector2( 2, 2 )
 
+[sub_resource type="Animation" id=5]
+resource_name = "enter_shop"
+tracks/0/type = "transform"
+tracks/0/path = NodePath("HumanForm")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, -8, 0, 0, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "exit_shop"
+tracks/0/type = "transform"
+tracks/0/path = NodePath("HumanForm")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0, 0, -8, 0, 1, 0, -4.37114e-08, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, -4.37114e-08, 1, 1, 1 )
+
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
 
@@ -33,13 +68,44 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.75
 shape = SubResource( 1 )
 
 [node name="HumanForm" parent="." instance=ExtResource( 2 )]
-transform = Transform( -0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, 0 )
 visible = false
 
-[node name="KaijuForm" type="MeshInstance" parent="."]
+[node name="RootNode" parent="HumanForm" index="0"]
+transform = Transform( -0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, 0 )
+
+[node name="SalonSparkle" type="Particles" parent="HumanForm"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0 )
+process_material = SubResource( 10 )
+draw_pass_1 = SubResource( 11 )
+
+[node name="MusicNotes" type="Particles" parent="HumanForm"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.5, 0 )
+process_material = SubResource( 10 )
+draw_pass_1 = SubResource( 11 )
+
+[node name="Chocolatebox" parent="HumanForm" instance=ExtResource( 4 )]
+transform = Transform( -5.46392e-09, 0.125, -5.46392e-09, 0, -5.46392e-09, -0.125, -0.125, -5.46392e-09, 2.38836e-16, 0, 2.5, 0 )
+
+[node name="KaijuForm" type="Spatial" parent="."]
+
+[node name="KaijuModel" type="MeshInstance" parent="KaijuForm"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.75, 0 )
 mesh = SubResource( 2 )
+skeleton = NodePath("../..")
 material/0 = null
+
+[node name="SalonSparkle" type="Particles" parent="KaijuForm"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+process_material = SubResource( 10 )
+draw_pass_1 = SubResource( 11 )
+
+[node name="MusicNotes" type="Particles" parent="KaijuForm"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
+process_material = SubResource( 10 )
+draw_pass_1 = SubResource( 11 )
+
+[node name="Chocolatebox" parent="KaijuForm" instance=ExtResource( 4 )]
+transform = Transform( -5.46392e-09, 0.125, -5.46392e-09, 0, -5.46392e-09, -0.125, -0.125, -5.46392e-09, 2.38836e-16, 0, 4, 0 )
 
 [node name="SmokePuff" type="CPUParticles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
@@ -52,4 +118,10 @@ direction = Vector3( 0, 1, 0 )
 gravity = Vector3( 0, 1, 0 )
 initial_velocity = 5.0
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/enter_shop = SubResource( 5 )
+anims/exit_shop = SubResource( 6 )
+
 [connection signal="timeout" from="Knockback" to="." method="_on_Knockback_timeout"]
+
+[editable path="HumanForm"]
