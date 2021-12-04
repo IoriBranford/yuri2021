@@ -9,11 +9,13 @@ var co_state = null
 var nearby_shop:Area = null
 var visited_shops = {
 	Salon = false,
-	music = false,
-	gift = false
+	GiftShop = false,
+	RecordShop = false
 }
 onready var visited_fx = {
-	Salon = $oceankaiju_human_form/SalonSparkle
+	Salon = $oceankaiju_human_form/SalonSparkle,
+	GiftShop = $oceankaiju_human_form/Chocolatebox,
+	RecordShop = $oceankaiju_human_form/MusicNotes
 }
 
 func connect_to_shop(nodepath:NodePath):
@@ -24,8 +26,8 @@ func connect_to_shop(nodepath:NodePath):
 
 func _ready():
 	connect_to_shop("../Salon")
-	connect_to_shop("../GiftShopArea")
-	connect_to_shop("../MusicArea")
+	connect_to_shop("../GiftShop")
+	connect_to_shop("../RecordShop")
 	for fx in visited_fx:
 		visited_fx[fx].visible = false
 
@@ -95,7 +97,7 @@ func _physics_process(delta):
 	current_physics_process.call_func(delta)
 
 func _on_shoparea_body_entered(body, shop):
-	if self == body:
+	if self == body and !visited_shops[shop.name]:
 		nearby_shop = shop
 
 func _on_shoparea_body_exited(body, shop):

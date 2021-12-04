@@ -32,9 +32,9 @@ onready var inv_music = $InventoryHUD/Music
 onready var inv_icons = {
 	outfit = inv_outfit,
 	Salon = inv_stylist,
-	gift = inv_gift,
+	GiftShop = inv_gift,
 	magazine = inv_magazine,
-	music = inv_music
+	RecordShop = inv_music
 }
 
 onready var alert_hud = $Alert
