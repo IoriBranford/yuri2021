@@ -29,14 +29,14 @@ tracks/0/keys = PoolRealArray( 0, 1, 0, 0, -8, 0, 1, 0, -4.37114e-08, 1, 1, 1, 1
 [sub_resource type="Curve" id=9]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.498874, 0.107362 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=8]
+[sub_resource type="CurveTexture" id=13]
 curve = SubResource( 9 )
 
 [sub_resource type="ParticlesMaterial" id=10]
 emission_shape = 1
 emission_sphere_radius = 1.0
 gravity = Vector3( 0, 0, 0 )
-scale_curve = SubResource( 8 )
+scale_curve = SubResource( 13 )
 
 [sub_resource type="SphereMesh" id=11]
 
