@@ -19,15 +19,11 @@ onready var gf_clock = $GirlfriendHUD/GirlfriendClock
 onready var gf_face = $GirlfriendHUD/GirlfriendPortrait
 
 onready var inv_gift = $InventoryHUD/Gift
-onready var inv_outfit = $InventoryHUD/Outfit
 onready var inv_stylist = $InventoryHUD/Stylist
-onready var inv_magazine = $InventoryHUD/Magazine
 onready var inv_music = $InventoryHUD/Music
 onready var inv_icons = {
-	outfit = inv_outfit,
 	Salon = inv_stylist,
 	GiftShop = inv_gift,
-	magazine = inv_magazine,
 	RecordShop = inv_music
 }
 
@@ -48,9 +44,7 @@ func _ready():
 	gf_clock.progress = girlfriend_time
 	gf_timer.start(girlfriend_time)
 	set_inv(inv_gift, false)
-	set_inv(inv_outfit, false)
 	set_inv(inv_stylist, false)
-	set_inv(inv_magazine, false)
 	set_inv(inv_music, false)
 
 func _on_Player_transformation_updated(is_transformed, transform_charge):
