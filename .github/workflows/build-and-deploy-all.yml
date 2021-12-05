@@ -1,0 +1,57 @@
+name: build-and-deploy-all
+on: push
+
+jobs:
+  export-windows:
+    name: Windows Export
+    uses: ioribranford/yuri2021/.github/workflows/godot-export.yml@github-actions
+    with:
+      game_name: yuri2021
+      platform: windows
+      platform_ext: ".exe"
+      export_preset: Windows Desktop
+
+  export-linux:
+    name: Linux Export
+    uses: ioribranford/yuri2021/.github/workflows/godot-export.yml@github-actions
+    with:
+      game_name: yuri2021
+      platform: linux
+      platform_ext: ".x86_64"
+      export_preset: Linux/X11
+
+  export-mac:
+    name: Mac Export
+    uses: ioribranford/yuri2021/.github/workflows/godot-export.yml@github-actions
+    with:
+      game_name: yuri2021
+      platform: mac
+      platform_ext: ".zip"
+      export_preset: Mac OSX
+
+  # publish-windows:
+  #   name: Publish
+  #   needs: export-windows
+  #   uses: ioribranford/yuri2021/.github/workflows/itch-publish.yml@github-actions
+  #   with:
+  #     itch_user: ioribranford
+  #     game_name: yuri2021
+  #     platform: windows
+      
+  # publish-linux:
+  #   name: Publish
+  #   needs: export-linux
+  #   uses: ioribranford/yuri2021/.github/workflows/itch-publish.yml@github-actions
+  #   with:
+  #     itch_user: ioribranford
+  #     game_name: yuri2021
+  #     platform: linux
+
+  # publish-mac:
+  #   name: Publish
+  #   needs: export-mac
+  #   uses: ioribranford/yuri2021/.github/workflows/itch-publish.yml@github-actions
+  #   with:
+  #     itch_user: ioribranford
+  #     game_name: yuri2021
+  #     platform: mac

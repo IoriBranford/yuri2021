@@ -1,0 +1,36 @@
+name: itch-publish
+
+on:
+  workflow_call:
+    inputs:
+      itch_user:
+        required: true
+        type: string
+      game_name:
+        required: true
+        type: string
+      platform:
+        required: true
+        type: string
+    secrets:
+      butler_key:
+        required: true
+        type: string
+
+jobs:
+  deploy:
+    name: Upload to Itch
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: ${{ inputs.platform }}
+          path: build/${{ inputs.platform }}
+      - uses: KikimoraGames/itch-publish@v0.0.3
+        with:
+          butlerApiKey: ${{ secrets.butler_key }}
+          gameData: build/${{ inputs.platform }}
+          itchUsername: ${{ inputs.itch_user }}
+          itchGameId: ${{ inputs.game_name }}
+          buildChannel: ${{ inputs.platform }}
+          # buildNumber: ${{ needs.version.outputs.version_hash }}
