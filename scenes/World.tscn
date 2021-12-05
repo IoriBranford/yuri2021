@@ -106,7 +106,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -16 )
 shape = SubResource( 7 )
 
 [node name="GiftShop" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 16 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 16 )
 
 [node name="CollisionShape" type="CollisionShape" parent="GiftShop"]
 shape = SubResource( 7 )
