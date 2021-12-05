@@ -32,7 +32,7 @@ jobs:
           lfs: true
       - name: Setup
         run: |
-          mkdir -v -p build/${{ inputs.platform }}
+          mkdir -v -p build/${{ inputs.platform }} ~/.local/share/godot/templates/
           ln -s /root/.local/share/godot/templates/$GODOT_VERSION.stable ~/.local/share/godot/templates/$GODOT_VERSION.stable
       - name: Build
         run: godot -v --export "${{ inputs.export_preset }}" ./build/${{ inputs.platform }}/${{ inputs.game_name }}.exe
