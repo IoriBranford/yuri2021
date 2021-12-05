@@ -15,7 +15,6 @@ on:
     secrets:
       butler_key:
         required: true
-        type: string
 
 jobs:
   deploy:
