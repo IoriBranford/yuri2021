@@ -59,7 +59,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.75
 mesh = SubResource( 2 )
 material/0 = null
 
-[node name="Particles" type="Particles" parent="."]
+[node name="SmokePuff" type="Particles" parent="."]
 emitting = false
 amount = 32
 one_shot = true
