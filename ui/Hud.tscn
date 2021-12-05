@@ -52,9 +52,6 @@ item_missing_env = ExtResource( 20 )
 [node name="GirlfriendTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="MyTransformationTimer" type="Timer" parent="."]
-one_shot = true
-
 [node name="Portraits" type="ResourcePreloader" parent="."]
 resources = [ PoolStringArray( "gf_mad", "gf_normal", "gf_wait", "gf_worry", "player_human_freakout", "player_human_normal", "player_human_panic", "player_human_worry", "player_kaiju_freakout", "player_kaiju_normal", "player_kaiju_panic", "player_kaiju_worry" ), [ ExtResource( 15 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 7 ) ] ]
 
@@ -74,8 +71,8 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+max_value = 1
 bg_radius = 128
-progress = 17
 bg_color = Color( 0.25098, 0.25098, 0.25098, 1 )
 bar_color = Color( 1, 0.733333, 0.356863, 1 )
 angle0 = 180.0
@@ -232,4 +229,3 @@ Press Attack (Z) to restart!"
 align = 1
 
 [connection signal="timeout" from="GirlfriendTimer" to="." method="_on_GirlfriendTimer_timeout"]
-[connection signal="timeout" from="MyTransformationTimer" to="." method="_on_MyTransformationTimer_timeout"]

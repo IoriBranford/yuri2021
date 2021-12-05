@@ -2,6 +2,10 @@ extends KinematicBody
 
 export var MOVE_SPEED = 3
 export var KNOCK_TIME = 1
+export var TRANSFORM_CHARGE_TIME = 2
+export var TRANSFORM_REVERT_TIME = 10
+
+signal transformation_updated
 
 const COLL_KAIJU = {"translate":Vector3(0, 1.75, 0), "radius":1, "height":1.5}
 const COLL_HUMAN = {"translate":Vector3(0, 0.875, 0), "radius":0.75, "height":0.25}
@@ -13,8 +17,9 @@ var obj_melee = preload("res://scenes/MeleeAttack.tscn")
 var move_dir = Vector3.ZERO
 var in_knockback = false
 var is_transformed = false
+var transform_charge = 0 # to 1
 
-func move_player():
+func move_player(delta):
 	if in_knockback:
 		move_dir = Vector3.BACK
 	else:
@@ -28,6 +33,23 @@ func move_player():
 				move_dir = Vector3.ZERO
 			else:
 				melee_attack()
+
+	if is_transformed:
+		if Input.is_action_just_pressed("player_transform"):
+			transform_charge = 0
+		else:
+			transform_charge = move_toward(transform_charge, 0, delta/TRANSFORM_REVERT_TIME)
+		if transform_charge <= 0:
+			change_form()
+	else:
+		if !in_knockback && Input.is_action_pressed("player_transform"):
+			transform_charge = move_toward(transform_charge, 1, delta/TRANSFORM_CHARGE_TIME)
+			if transform_charge >= 1:
+				change_form()
+		else:
+			transform_charge = move_toward(transform_charge, 0, delta/TRANSFORM_CHARGE_TIME)
+	emit_signal("transformation_updated", is_transformed, transform_charge)
+
 	if move_dir != Vector3.ZERO:
 		look_at(global_transform.origin + move_dir.normalized(), Vector3.UP)
 		move_dir = move_dir.normalized() * MOVE_SPEED

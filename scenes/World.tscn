@@ -120,6 +120,7 @@ shape = SubResource( 7 )
 [connection signal="got_item" from="Player" to="Hud" method="_on_player_got_item"]
 [connection signal="shop_entered" from="Player" to="." method="_on_Player_shop_entered"]
 [connection signal="shop_exited" from="Player" to="." method="_on_Player_shop_exited"]
+[connection signal="transformation_updated" from="Player" to="Hud" method="_on_Player_transformation_updated"]
 [connection signal="timeout" from="NextPatrol" to="." method="_on_NextPatrol_timeout"]
 [connection signal="timeout" from="Attack" to="." method="_on_Attack_timeout"]
 [connection signal="body_exited" from="OceanEnd" to="." method="_on_OceanEnd_body_exited"]

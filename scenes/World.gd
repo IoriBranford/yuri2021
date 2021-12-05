@@ -28,9 +28,6 @@ func set_state(value):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Hud.connect("transformation_finished", $Player, "change_form")
-	$Hud.connect("transformation_canceled", $Player, "change_form")
-	$Hud.connect("transformation_timeout", $Player, "change_form")
 	$Hud.connect("girlfriend_timeout", self, "cutscene_fail")
 	$Player.add_to_group("player")
 	$MagicGirl.add_to_group("enemy")
@@ -43,7 +40,7 @@ func _physics_process(delta):
 	$CamBase.translation = $Player.translation
 	match state:
 		WorldState.START, WorldState.ACTIVE:
-			$Player.move_player()
+			$Player.move_player(delta)
 		WorldState.CUTSCENE:
 			pass
 		WorldState.FAIL:
