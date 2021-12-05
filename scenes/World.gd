@@ -95,7 +95,7 @@ func _on_NextPatrol_timeout():
 	$NextPatrol.stop()
 	$MagicGirl.global_transform.origin = Vector3(-3, 10, $Player.global_transform.origin.z) 
 	$MagicGirl.home_pos = Vector3(-3, 10, $Player.global_transform.origin.z)
-	$MagicGirl.fly_in(Vector3(-3, 2, $Player.global_transform.origin.z), 15, 5)
+	$MagicGirl.fly_in(Vector3(-3, 2, $Player.global_transform.origin.z), 15, 10)
 
 func _on_OceanEnd_body_exited(body):
 	if body.is_in_group("player"):

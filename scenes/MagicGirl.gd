@@ -3,7 +3,7 @@ extends KinematicBody
 enum MagGirlState {IDLE, FLY_IN, PATROL, SEARCH, CHASE, FLY_OUT, SWATTED}
 
 # Editor vars
-export var MOVE_SPEED = 4
+export var MOVE_SPEED = 5
 export var ALERT_RATE = 1.0
 export var FIRE_RATE = 2.0
 export var FRONT_DEPTH = 0
@@ -62,7 +62,7 @@ func _process(delta):
 	match state:
 		MagGirlState.FLY_IN:
 			if global_transform.origin == start_pos:
-				patrol_point = global_transform.origin + move_dir * patrol_length
+				find_dir()
 				patrol_timer.start(patrol_time)
 				self.state = MagGirlState.PATROL
 			else:
@@ -71,8 +71,7 @@ func _process(delta):
 			target_los = check_los()
 			global_transform.origin = global_transform.origin.move_toward(patrol_point, delta * MOVE_SPEED)
 			if global_transform.origin == patrol_point:
-				move_dir = -move_dir
-				patrol_point = global_transform.origin + move_dir * patrol_length
+				find_dir()
 			if target_in_cone && target_los:
 				patrol_timer.paused = true
 				self.state = MagGirlState.SEARCH
@@ -114,6 +113,13 @@ func _process(delta):
 				var rand_vector = Vector3(randf()-0.5, randf()-0.5, randf()-0.5).normalized()
 				mesh.rotate_object_local(rand_vector, PI)
 				global_transform.origin = global_transform.origin.move_toward(home_pos, delta * MOVE_SPEED * 2)
+
+func find_dir():
+	var player_pos = get_tree().get_nodes_in_group("player")[0].global_transform.origin
+	if global_transform.origin.z <= player_pos.z:
+		patrol_point = global_transform.origin + Vector3.BACK * patrol_length
+	else:
+		patrol_point = global_transform.origin + Vector3.FORWARD * patrol_length
 
 func shoot():
 	voice.stream = res.get_resource("reppuken")

@@ -39,32 +39,6 @@
 			"event_id": "dialogic_001",
 			"portrait": "Kaiju Nervous",
 			"text": "Gawd, gag me with a spoon..."
-		},
-		{
-			"character": "",
-			"event_id": "dialogic_010",
-			"options": [
-
-			],
-			"portrait": "",
-			"question": ""
-		},
-		{
-			"choice": "",
-			"condition": "",
-			"definition": "",
-			"event_id": "dialogic_011",
-			"value": ""
-		},
-		{
-			"choice": "",
-			"condition": "",
-			"definition": "",
-			"event_id": "dialogic_011",
-			"value": ""
-		},
-		{
-			"event_id": "dialogic_013"
 		}
 	],
 	"metadata": {
