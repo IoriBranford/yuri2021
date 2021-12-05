@@ -1,0 +1,43 @@
+name: godot-export
+
+on:
+  workflow_call:
+    inputs:
+      game_name:
+        required: true
+        type: string
+      godot_version:
+        required: true
+        type: string
+      platform:
+        required: true
+        type: string
+      export_preset:
+        required: true
+        type: string
+    # secrets:
+    #   token:
+    #     required: true
+
+jobs:
+  export:
+    name: Export
+    runs-on: ubuntu-latest
+    container:
+      image: docker://barichello/godot-ci:${{ inputs.godot_version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Setup
+        run: |
+          mkdir -v -p build/${{ inputs.platform }}
+          ln -s /root/.local/share/godot/templates/${{ inputs.godot_version }}.stable ~/.local/share/godot/templates/${{ inputs.godot_version }}.stable
+      - name: Build
+        run: godot -v --export "${{ inputs.export_preset }}" ./build/${{ inputs.platform }}/${{ inputs.game_name }}.exe
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ inputs.platform }}
+          path: ./build/${{ inputs.platform }}/
