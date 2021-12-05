@@ -30,6 +30,7 @@ jobs:
       export_preset: Mac OSX
 
   publish-windows:
+    if: ${{ secrets.BUTLER_KEY != null }}
     name: Publish
     needs: export-windows
     uses: ioribranford/yuri2021/.github/workflows/itch-publish.yml@github-actions
@@ -41,6 +42,7 @@ jobs:
       butler_key: ${{ secrets.BUTLER_KEY }}
       
   publish-linux:
+    if: ${{ secrets.BUTLER_KEY != null }}
     name: Publish
     needs: export-linux
     uses: ioribranford/yuri2021/.github/workflows/itch-publish.yml@github-actions
@@ -52,6 +54,7 @@ jobs:
       butler_key: ${{ secrets.BUTLER_KEY }}
 
   publish-mac:
+    if: ${{ secrets.BUTLER_KEY != null }}
     name: Publish
     needs: export-mac
     uses: ioribranford/yuri2021/.github/workflows/itch-publish.yml@github-actions
