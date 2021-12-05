@@ -29,29 +29,35 @@ jobs:
       platform_ext: ".zip"
       export_preset: Mac OSX
 
-  # publish-windows:
-  #   name: Publish
-  #   needs: export-windows
-  #   uses: ioribranford/yuri2021/.github/workflows/itch-publish.yml@github-actions
-  #   with:
-  #     itch_user: ioribranford
-  #     game_name: yuri2021
-  #     platform: windows
+  publish-windows:
+    name: Publish
+    needs: export-windows
+    uses: ioribranford/yuri2021/.github/workflows/itch-publish.yml@github-actions
+    with:
+      itch_user: ioribranford
+      game_name: yuri2021
+      platform: windows
+    secrets:
+      butler_key: ${{ secrets.BUTLER_KEY }}
       
-  # publish-linux:
-  #   name: Publish
-  #   needs: export-linux
-  #   uses: ioribranford/yuri2021/.github/workflows/itch-publish.yml@github-actions
-  #   with:
-  #     itch_user: ioribranford
-  #     game_name: yuri2021
-  #     platform: linux
+  publish-linux:
+    name: Publish
+    needs: export-linux
+    uses: ioribranford/yuri2021/.github/workflows/itch-publish.yml@github-actions
+    with:
+      itch_user: ioribranford
+      game_name: yuri2021
+      platform: linux
+    secrets:
+      butler_key: ${{ secrets.BUTLER_KEY }}
 
-  # publish-mac:
-  #   name: Publish
-  #   needs: export-mac
-  #   uses: ioribranford/yuri2021/.github/workflows/itch-publish.yml@github-actions
-  #   with:
-  #     itch_user: ioribranford
-  #     game_name: yuri2021
-  #     platform: mac
+  publish-mac:
+    name: Publish
+    needs: export-mac
+    uses: ioribranford/yuri2021/.github/workflows/itch-publish.yml@github-actions
+    with:
+      itch_user: ioribranford
+      game_name: yuri2021
+      platform: mac
+    secrets:
+      butler_key: ${{ secrets.BUTLER_KEY }}
