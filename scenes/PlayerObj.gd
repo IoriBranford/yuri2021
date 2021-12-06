@@ -21,6 +21,12 @@ var in_knockback = false
 var is_transformed = false
 var transform_charge = 0 # to 1
 
+func smooth_look_at(target, up):
+	var quat = Quat(transform.basis)
+	var destquat = Quat(transform.looking_at(target, up).basis)
+	quat = quat.slerp(destquat, 0.5)
+	transform.basis = Basis(quat)
+
 func move_player(delta):
 	if in_knockback:
 		move_dir = Vector3.BACK
@@ -53,7 +59,7 @@ func move_player(delta):
 	emit_signal("transformation_updated", is_transformed, transform_charge)
 
 	if move_dir != Vector3.ZERO:
-		look_at(global_transform.origin + move_dir.normalized(), Vector3.UP)
+		smooth_look_at(global_transform.origin + move_dir.normalized(), Vector3.UP)
 		move_dir = move_dir.normalized() * MOVE_SPEED
 		move_and_slide(move_dir, Vector3.UP)
 
@@ -130,14 +136,14 @@ func co_visit_shop(shop):
 	var shopz = shop.translation.z
 		
 	while z != shopz:
-		$HumanForm.look_at(translation + Vector3(shopz-z, 0, 0), Vector3.UP)
+		smooth_look_at(translation + Vector3(shopz-z, 0, 0), Vector3.UP)
 		delta = yield()
 		z = move_toward(z, shopz, delta*MOVE_SPEED)
 		translation.z = z
 
-	$AnimationPlayer.play("enter_shop")
-	yield(get_tree(), "idle_frame")
-	yield($AnimationPlayer, "animation_finished")
+	# $AnimationPlayer.play("enter_shop")
+	# yield(get_tree(), "idle_frame")
+	# yield($AnimationPlayer, "animation_finished")
 
 	var shopname = shop.name
 	var dialogue = Dialogic.start(shopname)
@@ -153,9 +159,9 @@ func co_visit_shop(shop):
 	visited_shops[shopname] = true
 	emit_signal("got_item", shopname)
 
-	$AnimationPlayer.play("exit_shop")
-	yield(get_tree(), "idle_frame")
-	yield($AnimationPlayer, "animation_finished")
+	# $AnimationPlayer.play("exit_shop")
+	# yield(get_tree(), "idle_frame")
+	# yield($AnimationPlayer, "animation_finished")
 
 	collision_mask = mask
 	emit_signal("shop_exited", shop)
