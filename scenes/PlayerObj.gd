@@ -6,6 +6,8 @@ export var TRANSFORM_CHARGE_TIME = 2
 export var TRANSFORM_REVERT_TIME = 10
 
 signal transformation_updated
+signal shop_nearby
+signal no_shop_nearby
 
 const COLL_KAIJU = {"translate":Vector3(0, 1.75, 0), "radius":1, "height":1.5}
 const COLL_HUMAN = {"translate":Vector3(0, 0.875, 0), "radius":0.75, "height":0.25}
@@ -171,9 +173,12 @@ func visit_shop(shop):
 			emit_signal("shop_entered", shop)
 	
 func _on_shoparea_body_entered(body, shop):
-	if self == body and !visited_shops[shop.name]:
+	if self == body:
 		nearby_shop = shop
+		emit_signal("shop_nearby", shop.name, visited_shops[shop.name], is_transformed)
 
 func _on_shoparea_body_exited(body, shop):
-	if self == body and shop == nearby_shop:
-		nearby_shop = null
+	if self == body:
+		if shop == nearby_shop:
+			nearby_shop = null
+			emit_signal("no_shop_nearby")

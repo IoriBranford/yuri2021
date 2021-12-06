@@ -105,3 +105,18 @@ func _on_player_got_item(shopname):
 	var icon = inv_icons[shopname]
 	if icon:
 		set_inv(icon, true)
+
+func _on_Player_shop_nearby(shopname, visited, is_transformed):
+	var stringformat = ""
+	if visited:
+		stringformat = "You've already been to the %s"
+	elif is_transformed:
+		stringformat = "Z key: Enter %s"
+	else:
+		stringformat = "You're too big to get into the %s\nHold Space key: transform"
+
+	$ShopInstruction.visible = true
+	$ShopInstruction.text = stringformat % shopname
+
+func _on_Player_no_shop_nearby():
+	$ShopInstruction.visible = false
