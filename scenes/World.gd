@@ -22,6 +22,7 @@ func set_state(value):
 	match value:
 		WorldState.TITLE:
 			$TitleScreen.visible = true
+			$CreditScreen.visible = false
 		WorldState.START:
 			$NextPatrol.stop()
 		WorldState.CUTSCENE:
@@ -55,17 +56,20 @@ func _physics_process(delta):
 	match state:
 		WorldState.TITLE:
 			if Input.is_action_just_pressed("player_attack"):
-				match menu_index:
-					0:
-						$TitleScreen.visible = false
-						self.state = WorldState.START
-						cutscene_intro()
-					1:
-						sound_on = !sound_on
-					2:
-						print("Credits!")
-					3:
-						get_tree().quit()
+				if $CreditScreen.visible:
+					$CreditScreen.visible = false
+				else:
+					match menu_index:
+						0:
+							$TitleScreen.visible = false
+							self.state = WorldState.START
+							cutscene_intro()
+						1:
+							sound_on = !sound_on
+						2:
+							$CreditScreen.visible = true
+						3:
+							get_tree().quit()
 			if Input.is_action_just_pressed("ui_up"):
 				menu_index -= 1
 			if Input.is_action_just_pressed("ui_down"):

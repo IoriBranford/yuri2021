@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://models/MeshLibrary.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://scenes/World.gd" type="Script" id=2]
@@ -33,11 +33,15 @@ gradient = SubResource( 12 )
 size = 96
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=14]
 size = 64
 font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=11]
+size = 32
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=10]
 size = 32
 font_data = ExtResource( 6 )
 
@@ -114,6 +118,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture = SubResource( 13 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Main" type="VBoxContainer" parent="TitleScreen"]
 anchor_left = 0.5
@@ -147,7 +154,7 @@ align = 1
 margin_top = 80.0
 margin_right = 984.0
 margin_bottom = 131.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 14 )
 text = "A YuriJam 2021 Game"
 align = 1
 
@@ -190,6 +197,173 @@ margin_bottom = 116.0
 custom_fonts/font = SubResource( 11 )
 text = "Quit"
 align = 1
+
+[node name="CreditScreen" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main" type="HBoxContainer" parent="CreditScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -265.0
+margin_top = -58.0
+margin_right = 265.0
+margin_bottom = 58.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Names" type="VBoxContainer" parent="CreditScreen/Main"]
+margin_right = 148.0
+margin_bottom = 116.0
+
+[node name="Title" type="Label" parent="CreditScreen/Main/Names"]
+margin_right = 148.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 10 )
+text = "Team Member"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title2" type="Label" parent="CreditScreen/Main/Names"]
+margin_top = 30.0
+margin_right = 148.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 10 )
+text = "Carlos Noguez"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title3" type="Label" parent="CreditScreen/Main/Names"]
+margin_top = 60.0
+margin_right = 148.0
+margin_bottom = 86.0
+custom_fonts/font = SubResource( 10 )
+text = "Iori Branford"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title4" type="Label" parent="CreditScreen/Main/Names"]
+margin_top = 90.0
+margin_right = 148.0
+margin_bottom = 116.0
+custom_fonts/font = SubResource( 10 )
+text = "Tupperwarez"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Roles" type="VBoxContainer" parent="CreditScreen/Main"]
+margin_left = 152.0
+margin_right = 278.0
+margin_bottom = 116.0
+
+[node name="Title" type="Label" parent="CreditScreen/Main/Roles"]
+margin_right = 126.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 10 )
+text = "Role"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title2" type="Label" parent="CreditScreen/Main/Roles"]
+margin_top = 30.0
+margin_right = 126.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 10 )
+text = "Producer"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title3" type="Label" parent="CreditScreen/Main/Roles"]
+margin_top = 60.0
+margin_right = 126.0
+margin_bottom = 86.0
+custom_fonts/font = SubResource( 10 )
+text = "Programmer"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title4" type="Label" parent="CreditScreen/Main/Roles"]
+margin_top = 90.0
+margin_right = 126.0
+margin_bottom = 116.0
+custom_fonts/font = SubResource( 10 )
+text = "Programmer"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Contact" type="VBoxContainer" parent="CreditScreen/Main"]
+margin_left = 282.0
+margin_right = 530.0
+margin_bottom = 116.0
+
+[node name="Title" type="Label" parent="CreditScreen/Main/Contact"]
+margin_right = 248.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 10 )
+text = "Online"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title2" type="Label" parent="CreditScreen/Main/Contact"]
+margin_top = 30.0
+margin_right = 248.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 10 )
+text = "twitch.tv/canworkshop"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title3" type="Label" parent="CreditScreen/Main/Contact"]
+margin_top = 60.0
+margin_right = 248.0
+margin_bottom = 86.0
+custom_fonts/font = SubResource( 10 )
+text = "ioribranford.itch.io"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title4" type="Label" parent="CreditScreen/Main/Contact"]
+margin_top = 90.0
+margin_right = 248.0
+margin_bottom = 116.0
+custom_fonts/font = SubResource( 10 )
+text = "tupperwarez.itch.io"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="OceanEnd" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 41 )

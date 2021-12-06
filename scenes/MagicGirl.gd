@@ -118,8 +118,10 @@ func _process(delta):
 			move_to.x = FRONT_DEPTH
 			if my_pos.x != FRONT_DEPTH:
 				global_transform.origin = my_pos.move_toward(move_to, delta * MOVE_SPEED * 2)
-			elif abs(player_pos.z - my_pos.z) > PESTER_DISTANCE:
+			elif abs(player_pos.z - my_pos.z) != PESTER_DISTANCE:
 				global_transform.origin = my_pos.move_toward(move_to, delta * MOVE_SPEED)
+			else:
+				emit_signal("pester")
 		MagGirlState.FLY_OUT:
 			if global_transform.origin == home_pos:
 				self.state = MagGirlState.IDLE
