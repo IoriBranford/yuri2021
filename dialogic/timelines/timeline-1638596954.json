@@ -25,6 +25,11 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "k"
+		},
+		{
+			"action": "leaveall",
+			"character": "[All]",
+			"event_id": "dialogic_003"
 		}
 	],
 	"metadata": {

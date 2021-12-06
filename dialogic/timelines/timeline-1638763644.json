@@ -1,0 +1,66 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"action": "join",
+			"character": "character-1638066167.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			}
+		},
+		{
+			"character": "character-1638066167.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Damn girl, those arms are HUGE! How heavy do you lift? Low reps, high weight?\nThe commander keeps pushing this high rep routine to me, and I'm like..."
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Freakout",
+			"text": "Father Dagon, why is this happening?"
+		},
+		{
+			"character": "character-1638066167.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "So then I said, \"Consider THIS!\" and I punched his spine in half! BAHAHAHAHA!"
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Freakout",
+			"text": "Mother Hydra, give me strength..."
+		},
+		{
+			"action": "leaveall",
+			"character": "[All]",
+			"event_id": "dialogic_003"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1638763644.json",
+		"name": "Rafa Pester"
+	}
+}

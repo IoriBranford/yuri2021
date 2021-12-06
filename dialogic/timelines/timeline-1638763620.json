@@ -5,7 +5,7 @@
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_002",
 			"mirror": false,
-			"portrait": "Kaiju Panic",
+			"portrait": "",
 			"position": {
 				"0": true,
 				"1": false,
@@ -16,10 +16,10 @@
 		},
 		{
 			"action": "join",
-			"character": "character-1638066160.json",
+			"character": "character-1638066167.json",
 			"event_id": "dialogic_002",
 			"mirror": false,
-			"portrait": "Worried",
+			"portrait": "",
 			"position": {
 				"0": false,
 				"1": false,
@@ -29,28 +29,28 @@
 			}
 		},
 		{
-			"character": "character-1638066149.json",
+			"character": "character-1638066167.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "AAAACK! Sorry, I was getting stuff together and there were these flying girls and--"
-		},
-		{
-			"character": "character-1638066160.json",
-			"event_id": "dialogic_001",
-			"portrait": "Default",
-			"text": "Ah don't worry about it, babe. You made it, didnt'cha? Anyway, y'look good! LOVE the haircut!"
+			"text": "Omigawd! Those claw gloves are like. SO. CUTE.\nI love ocean accessories, it reminds me of that one time I went to the beach..."
 		},
 		{
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_001",
-			"portrait": "Default",
-			"text": "Hehe, thanks! Want some chocolates?"
+			"portrait": "Human Freakout",
+			"text": "Father Dagon, why is this happening?"
 		},
 		{
-			"character": "character-1638066160.json",
+			"character": "character-1638066167.json",
 			"event_id": "dialogic_001",
-			"portrait": "Talk",
-			"text": "Aww, you got me truffles? You're the best!"
+			"portrait": "",
+			"text": "So I tied an onion to my belt, which was like, the style at the time..."
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Freakout",
+			"text": "Mother Hydra, give me strength..."
 		},
 		{
 			"action": "leaveall",
@@ -60,7 +60,7 @@
 	],
 	"metadata": {
 		"dialogic-version": "1.3",
-		"file": "timeline-1638066225.json",
-		"name": "Ending"
+		"file": "timeline-1638763620.json",
+		"name": "Micah Pester"
 	}
 }

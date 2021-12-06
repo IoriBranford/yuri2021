@@ -39,6 +39,11 @@
 			"event_id": "dialogic_001",
 			"portrait": "Kaiju Nervous",
 			"text": "Gawd, gag me with a spoon..."
+		},
+		{
+			"action": "leaveall",
+			"character": "[All]",
+			"event_id": "dialogic_003"
 		}
 	],
 	"metadata": {

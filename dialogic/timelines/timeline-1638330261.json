@@ -39,6 +39,11 @@
 			"event_id": "dialogic_001",
 			"portrait": "Kaiju Nervous",
 			"text": "S-s-scary..."
+		},
+		{
+			"action": "leaveall",
+			"character": "[All]",
+			"event_id": "dialogic_003"
 		}
 	],
 	"metadata": {

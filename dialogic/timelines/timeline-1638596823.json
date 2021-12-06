@@ -19,6 +19,11 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "oooh, muzak!\nda dadada da dadaddadadadadadada♩♪♫♬"
+		},
+		{
+			"action": "leaveall",
+			"character": "[All]",
+			"event_id": "dialogic_003"
 		}
 	],
 	"metadata": {

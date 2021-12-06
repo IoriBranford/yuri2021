@@ -1,15 +1,17 @@
 extends KinematicBody
 
-enum MagGirlState {IDLE, FLY_IN, PATROL, SEARCH, CHASE, FLY_OUT, SWATTED}
+enum MagGirlState {IDLE, FLY_IN, PATROL, SEARCH, ATTACK, PESTER, FLY_OUT, SWATTED}
 
 # Editor vars
 export var MOVE_SPEED = 5
 export var ALERT_RATE = 1.0
 export var FIRE_RATE = 2.0
 export var FRONT_DEPTH = 0
-export var ENGAGE_DISTANCE = 6
+export var ATTACK_DISTANCE = 6
+export var PESTER_DISTANCE = 2
 
 signal patrol_done
+signal pester
 signal update_hud()
 
 # Accessor vars
@@ -20,6 +22,7 @@ onready var attack_timer = $AttackTimer
 onready var voice = $Voice
 
 var obj_bullet = preload("res://scenes/PushWave.tscn")
+var girl_mode = "Micah"
 var move_dir = Vector3.FORWARD
 var think_time = 5.0
 var state = MagGirlState.IDLE setget set_state
@@ -31,17 +34,23 @@ var home_pos = Vector3(0, 10, 0)
 var start_pos = Vector3.ZERO
 var target_in_cone = false
 var target_los = false
+var is_attacking = false
+var is_pestering = false
 
 func set_state(value):
 	match value:
 		MagGirlState.PATROL:
+			is_attacking = false
+			is_pestering = false
 			alert = 0
 			mesh.material_override.albedo_color = Color(0, 0, 1)
 			$SightCone.visible = true
 		MagGirlState.SEARCH:
+			is_attacking = false
+			is_pestering = false
 			mesh.material_override.albedo_color = Color(1, 1, 0)
 			$SightCone.visible = true
-		MagGirlState.CHASE:
+		MagGirlState.ATTACK, MagGirlState.PESTER:
 			mesh.material_override.albedo_color = Color(1, 0, 0)
 			$SightCone.visible = false
 		_:
@@ -83,20 +92,33 @@ func _process(delta):
 				patrol_timer.paused = false
 				self.state = MagGirlState.PATROL
 			if alert >= 100:
-				voice.stream = res.get_resource("predictabo")
-				voice.play()
-				attack_timer.start(FIRE_RATE)
-				self.state = MagGirlState.CHASE
+				var player = get_tree().get_nodes_in_group("player")[0]
+				if player.is_transformed:
+					self.state = MagGirlState.PESTER
+				else:
+					voice.stream = res.get_resource("predictabo")
+					voice.play()
+					attack_timer.start(FIRE_RATE)
+					self.state = MagGirlState.ATTACK
 			else:
 				emit_signal("update_hud", self)
-		MagGirlState.CHASE:
+		MagGirlState.ATTACK:
 			var my_pos = global_transform.origin
 			var player_pos = get_tree().get_nodes_in_group("player")[0].global_transform.origin
-			var move_to = player_pos + Vector3.FORWARD * ENGAGE_DISTANCE
+			var move_to = player_pos + Vector3.FORWARD * ATTACK_DISTANCE
 			move_to.x = FRONT_DEPTH
 			if my_pos.x != FRONT_DEPTH:
 				global_transform.origin = my_pos.move_toward(move_to, delta * MOVE_SPEED * 2)
-			elif abs(player_pos.z - my_pos.z) > ENGAGE_DISTANCE:
+			elif abs(player_pos.z - my_pos.z) > ATTACK_DISTANCE:
+				global_transform.origin = my_pos.move_toward(move_to, delta * MOVE_SPEED)
+		MagGirlState.PESTER:
+			var my_pos = global_transform.origin
+			var player_pos = get_tree().get_nodes_in_group("player")[0].global_transform.origin
+			var move_to = player_pos + Vector3.FORWARD * PESTER_DISTANCE
+			move_to.x = FRONT_DEPTH
+			if my_pos.x != FRONT_DEPTH:
+				global_transform.origin = my_pos.move_toward(move_to, delta * MOVE_SPEED * 2)
+			elif abs(player_pos.z - my_pos.z) > PESTER_DISTANCE:
 				global_transform.origin = my_pos.move_toward(move_to, delta * MOVE_SPEED)
 		MagGirlState.FLY_OUT:
 			if global_transform.origin == home_pos:
@@ -126,6 +148,13 @@ func shoot():
 	voice.play()
 	var inst_bullet = obj_bullet.instance()
 	add_child(inst_bullet)
+	match girl_mode:
+		"Micah":
+			inst_bullet.set_color(Color(0, 0.5, 0.5))
+		"Rafa":
+			inst_bullet.set_color(Color(1, 0, 0))
+		_:
+			inst_bullet.set_color(Color(1, 0, 0))
 	inst_bullet.move_dir = Vector3.BACK
 
 func check_los():
@@ -143,7 +172,8 @@ func swat():
 	patrol_timer.stop()
 	self.state = MagGirlState.SWATTED
 
-func fly_in(pos, time, length):
+func fly_in(pos, time, length, girl):
+	girl_mode = girl
 	voice.stream = res.get_resource("noescape")
 	voice.play()
 	patrol_length = length
@@ -168,5 +198,5 @@ func _on_AttackTimer_timeout():
 	var my_pos = global_transform.origin
 	var player_pos = get_tree().get_nodes_in_group("player")[0].global_transform.origin
 	if (global_transform.origin.x == FRONT_DEPTH && 
-	abs(player_pos.z - my_pos.z) <= ENGAGE_DISTANCE):
+	abs(player_pos.z - my_pos.z) <= ATTACK_DISTANCE):
 		shoot()
