@@ -1,0 +1,66 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "Human Nervous",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"action": "join",
+			"character": "character-1638066167.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			}
+		},
+		{
+			"character": "character-1638066167.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Omigawd! Those claw gloves are like. SO. CUTE.\nI love ocean accessories, it reminds me of that one time I went to the beach..."
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Freakout",
+			"text": "Father Dagon, why is this happening?"
+		},
+		{
+			"character": "character-1638066167.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "So I tied an onion to my belt, which was like, the style at the time..."
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Freakout",
+			"text": "Mother Hydra, give me strength..."
+		},
+		{
+			"action": "leaveall",
+			"character": "[All]",
+			"event_id": "dialogic_003"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1638763620.json",
+		"name": "Micah Pester"
+	}
+}

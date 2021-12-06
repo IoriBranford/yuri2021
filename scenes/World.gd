@@ -1,17 +1,32 @@
 extends Spatial
 
-enum WorldState {START, ACTIVE, CUTSCENE, FAIL, END}
+enum WorldState {TITLE, START, ACTIVE, CUTSCENE, FAIL, END}
 
 onready var hud = $Hud
+onready var menu_items = [
+	$TitleScreen/Main/Menu/Start,
+	$TitleScreen/Main/Menu/Sound,
+	$TitleScreen/Main/Menu/Credit,
+	$TitleScreen/Main/Menu/Quit
+]
 
-var state = WorldState.START setget set_state
+var menu_index = 0
+var state = WorldState.TITLE setget set_state
+var sound_on = true
 
 func set_state(value):
+	if state == WorldState.CUTSCENE && value != WorldState.CUTSCENE:
+		hud.gf_timer.paused = false
+	if state == WorldState.TITLE and value != WorldState.TITLE:
+		$TitleScreen.visible = false
 	match value:
+		WorldState.TITLE:
+			$TitleScreen.visible = true
+			$CreditScreen.visible = false
 		WorldState.START:
 			$NextPatrol.stop()
 		WorldState.CUTSCENE:
-			pass
+			hud.gf_timer.paused = true
 		WorldState.ACTIVE:
 			$NextPatrol.start((randi() % 3) + 1)
 		WorldState.FAIL:
@@ -33,12 +48,41 @@ func _ready():
 	$MagicGirl.add_to_group("enemy")
 	$MagicGirl.connect("patrol_done", self, "new_patrol")
 	$MagicGirl.connect("update_hud", $Hud, "update_alert")
-	cutscene_intro()
+	$MagicGirl.connect("pester", self, "cutscene_pester")
 
 func _physics_process(delta):
 	$DebugLabel.text = "Time to next patrol: " + str($NextPatrol.time_left)
 	$CamBase.translation = $Player.translation
 	match state:
+		WorldState.TITLE:
+			if Input.is_action_just_pressed("player_attack"):
+				if $CreditScreen.visible:
+					$CreditScreen.visible = false
+				else:
+					match menu_index:
+						0:
+							$TitleScreen.visible = false
+							self.state = WorldState.START
+							cutscene_intro()
+						1:
+							sound_on = !sound_on
+						2:
+							$CreditScreen.visible = true
+						3:
+							get_tree().quit()
+			if Input.is_action_just_pressed("ui_up"):
+				menu_index -= 1
+			if Input.is_action_just_pressed("ui_down"):
+				menu_index += 1
+			if menu_index >= menu_items.size():
+				menu_index = menu_items.size() - 1 
+			if menu_index < 0:
+				menu_index = 0
+			for i in menu_items.size():
+				if i == menu_index:
+					menu_items[menu_index].modulate = Color(1,0,0)
+				else:
+					menu_items[i].modulate = Color(1,1,1)
 		WorldState.START, WorldState.ACTIVE:
 			$Player.move_player(delta)
 		WorldState.CUTSCENE:
@@ -66,12 +110,22 @@ func cutscene_intro():
 func cutscene_eject():
 	self.state = WorldState.CUTSCENE
 	$MagicGirl.state = $MagicGirl.MagGirlState.IDLE
-	var new_dialog = Dialogic.start("Micah Eject")
+	var new_dialog = Dialogic.start($MagicGirl.girl_mode + " Eject")
 	add_child(new_dialog)
 	yield(new_dialog, "timeline_end")
 	$MagicGirl.fly_out()
 	new_dialog.queue_free()
 	self.state = WorldState.START
+
+func cutscene_pester():
+	self.state = WorldState.CUTSCENE
+	$MagicGirl.state = $MagicGirl.MagGirlState.IDLE
+	var new_dialog = Dialogic.start($MagicGirl.girl_mode + " Pester")
+	add_child(new_dialog)
+	yield(new_dialog, "timeline_end")
+	$MagicGirl.fly_out()
+	new_dialog.queue_free()
+	self.state = WorldState.ACTIVE
 
 func cutscene_fail():
 	self.state = WorldState.CUTSCENE
@@ -92,10 +146,15 @@ func cutscene_ending():
 	self.state = WorldState.END
 
 func _on_NextPatrol_timeout():
+	var girl = ""
+	if randf() > 0.5:
+		girl = "Micah"
+	else:
+		girl = "Rafa"
 	$NextPatrol.stop()
 	$MagicGirl.global_transform.origin = Vector3(-3, 10, $Player.global_transform.origin.z) 
 	$MagicGirl.home_pos = Vector3(-3, 10, $Player.global_transform.origin.z)
-	$MagicGirl.fly_in(Vector3(-3, 2, $Player.global_transform.origin.z), 15, 10)
+	$MagicGirl.fly_in(Vector3(-3, 2, $Player.global_transform.origin.z), 15, 10, girl)
 
 func _on_OceanEnd_body_exited(body):
 	if body.is_in_group("player"):

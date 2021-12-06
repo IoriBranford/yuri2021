@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://models/MeshLibrary.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://scenes/World.gd" type="Script" id=2]
 [ext_resource path="res://scenes/PlayerObj.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/MagicGirl.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/Hud.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/1980v202001.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 6, 2, 80 )
@@ -15,8 +16,34 @@ albedo_color = Color( 0.5, 0.5, 0.5, 1 )
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 3, 1, 40 )
 
+[sub_resource type="SpatialMaterial" id=8]
+
 [sub_resource type="CubeMesh" id=4]
+material = SubResource( 8 )
 size = Vector3( 6, 2, 16 )
+
+[sub_resource type="Gradient" id=12]
+offsets = PoolRealArray( 0, 0.25, 0.75, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0.5, 0.5, 1, 0, 0.501961, 0.501961, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=13]
+gradient = SubResource( 12 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 96
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 64
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 32
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 32
+font_data = ExtResource( 6 )
 
 [sub_resource type="BoxShape" id=5]
 extents = Vector3( 3, 1, 1 )
@@ -85,6 +112,258 @@ mesh = SubResource( 4 )
 material/0 = null
 
 [node name="Hud" parent="." instance=ExtResource( 5 )]
+
+[node name="TitleScreen" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main" type="VBoxContainer" parent="TitleScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -492.0
+margin_top = -110.5
+margin_right = 492.0
+margin_bottom = 110.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="VBoxContainer" parent="TitleScreen/Main"]
+margin_right = 984.0
+margin_bottom = 131.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="TitleScreen/Main/Title"]
+margin_right = 984.0
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 9 )
+text = "A LA RECHERCHE DU TEMPS PERDU"
+align = 1
+
+[node name="Subtitle" type="Label" parent="TitleScreen/Main/Title"]
+margin_top = 80.0
+margin_right = 984.0
+margin_bottom = 131.0
+custom_fonts/font = SubResource( 14 )
+text = "A YuriJam 2021 Game"
+align = 1
+
+[node name="Menu" type="VBoxContainer" parent="TitleScreen/Main"]
+margin_top = 135.0
+margin_right = 984.0
+margin_bottom = 251.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Label" parent="TitleScreen/Main/Menu"]
+margin_right = 984.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 11 )
+text = "Start"
+align = 1
+
+[node name="Sound" type="Label" parent="TitleScreen/Main/Menu"]
+margin_top = 30.0
+margin_right = 984.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 11 )
+text = "Sound: On"
+align = 1
+
+[node name="Credit" type="Label" parent="TitleScreen/Main/Menu"]
+margin_top = 60.0
+margin_right = 984.0
+margin_bottom = 86.0
+custom_fonts/font = SubResource( 11 )
+text = "Credits"
+align = 1
+
+[node name="Quit" type="Label" parent="TitleScreen/Main/Menu"]
+margin_top = 90.0
+margin_right = 984.0
+margin_bottom = 116.0
+custom_fonts/font = SubResource( 11 )
+text = "Quit"
+align = 1
+
+[node name="CreditScreen" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main" type="HBoxContainer" parent="CreditScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -265.0
+margin_top = -58.0
+margin_right = 265.0
+margin_bottom = 58.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Names" type="VBoxContainer" parent="CreditScreen/Main"]
+margin_right = 148.0
+margin_bottom = 116.0
+
+[node name="Title" type="Label" parent="CreditScreen/Main/Names"]
+margin_right = 148.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 10 )
+text = "Team Member"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title2" type="Label" parent="CreditScreen/Main/Names"]
+margin_top = 30.0
+margin_right = 148.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 10 )
+text = "Carlos Noguez"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title3" type="Label" parent="CreditScreen/Main/Names"]
+margin_top = 60.0
+margin_right = 148.0
+margin_bottom = 86.0
+custom_fonts/font = SubResource( 10 )
+text = "Iori Branford"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title4" type="Label" parent="CreditScreen/Main/Names"]
+margin_top = 90.0
+margin_right = 148.0
+margin_bottom = 116.0
+custom_fonts/font = SubResource( 10 )
+text = "Tupperwarez"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Roles" type="VBoxContainer" parent="CreditScreen/Main"]
+margin_left = 152.0
+margin_right = 278.0
+margin_bottom = 116.0
+
+[node name="Title" type="Label" parent="CreditScreen/Main/Roles"]
+margin_right = 126.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 10 )
+text = "Role"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title2" type="Label" parent="CreditScreen/Main/Roles"]
+margin_top = 30.0
+margin_right = 126.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 10 )
+text = "Producer"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title3" type="Label" parent="CreditScreen/Main/Roles"]
+margin_top = 60.0
+margin_right = 126.0
+margin_bottom = 86.0
+custom_fonts/font = SubResource( 10 )
+text = "Programmer"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title4" type="Label" parent="CreditScreen/Main/Roles"]
+margin_top = 90.0
+margin_right = 126.0
+margin_bottom = 116.0
+custom_fonts/font = SubResource( 10 )
+text = "Programmer"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Contact" type="VBoxContainer" parent="CreditScreen/Main"]
+margin_left = 282.0
+margin_right = 530.0
+margin_bottom = 116.0
+
+[node name="Title" type="Label" parent="CreditScreen/Main/Contact"]
+margin_right = 248.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 10 )
+text = "Online"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title2" type="Label" parent="CreditScreen/Main/Contact"]
+margin_top = 30.0
+margin_right = 248.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 10 )
+text = "twitch.tv/canworkshop"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title3" type="Label" parent="CreditScreen/Main/Contact"]
+margin_top = 60.0
+margin_right = 248.0
+margin_bottom = 86.0
+custom_fonts/font = SubResource( 10 )
+text = "ioribranford.itch.io"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title4" type="Label" parent="CreditScreen/Main/Contact"]
+margin_top = 90.0
+margin_right = 248.0
+margin_bottom = 116.0
+custom_fonts/font = SubResource( 10 )
+text = "tupperwarez.itch.io"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="OceanEnd" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 41 )

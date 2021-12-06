@@ -51,6 +51,11 @@
 			"event_id": "dialogic_001",
 			"portrait": "Talk",
 			"text": "Aww, you got me truffles? You're the best!"
+		},
+		{
+			"action": "leaveall",
+			"character": "[All]",
+			"event_id": "dialogic_003"
 		}
 	],
 	"metadata": {

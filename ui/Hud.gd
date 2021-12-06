@@ -89,7 +89,7 @@ func update_alert(mag_girl):
 			alert_hud.visible = true
 			alert_bar.value = mag_girl.alert
 			alert_red.visible = false
-		mag_girl.MagGirlState.CHASE:
+		mag_girl.MagGirlState.ATTACK, mag_girl.MagGirlState.PESTER:
 			alert_hud.visible = true
 			alert_red.visible = true
 		mag_girl.MagGirlState.FLY_OUT:
