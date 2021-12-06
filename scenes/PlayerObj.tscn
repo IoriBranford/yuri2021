@@ -1,8 +1,10 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scenes/PlayerObj.gd" type="Script" id=1]
 [ext_resource path="res://models/oceankaiju_human_form.fbx" type="PackedScene" id=2]
 [ext_resource path="res://textures/particles/smoke_01.png" type="Texture" id=3]
+[ext_resource path="res://textures/particles/SalonSparkle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://textures/particles/MusicNotes.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape" id=1]
 height = 1.5
@@ -12,23 +14,6 @@ height = 1.5
 [sub_resource type="SpatialMaterial" id=18]
 
 [sub_resource type="SpatialMaterial" id=19]
-
-[sub_resource type="Curve" id=9]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.498874, 0.107362 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=8]
-curve = SubResource( 9 )
-
-[sub_resource type="ParticlesMaterial" id=10]
-emission_shape = 1
-emission_sphere_radius = 1.0
-gravity = Vector3( 0, 0, 0 )
-scale_curve = SubResource( 8 )
-
-[sub_resource type="SpatialMaterial" id=20]
-
-[sub_resource type="SphereMesh" id=11]
-material = SubResource( 20 )
 
 [sub_resource type="SpatialMaterial" id=21]
 
@@ -142,16 +127,11 @@ material_override = SubResource( 18 )
 [node name="body" parent="HumanForm/RootNode" index="2"]
 material_override = SubResource( 19 )
 
-[node name="SalonSparkle" type="Particles" parent="HumanForm"]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0 )
-process_material = SubResource( 10 )
-draw_pass_1 = SubResource( 11 )
+[node name="SalonSparkle" parent="HumanForm" instance=ExtResource( 4 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, 0 )
 
-[node name="MusicNotes" type="Particles" parent="HumanForm"]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.5, 0 )
-visible = false
-process_material = SubResource( 10 )
-draw_pass_1 = SubResource( 11 )
+[node name="MusicNotes" parent="HumanForm" instance=ExtResource( 5 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.5, 0.5 )
 
 [node name="Chocolatebox" type="Spatial" parent="HumanForm"]
 transform = Transform( -5.46392e-09, 0.125, -5.46392e-09, 0, -5.46392e-09, -0.125, -0.125, -5.46392e-09, 2.38836e-16, 0, 2.5, 0 )
@@ -179,15 +159,11 @@ mesh = SubResource( 24 )
 skeleton = NodePath("../..")
 material/0 = null
 
-[node name="SalonSparkle" type="Particles" parent="KaijuForm"]
+[node name="SalonSparkle" parent="KaijuForm" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-process_material = SubResource( 10 )
-draw_pass_1 = SubResource( 11 )
 
-[node name="MusicNotes" type="Particles" parent="KaijuForm"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
-process_material = SubResource( 10 )
-draw_pass_1 = SubResource( 11 )
+[node name="MusicNotes" parent="KaijuForm" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1 )
 
 [node name="Chocolatebox" type="Spatial" parent="KaijuForm"]
 transform = Transform( -5.46392e-09, 0.125, -5.46392e-09, 0, -5.46392e-09, -0.125, -0.125, -5.46392e-09, 2.38836e-16, 0, 4, 0 )

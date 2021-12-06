@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://textures/particles/note8.png" type="Texture" id=1]
+
+[sub_resource type="Gradient" id=29]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0.501961, 0.501961, 0 )
+
+[sub_resource type="GradientTexture" id=30]
+gradient = SubResource( 29 )
+
+[sub_resource type="ParticlesMaterial" id=31]
+direction = Vector3( 0, 0, 1 )
+gravity = Vector3( 0, 2, 0 )
+initial_velocity = 1.0
+color_ramp = SubResource( 30 )
+
+[sub_resource type="SpatialMaterial" id=27]
+flags_transparent = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="QuadMesh" id=32]
+material = SubResource( 27 )
+size = Vector2( 0.5, 0.5 )
+
+[node name="MusicNotes" type="Particles"]
+amount = 2
+process_material = SubResource( 31 )
+draw_pass_1 = SubResource( 32 )

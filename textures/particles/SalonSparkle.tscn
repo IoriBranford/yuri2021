@@ -1,0 +1,38 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://textures/particles/star_04.png" type="Texture" id=1]
+
+[sub_resource type="Gradient" id=29]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0.501961, 0.501961, 0 )
+
+[sub_resource type="GradientTexture" id=32]
+gradient = SubResource( 29 )
+
+[sub_resource type="Curve" id=31]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.5, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=33]
+curve = SubResource( 31 )
+
+[sub_resource type="ParticlesMaterial" id=34]
+emission_shape = 1
+emission_sphere_radius = 1.5
+direction = Vector3( 0, 0, 1 )
+gravity = Vector3( 0, 0, 0 )
+scale_curve = SubResource( 33 )
+color_ramp = SubResource( 32 )
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="QuadMesh" id=35]
+material = SubResource( 1 )
+
+[node name="SalonSparkle" type="Particles"]
+process_material = SubResource( 34 )
+draw_pass_1 = SubResource( 35 )
