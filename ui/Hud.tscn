@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://addons/radial_progress/RadialProgressBar.gd" type="Script" id=1]
 [ext_resource path="res://ui/Hud.gd" type="Script" id=2]
@@ -22,6 +22,13 @@
 [ext_resource path="res://ui/env_item_dont_have.tres" type="Environment" id=20]
 [ext_resource path="res://ui/InventoryHUD.tscn" type="PackedScene" id=21]
 [ext_resource path="res://ui/Kenney Mini Square.ttf" type="DynamicFontData" id=22]
+[ext_resource path="res://ui/musical-notes.png" type="Texture" id=23]
+[ext_resource path="res://ui/lips.png" type="Texture" id=24]
+[ext_resource path="res://ui/lips_dont_have.png" type="Texture" id=25]
+[ext_resource path="res://ui/musical-notes_dont_have.png" type="Texture" id=26]
+[ext_resource path="res://ui/present.png" type="Texture" id=27]
+[ext_resource path="res://ui/present_dont_have.png" type="Texture" id=28]
+[ext_resource path="res://ui/1980v202001.ttf" type="DynamicFontData" id=29]
 
 [sub_resource type="DynamicFont" id=3]
 size = 24
@@ -40,7 +47,8 @@ size = 32
 font_data = ExtResource( 22 )
 
 [sub_resource type="DynamicFont" id=5]
-font_data = ExtResource( 22 )
+size = 32
+font_data = ExtResource( 29 )
 
 [node name="Hud" type="Control"]
 anchor_right = 1.0
@@ -56,11 +64,13 @@ item_missing_env = ExtResource( 20 )
 one_shot = true
 
 [node name="Portraits" type="ResourcePreloader" parent="."]
-resources = [ PoolStringArray( "gf_mad", "gf_normal", "gf_wait", "gf_worry", "player_human_freakout", "player_human_normal", "player_human_panic", "player_human_worry", "player_kaiju_freakout", "player_kaiju_normal", "player_kaiju_panic", "player_kaiju_worry" ), [ ExtResource( 15 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 7 ) ] ]
+resources = [ PoolStringArray( "GiftShop", "GiftShop_dont_have", "RecordShop", "RecordShop_dont_have", "Salon", "Salon_dont_have", "gf_mad", "gf_normal", "gf_wait", "gf_worry", "player_human_freakout", "player_human_normal", "player_human_panic", "player_human_worry", "player_kaiju_freakout", "player_kaiju_normal", "player_kaiju_panic", "player_kaiju_worry" ), [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 7 ) ] ]
 
 [node name="PlayerHUD" type="CenterContainer" parent="."]
-margin_right = 256.0
-margin_bottom = 256.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 272.0
+margin_bottom = 272.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -94,8 +104,10 @@ __meta__ = {
 [node name="GirlfriendHUD" type="CenterContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -256.0
-margin_bottom = 256.0
+margin_left = -272.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = 272.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -198,6 +210,10 @@ text = "IT IS IDENTIFIED AS
 align = 1
 
 [node name="InventoryHUD" parent="." instance=ExtResource( 21 )]
+margin_left = -304.0
+margin_top = 280.0
+margin_right = 336.0
+margin_bottom = 408.0
 
 [node name="BigMessage" type="VBoxContainer" parent="."]
 visible = false
