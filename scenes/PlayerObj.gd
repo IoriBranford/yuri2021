@@ -6,6 +6,8 @@ export var TRANSFORM_CHARGE_TIME = 2
 export var TRANSFORM_REVERT_TIME = 10
 
 signal transformation_updated
+signal shop_nearby
+signal no_shop_nearby
 
 const COLL_KAIJU = {"translate":Vector3(0, 1.75, 0), "radius":1, "height":1.5}
 const COLL_HUMAN = {"translate":Vector3(0, 0.875, 0), "radius":0.75, "height":0.25}
@@ -21,6 +23,12 @@ var transform_charge = 0 # to 1
 var at_salon = false
 var at_gift = false
 var at_record = false
+
+func smooth_look_at(target, up):
+	var quat = Quat(transform.basis)
+	var destquat = Quat(transform.looking_at(target, up).basis)
+	quat = quat.slerp(destquat, 0.5)
+	transform.basis = Basis(quat)
 
 func move_player(delta):
 	if in_knockback:
@@ -54,7 +62,7 @@ func move_player(delta):
 	emit_signal("transformation_updated", is_transformed, transform_charge)
 
 	if move_dir != Vector3.ZERO:
-		look_at(global_transform.origin + move_dir.normalized(), Vector3.UP)
+		smooth_look_at(global_transform.origin + move_dir.normalized(), Vector3.UP)
 		move_dir = move_dir.normalized() * MOVE_SPEED
 		move_and_slide(move_dir, Vector3.UP)
 
@@ -131,14 +139,14 @@ func co_visit_shop(shop):
 	var shopz = shop.translation.z
 		
 	while z != shopz:
-		$HumanForm.look_at(translation + Vector3(shopz-z, 0, 0), Vector3.UP)
+		smooth_look_at(translation + Vector3(shopz-z, 0, 0), Vector3.UP)
 		delta = yield()
 		z = move_toward(z, shopz, delta*MOVE_SPEED)
 		translation.z = z
 
-	$AnimationPlayer.play("enter_shop")
-	yield(get_tree(), "idle_frame")
-	yield($AnimationPlayer, "animation_finished")
+	# $AnimationPlayer.play("enter_shop")
+	# yield(get_tree(), "idle_frame")
+	# yield($AnimationPlayer, "animation_finished")
 
 	var shopname = shop.name
 	var dialogue = Dialogic.start(shopname)
@@ -154,9 +162,9 @@ func co_visit_shop(shop):
 	visited_shops[shopname] = true
 	emit_signal("got_item", shopname)
 
-	$AnimationPlayer.play("exit_shop")
-	yield(get_tree(), "idle_frame")
-	yield($AnimationPlayer, "animation_finished")
+	# $AnimationPlayer.play("exit_shop")
+	# yield(get_tree(), "idle_frame")
+	# yield($AnimationPlayer, "animation_finished")
 
 	collision_mask = mask
 	emit_signal("shop_exited", shop)
@@ -174,9 +182,12 @@ func visit_shop(shop):
 			emit_signal("shop_entered", shop)
 	
 func _on_shoparea_body_entered(body, shop):
-	if self == body and !visited_shops[shop.name]:
+	if self == body:
 		nearby_shop = shop
+		emit_signal("shop_nearby", shop.name, visited_shops[shop.name], is_transformed)
 
 func _on_shoparea_body_exited(body, shop):
-	if self == body and shop == nearby_shop:
-		nearby_shop = null
+	if self == body:
+		if shop == nearby_shop:
+			nearby_shop = null
+			emit_signal("no_shop_nearby")

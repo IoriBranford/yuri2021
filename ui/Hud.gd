@@ -31,21 +31,19 @@ onready var alert_hud = $Alert
 onready var alert_bar = $Alert/CenterContainer/AlertBar
 onready var alert_red = $Alert/CenterContainer/AlertRed
 
-func set_inv(inv:Control, has:bool):
-	var viewport:Viewport = inv.get_node("Viewport")
-	if viewport:
-		if has:
-			viewport.world.environment = item_default_env
-		else:
-			viewport.world.environment = item_missing_env
+func set_inv(icon:TextureRect, item:String, has:bool):
+	if has:
+		icon.texture = portraits.get_resource(item)
+	else:
+		icon.texture = portraits.get_resource(item+"_dont_have")
 	
 func _ready():
 	gf_clock.max_value = girlfriend_time
 	gf_clock.progress = girlfriend_time
 	gf_timer.start(girlfriend_time)
-	set_inv(inv_gift, false)
-	set_inv(inv_stylist, false)
-	set_inv(inv_music, false)
+	set_inv(inv_gift, "GiftShop", false)
+	set_inv(inv_stylist, "Salon", false)
+	set_inv(inv_music, "RecordShop", false)
 
 func _on_Player_transformation_updated(is_transformed, transform_charge):
 	player_clock.progress = transform_charge
@@ -104,4 +102,19 @@ func _on_GirlfriendTimer_timeout():
 func _on_player_got_item(shopname):
 	var icon = inv_icons[shopname]
 	if icon:
-		set_inv(icon, true)
+		set_inv(icon, shopname, true)
+
+func _on_Player_shop_nearby(shopname, visited, is_transformed):
+	var stringformat = ""
+	if visited:
+		stringformat = "You've already been to the %s"
+	elif is_transformed:
+		stringformat = "Z key: Enter %s"
+	else:
+		stringformat = "You're too big to get into the %s\nHold Space key: transform"
+
+	$ShopInstruction.visible = true
+	$ShopInstruction.text = stringformat % shopname
+
+func _on_Player_no_shop_nearby():
+	$ShopInstruction.visible = false

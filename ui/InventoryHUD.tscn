@@ -1,95 +1,49 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://default_env.tres" type="Environment" id=1]
-[ext_resource path="res://models/Chocolatebox.fbx" type="PackedScene" id=2]
-
-[sub_resource type="World" id=1]
-environment = ExtResource( 1 )
-
-[sub_resource type="World" id=3]
-environment = ExtResource( 1 )
-
-[sub_resource type="World" id=5]
-environment = ExtResource( 1 )
+[ext_resource path="res://ui/musical-notes.png" type="Texture" id=3]
+[ext_resource path="res://ui/lips.png" type="Texture" id=4]
+[ext_resource path="res://ui/present.png" type="Texture" id=5]
 
 [node name="InventoryHUD" type="Control"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -320.0
-margin_right = 320.0
-margin_bottom = 128.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Gift" type="ViewportContainer" parent="."]
+[node name="Stylist" type="TextureRect" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -64.0
-margin_right = 64.0
-margin_bottom = 128.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 80.0
+margin_bottom = 80.0
+texture = ExtResource( 4 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Viewport" type="Viewport" parent="Gift"]
-size = Vector2( 128, 128 )
-own_world = true
-world = SubResource( 1 )
-transparent_bg = true
-handle_input_locally = false
-render_target_update_mode = 3
-
-[node name="Gift" parent="Gift/Viewport" instance=ExtResource( 2 )]
-
-[node name="Camera" type="Camera" parent="Gift/Viewport"]
-transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 5, 10 )
-current = true
-
-[node name="Stylist" type="ViewportContainer" parent="."]
+[node name="Music" type="TextureRect" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -192.0
-margin_right = -64.0
-margin_bottom = 128.0
+margin_left = 96.0
+margin_top = 16.0
+margin_right = 160.0
+margin_bottom = 80.0
+texture = ExtResource( 3 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Viewport" type="Viewport" parent="Stylist"]
-size = Vector2( 128, 128 )
-own_world = true
-world = SubResource( 3 )
-transparent_bg = true
-handle_input_locally = false
-render_target_update_mode = 3
-
-[node name="Gift" parent="Stylist/Viewport" instance=ExtResource( 2 )]
-
-[node name="Camera" type="Camera" parent="Stylist/Viewport"]
-transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 5, 10 )
-current = true
-
-[node name="Music" type="ViewportContainer" parent="."]
+[node name="Gift" type="TextureRect" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 64.0
-margin_right = 192.0
-margin_bottom = 128.0
+margin_left = 176.0
+margin_top = 16.0
+margin_right = 240.0
+margin_bottom = 80.0
+texture = ExtResource( 5 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Viewport" type="Viewport" parent="Music"]
-size = Vector2( 128, 128 )
-own_world = true
-world = SubResource( 5 )
-transparent_bg = true
-handle_input_locally = false
-render_target_update_mode = 3
-
-[node name="Gift" parent="Music/Viewport" instance=ExtResource( 2 )]
-
-[node name="Camera" type="Camera" parent="Music/Viewport"]
-transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 5, 10 )
-current = true
