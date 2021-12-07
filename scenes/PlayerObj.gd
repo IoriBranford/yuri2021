@@ -18,6 +18,9 @@ var move_dir = Vector3.ZERO
 var in_knockback = false
 var is_transformed = false
 var transform_charge = 0 # to 1
+var at_salon = false
+var at_gift = false
+var at_record = false
 
 func move_player(delta):
 	if in_knockback:
