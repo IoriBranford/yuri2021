@@ -1,0 +1,118 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1638066175.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": true,
+				"4": false
+			}
+		},
+		{
+			"action": "join",
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "Human Nervous",
+			"position": {
+				"0": false,
+				"1": true,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1638066175.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "Hmm, I feel like I’ve told you to find somewhere else a couple times now. Are you really still getting stuff for your thingy?"
+		},
+		{
+			"choice": "Oh yeah, I’m sorry about that! I’ve just been having some trouble getting to where I need to be.",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1638066175.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "Hm, I guess that makes sense. I’ve been telling people to close up and find somewhere safe but I guess some people won’t listen until they see how dire the situation is. That just makes my job harder, though."
+		},
+		{
+			"choice": "I get that, I really do! I just really need to get this stuff for my date. But I promise I’ll be out soon!",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1638066175.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Alright then…"
+		},
+		{
+			"choice": "Yeah, I don’t think I’m really helping, am I? Don’t worry, I swear I’m almost done, though!",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1638066175.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Alright then…"
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"choice": "Yes, I am! I think I have almost everything, let’s see… I got the…",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1638066175.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Wait! Don’t actually check! Just go and get whatever you need so I don’t need to worry about you!"
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Freakout",
+			"text": "Right! Ok, see ya!"
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"action": "leaveall",
+			"character": "[All]",
+			"event_id": "dialogic_003"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1638933777.json",
+		"name": "Rafa Pester 3"
+	}
+}

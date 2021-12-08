@@ -1,0 +1,48 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1638066167.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": true,
+				"4": false
+			}
+		},
+		{
+			"action": "join",
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "Human Nervous",
+			"position": {
+				"0": false,
+				"1": true,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1638066167.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I don’t like that I’ve seen you in this area multiple times despite me telling you to not be here.\nYou understand how frustrating that is, right?\nYou know what, just don’t answer. That gives you more of a reason to be here.\nJust leave already..."
+		},
+		{
+			"action": "leaveall",
+			"character": "[All]",
+			"event_id": "dialogic_003"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1638932418.json",
+		"name": "Micah Pester 3"
+	}
+}

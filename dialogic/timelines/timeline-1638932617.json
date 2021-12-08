@@ -1,0 +1,112 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1638066167.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": true,
+				"4": false
+			}
+		},
+		{
+			"action": "join",
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "Human Freakout",
+			"position": {
+				"0": false,
+				"1": true,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1638066167.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "I think I see what’s going on here… I’m flattered, but I have a girlfriend.\nI gotta give you props though, risking your life to be with one of the strongest captains in the Corps."
+		},
+		{
+			"choice": "Actually, I’m also in a relationship!",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1638066167.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Oh, then please ignore everything I just said."
+		},
+		{
+			"choice": "You don’t look that strong. Also, me too.",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1638066167.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "I’m sure one of my fireballs will have you saying otherwise. And aren’t you supposed to be gone by now?"
+		},
+		{
+			"choice": "I would be if you kept bothering me...",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Whatever."
+		},
+		{
+			"choice": "Well you see…",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Actually, I don’t really care. I mean, you’re supposed to have listened to me anyways."
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"action": "leaveall",
+			"character": "[All]",
+			"event_id": "dialogic_003"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1638932617.json",
+		"name": "Micah Pester 4"
+	}
+}

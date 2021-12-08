@@ -15,16 +15,122 @@
 			}
 		},
 		{
+			"action": "join",
+			"character": "character-1638929300.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": true,
+				"4": false
+			}
+		},
+		{
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_001",
 			"portrait": "(Don't change)",
-			"text": "henlo plz giev gud present"
+			"text": "Hello! I’m here for chocolates. You give those on dates, right?"
+		},
+		{
+			"character": "character-1638929300.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "Haha, yes, I do! Unless you’re going on a date with a dog!"
+		},
+		{
+			"choice": "Ahahaha, I totally get that joke.",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1638929300.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I’m so funny. So what kind of chocolate is your date into?\nMaybe something light like the Milk and Cocoa Variety Box?\nOr maybe something with a little crunch, like this Nutty for Chocolate Date Mix?\nI also have some fudges in case you’re into that…"
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Actually, can I get like… two of each?"
+		},
+		{
+			"character": "character-1638929300.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Oh wow, huge chocolate lovers, are we?"
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You could say that!"
+		},
+		{
+			"character": "character-1638929300.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Alright, just give me a few minutes to get the stuff in the back…"
+		},
+		{
+			"choice": "Umm, what do you mean?",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1638929300.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You didn’t like the joke, did you?"
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Nervous",
+			"text": "It’s not that I didn’t like it! I just don’t know why dogs can’t have chocolate."
+		},
+		{
+			"character": "character-1638929300.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Well, if a dog eats chocolate, they… y’know. Die."
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "(Don't change)",
+			"text": "Oh, that’s so sad!"
+		},
+		{
+			"character": "character-1638929300.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I mean, I guess… Is there anything you wanted to get by the way? All of our variety boxes are on display over there."
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Normal",
+			"text": "Hmm, so many choices… Is it possible for me to get, like, two of each?"
 		},
 		{
 			"character": "",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "k"
+			"text": "Oh goodness yes! I mean, sure. Let me get those ready for you."
+		},
+		{
+			"event_id": "dialogic_013"
 		},
 		{
 			"action": "leaveall",
