@@ -1,0 +1,115 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "Human Nervous",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"action": "join",
+			"character": "character-1638066167.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": true
+			}
+		},
+		{
+			"character": "character-1638066167.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "Good afternoon, civilian. I am Captain Mika of the Magical Girl Corp, dispatched to deal with the monster sighting in this city. How are you doing today?"
+		},
+		{
+			"choice": "Doing good today, Captain. How can I help you?",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "Doing the best that I can, thank you. Just letting you know that this area may be impacted by the monster sighting. You should try to find some cover, I would hate to see any civilians get hurt under my watch."
+		},
+		{
+			"choice": "Of course! I’ll just get the stuff I need and head out of here as soon as I can. Thanks!",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"choice": "Oh, that would suck… Alright, I’ll get out of here soon then. See ya!",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"choice": "Um, good. Yeah, I’m doing good! How are you doing today?",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "… Fine. Just needed to let you know that this area may be impacted by the monster sighting. You may want to leave for the time being."
+		},
+		{
+			"choice": "Got it! Just gonna… go on my merry way...",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"choice": "Right! Of course! The big, bad monster might get me, that would be so scary… Ok, bye!",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"event_id": "dialogic_013"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1638846318.json",
+		"name": "mika_pester0"
+	}
+}

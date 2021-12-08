@@ -1,6 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://models/Chocolatebox.fbx" type="PackedScene" id=1]
+
+[sub_resource type="SpatialMaterial" id=5]
+
+[sub_resource type="SpatialMaterial" id=6]
 
 [sub_resource type="Animation" id=2]
 resource_name = "idle_wobble"
@@ -40,6 +44,12 @@ tracks/0/keys = {
 
 [node name="RootNode" parent="." index="0"]
 transform = Transform( 0.124524, 0.0108945, 0, -0.0108945, 0.124524, 0, 0, 0, 0.125, 0, 0, 0 )
+
+[node name="box" parent="RootNode" index="0"]
+material/0 = SubResource( 5 )
+
+[node name="bow" parent="RootNode" index="1"]
+material/0 = SubResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 autoplay = "idle_wobble"

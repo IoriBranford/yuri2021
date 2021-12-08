@@ -45,13 +45,15 @@ func set_state(value):
 func _ready():
 	$Hud.connect("girlfriend_timeout", self, "cutscene_fail")
 	$Player.add_to_group("player")
+	$Player.connect("shop_nearby", $Hud, "_on_Player_shop_nearby")
+	$Player.connect("no_shop_nearby", $Hud, "_on_Player_no_shop_nearby")
 	$MagicGirl.add_to_group("enemy")
 	$MagicGirl.connect("patrol_done", self, "new_patrol")
 	$MagicGirl.connect("update_hud", $Hud, "update_alert")
 	$MagicGirl.connect("pester", self, "cutscene_pester")
+	self.state = WorldState.TITLE
 
 func _physics_process(delta):
-	$DebugLabel.text = "Time to next patrol: " + str($NextPatrol.time_left)
 	$CamBase.translation = $Player.translation
 	match state:
 		WorldState.TITLE:
@@ -119,6 +121,7 @@ func cutscene_eject():
 
 func cutscene_pester():
 	self.state = WorldState.CUTSCENE
+	hud.gf_timer.paused = false
 	$MagicGirl.state = $MagicGirl.MagGirlState.IDLE
 	var new_dialog = Dialogic.start($MagicGirl.girl_mode + " Pester")
 	add_child(new_dialog)
