@@ -120,7 +120,8 @@ func cutscene_eject():
 func cutscene_pester():
 	self.state = WorldState.CUTSCENE
 	$MagicGirl.state = $MagicGirl.MagGirlState.IDLE
-	var new_dialog = Dialogic.start($MagicGirl.girl_mode + " Pester")
+	var new_dialog_name = $MagicGirl.get_next_pester_dialogue_name()
+	var new_dialog = Dialogic.start(new_dialog_name)
 	add_child(new_dialog)
 	yield(new_dialog, "timeline_end")
 	$MagicGirl.fly_out()

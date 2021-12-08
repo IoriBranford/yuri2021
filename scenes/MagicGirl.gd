@@ -36,6 +36,17 @@ var target_in_cone = false
 var target_los = false
 var is_attacking = false
 var is_pestering = false
+var num_pesters = {
+	'Micah': 0,
+	'Rafa': 0
+}
+
+func get_next_pester_dialogue_name():
+	var num = num_pesters[girl_mode]
+	var name = "%s %s %d" % [girl_mode, "Pester", num]
+	if num < 4:
+		num_pesters[girl_mode] += 1
+	return name
 
 func set_state(value):
 	match value:
