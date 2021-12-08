@@ -130,29 +130,30 @@ func _ready():
 	for fx in visited_fx_kaiju:
 		visited_fx_kaiju[fx].visible = false
 
+func walk_toward(dest, delta):
+	smooth_look_at(dest, Vector3.UP)
+	translation = translation.move_toward(dest, delta*MOVE_SPEED)
+
 func co_visit_shop(shop):
 	var mask = collision_mask
 	collision_mask = 0
+	
+	var dest = (Vector3(translation.x, translation.y, shop.translation.z))
+	while !translation.is_equal_approx(dest):
+		yield(get_tree(), "physics_frame")
+		walk_toward(dest, get_physics_process_delta_time())
 
-	var delta
-	var z = translation.z
-	var shopz = shop.translation.z
-		
-	while z != shopz:
-		smooth_look_at(translation + Vector3(shopz-z, 0, 0), Vector3.UP)
-		delta = yield()
-		z = move_toward(z, shopz, delta*MOVE_SPEED)
-		translation.z = z
-
-	# $AnimationPlayer.play("enter_shop")
-	# yield(get_tree(), "idle_frame")
-	# yield($AnimationPlayer, "animation_finished")
+	dest = (Vector3(shop.translation.x, translation.y, shop.translation.z))
+	while !translation.is_equal_approx(dest):
+		yield(get_tree(), "physics_frame")
+		walk_toward(dest, get_physics_process_delta_time())
 
 	var shopname = shop.name
 	var dialogue = Dialogic.start(shopname)
 	if dialogue:
 		get_tree().root.add_child(dialogue)
 		yield(dialogue, "timeline_end")
+
 	var fx = visited_fx_human[shopname]
 	if fx:
 		fx.visible = true
@@ -162,18 +163,13 @@ func co_visit_shop(shop):
 	visited_shops[shopname] = true
 	emit_signal("got_item", shopname)
 
-	# $AnimationPlayer.play("exit_shop")
-	# yield(get_tree(), "idle_frame")
-	# yield($AnimationPlayer, "animation_finished")
+	dest = (Vector3(shop.translation.x+2, translation.y, shop.translation.z))
+	while !translation.is_equal_approx(dest):
+		yield(get_tree(), "physics_frame")
+		walk_toward(dest, get_physics_process_delta_time())
 
 	collision_mask = mask
 	emit_signal("shop_exited", shop)
-
-func _physics_process(delta):
-	if co_state is GDScriptFunctionState && co_state.is_valid():
-		co_state = co_state.resume(delta)
-	else:
-		co_state = null
 
 func visit_shop(shop):
 	if is_transformed and !in_knockback:
