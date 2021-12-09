@@ -105,6 +105,7 @@ func _on_player_got_item(shopname):
 		set_inv(icon, shopname, true)
 
 func _on_Player_shop_nearby(shopname, visited, is_transformed):
+	print("Near shop message trigger")
 	var stringformat = ""
 	if visited:
 		stringformat = "You've already been to the %s"
@@ -117,4 +118,5 @@ func _on_Player_shop_nearby(shopname, visited, is_transformed):
 	$ShopInstruction.text = stringformat % shopname
 
 func _on_Player_no_shop_nearby():
+	print("Not near shop message trigger")
 	$ShopInstruction.visible = false
