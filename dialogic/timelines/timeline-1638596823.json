@@ -15,10 +15,140 @@
 			}
 		},
 		{
+			"action": "join",
+			"character": "character-1639108113.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": true,
+				"4": false
+			}
+		},
+		{
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "oooh, muzak!\nda dadada da dadaddadadadadadada♩♪♫♬"
+			"text": "Hey, I’m feeling a little nervous about this date I’m going on, is there anything you have that could help out with that?"
+		},
+		{
+			"character": "character-1639108113.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "Oh yeah, for sure! What kind of stuff are you into?"
+		},
+		{
+			"choice": "I really like rock music!",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1639108113.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "A rock fan… Hm… you ever heard of the Stone Smashers?"
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hmm, not really. What’s their music like?"
+		},
+		{
+			"character": "character-1639108113.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Oh, so good. They’re like one of the best rock bands to ever exist.\nThey’ve got this amazing vocalist that’s able to add this growl to his voice. Adds a nice texture to the music.\nI think he used to play drums for another band too…"
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "That sounds interesting! I’ll take a listen."
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Wow, I feel so pumped! All it took was that one song too, what was it called again?"
+		},
+		{
+			"character": "character-1639108113.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Let me see… It’s called “Crow Bar!” It’s on their album, “The Cutter and the Plate!”"
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Cool, I’ll check it out again sometime! Thanks for pumping me up!"
+		},
+		{
+			"choice": "I really like R&B!",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1639108113.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Alright, we got some R&B tracks here… Ooh, do you like the group, “H2OH?”"
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hmm, I don’t think I’ve heard of them before. What are they like?"
+		},
+		{
+			"character": "character-1639108113.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I think they’re one of the best-selling girl groups in the world, pretty impressive.\nThey’ve got some really good, chill beats. Wanna take a listen?"
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Yeah, why not!"
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Wow, I don’t feel so nervous anymore. Like, I feel super confident now! What was the song called, again?"
+		},
+		{
+			"character": "character-1639108113.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "It’s “No Suds!”"
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Oh right, she was like “No, I don’t want no suds, a sud is a bubble that makes me unhealthy…” Cool, thanks for the song!"
+		},
+		{
+			"character": "character-1639108113.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "No prob!"
+		},
+		{
+			"event_id": "dialogic_013"
 		},
 		{
 			"action": "leaveall",
