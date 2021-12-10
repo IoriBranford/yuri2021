@@ -45,145 +45,8 @@
 			"value": ""
 		},
 		{
-			"character": "character-1638066175.json",
-			"event_id": "dialogic_010",
-			"options": [
-
-			],
-			"portrait": "",
-			"question": "OMG, yay! Alright, I want you to guess my favorite color!"
-		},
-		{
-			"choice": "...",
-			"condition": "",
-			"definition": "",
-			"event_id": "dialogic_011",
-			"value": ""
-		},
-		{
-			"character": "character-1638066175.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "No seriously, guess! TODO: GO BACK TO .../ORANGE question"
-		},
-		{
-			"choice": "Uhh, orange?",
-			"condition": "",
-			"definition": "",
-			"event_id": "dialogic_011",
-			"value": ""
-		},
-		{
-			"character": "character-1638066175.json",
-			"event_id": "dialogic_010",
-			"options": [
-
-			],
-			"portrait": "",
-			"question": "Wow, that was a good guess. Wanna guess again?"
-		},
-		{
-			"choice": "OK, sure.",
-			"condition": "",
-			"definition": "",
-			"event_id": "dialogic_011",
-			"value": ""
-		},
-		{
-			"character": "character-1638066175.json",
-			"event_id": "dialogic_010",
-			"options": [
-
-			],
-			"portrait": "",
-			"question": "Alright, last chance!"
-		},
-		{
-			"choice": "Uhh, red!",
-			"condition": "",
-			"definition": "",
-			"event_id": "dialogic_011",
-			"value": ""
-		},
-		{
-			"character": "character-1638066175.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "Wow, that’s correct! I know what you’re probably thinking: “She’s like, clad in orange! Why isn’t it her favorite color?”\nI was thinking that too, but the Corp requires higher-ups to wear colors matching their primary element. So dumb!\nAnyways, red is my favorite color. I love red things like apples, strawberries, cotton candy, tomato soup, and also my girlfriend is dressed in red so I guess it applies with people too!\nOh shoot, I think I spent too much time talking to you. OK, see you later! Actually, I hope I don’t! Because a monster might destroy this part of the city!"
-		},
-		{
-			"choice": "Maybe white, then?",
-			"condition": "",
-			"definition": "",
-			"event_id": "dialogic_011",
-			"value": ""
-		},
-		{
-			"character": "character-1638066175.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "Hmm, that’s also not right. Try again? TODO: GO BACK TO RED/WHITE QUESTION"
-		},
-		{
-			"event_id": "dialogic_013"
-		},
-		{
-			"choice": "Not really…",
-			"condition": "",
-			"definition": "",
-			"event_id": "dialogic_011",
-			"value": ""
-		},
-		{
-			"character": "character-1638066175.json",
-			"event_id": "dialogic_010",
-			"options": [
-
-			],
-			"portrait": "",
-			"question": "Alright, last chance!"
-		},
-		{
-			"choice": "Uhh, red!",
-			"condition": "",
-			"definition": "",
-			"event_id": "dialogic_011",
-			"value": ""
-		},
-		{
-			"character": "character-1638066175.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "Wow, that’s correct! I know what you’re probably thinking: “She’s like, clad in orange! Why isn’t it her favorite color?”\nI was thinking that too, but the Corp requires higher-ups to wear colors matching their primary element. So dumb!\nAnyways, red is my favorite color. I love red things like apples, strawberries, cotton candy, tomato soup, and also my girlfriend is dressed in red so I guess it applies with people too!\nOh shoot, I think I spent too much time talking to you. OK, see you later! Actually, I hope I don’t! Because a monster might destroy this part of the city!"
-		},
-		{
-			"choice": "Maybe white, then?",
-			"condition": "",
-			"definition": "",
-			"event_id": "dialogic_011",
-			"value": ""
-		},
-		{
-			"character": "character-1638066175.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "Hmm, that’s also not right. Try again? TODO: GO BACK TO RED/WHITE QUESTION"
-		},
-		{
-			"event_id": "dialogic_013"
-		},
-		{
-			"event_id": "dialogic_013"
-		},
-		{
-			"event_id": "dialogic_013"
-		},
-		{
-			"choice": "Not really…",
-			"condition": "",
-			"definition": "",
-			"event_id": "dialogic_011",
-			"value": ""
+			"event_id": "jump_point",
+			"jump_point_id": "OMG, yay!"
 		},
 		{
 			"character": "character-1638066175.json",
@@ -202,10 +65,28 @@
 			"value": ""
 		},
 		{
+			"event_id": "jump_point",
+			"jump_point_id": "No, seriously, guess!"
+		},
+		{
 			"character": "character-1638066175.json",
-			"event_id": "dialogic_001",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
 			"portrait": "",
-			"text": "No seriously, guess! TODO: GO BACK TO .../ORANGE question"
+			"question": "No, seriously, guess!"
+		},
+		{
+			"choice": "...",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"event_id": "jump",
+			"jump_target_id": "No, seriously, guess!"
 		},
 		{
 			"choice": "Uhh, orange?",
@@ -213,6 +94,24 @@
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
+		},
+		{
+			"event_id": "jump",
+			"jump_target_id": "Wow, that was a good guess."
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"choice": "Uhh, orange?",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"event_id": "jump_point",
+			"jump_point_id": "Wow, that was a good guess."
 		},
 		{
 			"character": "character-1638066175.json",
@@ -231,6 +130,10 @@
 			"value": ""
 		},
 		{
+			"event_id": "jump_point",
+			"jump_point_id": "Alright, last chance!"
+		},
+		{
 			"character": "character-1638066175.json",
 			"event_id": "dialogic_010",
 			"options": [
@@ -263,7 +166,11 @@
 			"character": "character-1638066175.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Hmm, that’s also not right. Try again? TODO: GO BACK TO RED/WHITE QUESTION"
+			"text": "Hmm, that’s also not right. Try again?"
+		},
+		{
+			"event_id": "jump",
+			"jump_target_id": "Alright, last chance!"
 		},
 		{
 			"event_id": "dialogic_013"
@@ -276,48 +183,25 @@
 			"value": ""
 		},
 		{
-			"character": "character-1638066175.json",
-			"event_id": "dialogic_010",
-			"options": [
-
-			],
-			"portrait": "",
-			"question": "Alright, last chance!"
+			"event_id": "jump",
+			"jump_target_id": "Alright, last chance!"
 		},
 		{
-			"choice": "Uhh, red!",
+			"event_id": "dialogic_013"
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"choice": "Not really…",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
 		},
 		{
-			"character": "character-1638066175.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "Wow, that’s correct! I know what you’re probably thinking: “She’s like, clad in orange! Why isn’t it her favorite color?”\nI was thinking that too, but the Corp requires higher-ups to wear colors matching their primary element. So dumb!\nAnyways, red is my favorite color. I love red things like apples, strawberries, cotton candy, tomato soup, and also my girlfriend is dressed in red so I guess it applies with people too!\nOh shoot, I think I spent too much time talking to you. OK, see you later! Actually, I hope I don’t! Because a monster might destroy this part of the city!"
-		},
-		{
-			"choice": "Maybe white, then?",
-			"condition": "",
-			"definition": "",
-			"event_id": "dialogic_011",
-			"value": ""
-		},
-		{
-			"character": "character-1638066175.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "Hmm, that’s also not right. Try again? TODO: GO BACK TO RED/WHITE QUESTION"
-		},
-		{
-			"event_id": "dialogic_013"
-		},
-		{
-			"event_id": "dialogic_013"
-		},
-		{
-			"event_id": "dialogic_013"
+			"event_id": "jump",
+			"jump_target_id": "OMG, yay!"
 		},
 		{
 			"event_id": "dialogic_013"
