@@ -103,9 +103,11 @@ func new_patrol():
 func cutscene_intro():
 	self.state = WorldState.CUTSCENE
 	$MagicGirl.state = $MagicGirl.MagGirlState.IDLE
-	var new_dialog = Dialogic.start("Intro")
+	var new_dialog = Dialogic.start("Quests Intro")
 	add_child(new_dialog)
+	new_dialog.connect("dialogic_signal", hud, "_on_intro_dialogic_signal")
 	yield(new_dialog, "timeline_end")
+	new_dialog.disconnect("dialogic_signal", hud, "_on_intro_dialogic_signal")
 	new_dialog.queue_free()
 	self.state = WorldState.START
 

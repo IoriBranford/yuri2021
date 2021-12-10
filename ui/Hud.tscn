@@ -210,10 +210,10 @@ text = "IT IS IDENTIFIED AS
 align = 1
 
 [node name="InventoryHUD" parent="." instance=ExtResource( 21 )]
-margin_left = -304.0
-margin_top = 280.0
-margin_right = 336.0
-margin_bottom = 408.0
+margin_left = 16.0
+margin_top = 272.0
+margin_right = 16.0
+margin_bottom = 272.0
 
 [node name="BigMessage" type="VBoxContainer" parent="."]
 visible = false
@@ -250,13 +250,11 @@ align = 1
 [node name="ShopInstruction" type="Label" parent="."]
 visible = false
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -192.0
-margin_top = 88.0
-margin_right = 192.0
-margin_bottom = 152.0
+margin_left = -256.0
+margin_top = 64.0
+margin_right = 256.0
+margin_bottom = 128.0
 custom_fonts/font = SubResource( 5 )
 text = "Z key: visit the %s"
 align = 1
@@ -266,3 +264,5 @@ __meta__ = {
 }
 
 [connection signal="timeout" from="GirlfriendTimer" to="." method="_on_GirlfriendTimer_timeout"]
+
+[editable path="InventoryHUD"]

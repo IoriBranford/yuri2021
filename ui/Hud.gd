@@ -33,6 +33,7 @@ onready var alert_red = $Alert/CenterContainer/AlertRed
 
 func set_inv(icon:TextureRect, item:String, has:bool):
 	if has:
+		icon.visible = true
 		icon.texture = portraits.get_resource(item)
 	else:
 		icon.texture = portraits.get_resource(item+"_dont_have")
@@ -120,3 +121,12 @@ func _on_Player_shop_nearby(shopname, visited, is_transformed):
 func _on_Player_no_shop_nearby():
 	print("Not near shop message trigger")
 	$ShopInstruction.visible = false
+
+func _on_intro_dialogic_signal(string):
+	match string:
+		"showicon Salon":
+			inv_stylist.visible = true
+		"showicon GiftShop":
+			inv_gift.visible = true
+		"showicon RecordShop":
+			inv_music.visible = true

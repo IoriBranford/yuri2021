@@ -1,0 +1,59 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "Default",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": true,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "ok i ned stufs 4 daet!!!"
+		},
+		{
+			"emit_signal": "showicon GiftShop",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "presun"
+		},
+		{
+			"emit_signal": "showicon Salon",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "maekover"
+		},
+		{
+			"emit_signal": "showicon RecordShop",
+			"event_id": "dialogic_040"
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "& muzak!\ngo go goooooo!!!"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1639173138.json",
+		"name": "Quests Intro"
+	}
+}
