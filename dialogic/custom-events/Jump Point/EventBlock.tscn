@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://addons/dialogic/Editor/Events/Templates/EventTemplate.tscn" type="PackedScene" id=1]
+[ext_resource path="res://dialogic/custom-events/Jump Point/Stylebox.tres" type="StyleBox" id=2]
+[ext_resource path="res://addons/dialogic/Images/Event Icons/Main Icons/custom-event.svg" type="Texture" id=3]
+[ext_resource path="res://dialogic/custom-events/Jump Point/EventPart_Name.tscn" type="PackedScene" id=4]
+
+[node name="ExampleCustomEvent" instance=ExtResource( 1 )]
+event_name = "Jump Point"
+event_data = {
+"event_id": "jump_point",
+"jump_point_id": ""
+}
+event_icon = ExtResource( 3 )
+event_style = ExtResource( 2 )
+header_scene = ExtResource( 4 )
+
+[node name="PanelContainer" parent="." index="1"]
+margin_right = 1280.0
+custom_styles/panel = ExtResource( 2 )
+
+[node name="SelectedStyle" parent="PanelContainer" index="0"]
+modulate = Color( 0, 0, 0, 1 )
+
+[node name="MarginContainer" parent="PanelContainer" index="1"]
+margin_right = 1280.0
+
+[node name="VBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
+margin_right = 1274.0
+
+[node name="Header" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
+margin_right = 1268.0
+
+[node name="IconTexture" parent="PanelContainer/MarginContainer/VBoxContainer/Header" index="1"]
+margin_right = 32.0
+texture = ExtResource( 3 )
+
+[node name="TitleLabel" parent="PanelContainer/MarginContainer/VBoxContainer/Header" index="2"]
+margin_left = 42.0
+margin_right = 111.0
+text = "Jump Point"
+
+[node name="Content" parent="PanelContainer/MarginContainer/VBoxContainer/Header" index="3"]
+margin_left = 121.0
+margin_right = 179.0
+
+[node name="Spacer" parent="PanelContainer/MarginContainer/VBoxContainer/Header" index="5"]
+margin_left = 189.0
+margin_right = 1184.0
+
+[node name="HelpButton" parent="PanelContainer/MarginContainer/VBoxContainer/Header" index="6"]
+margin_left = 1194.0
+margin_right = 1224.0
+
+[node name="OptionsControl" parent="PanelContainer/MarginContainer/VBoxContainer/Header" index="7"]
+margin_left = 1234.0
+margin_right = 1268.0
+items = [ "Move Up", null, 0, false, false, 0, 0, null, "", false, "Move Down", null, 0, false, false, 1, 0, null, "", false, "", null, 0, false, false, 2, 0, null, "", false, "Remove", null, 0, false, false, 3, 0, null, "", false ]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://dialogic/custom-events/Jump/EventPart_Selector.gd" type="Script" id=1]
+
+[node name="EventPart_Example" type="HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selector" type="MenuButton" parent="."]
+margin_right = 125.0
+margin_bottom = 40.0
+text = "Select jump point"
