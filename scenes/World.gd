@@ -51,6 +51,7 @@ func _ready():
 	$MagicGirl.connect("patrol_done", self, "new_patrol")
 	$MagicGirl.connect("update_hud", $Hud, "update_alert")
 	$MagicGirl.connect("pester", self, "cutscene_pester")
+	$BankDefault.load_bank()
 	self.state = WorldState.TITLE
 
 func _physics_process(delta):
@@ -65,6 +66,7 @@ func _physics_process(delta):
 						0:
 							$TitleScreen.visible = false
 							self.state = WorldState.START
+							$"TitleScreen/Main/Menu/Menu SFX/Exit Menu".post_event()
 							cutscene_intro()
 						1:
 							sound_on = !sound_on
@@ -74,8 +76,10 @@ func _physics_process(delta):
 							get_tree().quit()
 			if Input.is_action_just_pressed("ui_up"):
 				menu_index -= 1
+				$"TitleScreen/Main/Menu/Menu SFX/Scroll Menu".post_event()
 			if Input.is_action_just_pressed("ui_down"):
 				menu_index += 1
+				$"TitleScreen/Main/Menu/Menu SFX/Scroll Menu".post_event()
 			if menu_index >= menu_items.size():
 				menu_index = menu_items.size() - 1 
 			if menu_index < 0:

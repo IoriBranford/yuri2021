@@ -4,6 +4,7 @@ export var MOVE_SPEED = 3
 export var KNOCK_TIME = 1
 export var TRANSFORM_CHARGE_TIME = 2
 export var TRANSFORM_REVERT_TIME = 10
+export var FOOTSTEP_SPEED = 0.6
 
 signal transformation_updated
 signal shop_nearby
@@ -23,6 +24,7 @@ var transform_charge = 0 # to 1
 var at_salon = false
 var at_gift = false
 var at_record = false
+var footstep_timer = 0
 
 func smooth_look_at(target, up):
 	var quat = Quat(transform.basis)
@@ -65,6 +67,7 @@ func move_player(delta):
 		smooth_look_at(global_transform.origin + move_dir.normalized(), Vector3.UP)
 		move_dir = move_dir.normalized() * MOVE_SPEED
 		move_and_slide(move_dir, Vector3.UP)
+		sfx_footstep(delta)
 
 func melee_attack():
 	var inst_melee = obj_melee.instance()
@@ -80,10 +83,12 @@ func change_form():
 		collision.translation = COLL_HUMAN.translate
 		collision.shape.radius = COLL_HUMAN.radius
 		collision.shape.height = COLL_HUMAN.height
+		$PlayerSFX/Transform.post_event()
 	else:
 		collision.translation = COLL_KAIJU.translate
 		collision.shape.radius = COLL_KAIJU.radius
 		collision.shape.height = COLL_KAIJU.height
+		$PlayerSFX/Revert.post_event()
 
 func knockback():
 	in_knockback = true
@@ -187,3 +192,9 @@ func _on_shoparea_body_exited(body, shop):
 		if shop == nearby_shop:
 			nearby_shop = null
 			emit_signal("no_shop_nearby")
+			
+func sfx_footstep(delta):
+	if footstep_timer > FOOTSTEP_SPEED:
+		$PlayerSFX/Footstep.post_event()
+		footstep_timer = 0
+	footstep_timer += delta

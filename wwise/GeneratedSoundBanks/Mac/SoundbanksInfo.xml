@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="12" SoundbankVersion="140">
+	<RootPaths>
+		<ProjectRoot>/Users/alessandrofama/Library/Application Support/Wwise2019/Bottles/Wwise2019x64/dosdevices/z:/Volumes/GoogleDrive/My Drive/jam/yurijam_wwiseproject 2/</ProjectRoot>
+		<SourceFilesRoot>/Users/alessandrofama/Library/Application Support/Wwise2019/Bottles/Wwise2019x64/dosdevices/z:/Volumes/GoogleDrive/My Drive/jam/yurijam_wwiseproject 2/.cache/Mac/</SourceFilesRoot>
+		<SoundBanksRoot>/Users/alessandrofama/Library/Application Support/Wwise2019/Bottles/Wwise2019x64/dosdevices/y:/workdir/yuri2021/wwise/GeneratedSoundBanks/Mac/</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>Z:\Volumes\GoogleDrive\My Drive\jam\yurijam_wwiseproject 2\GeneratedSoundBanks\Mac</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX" Hash="2820053812">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>1355168291.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="3909625241" Language="SFX" Hash="1296905291">
+			<ObjectPath>\SoundBanks\Default Work Unit\bank_default</ObjectPath>
+			<ShortName>bank_default</ShortName>
+			<Path>3909625241.bnk</Path>
+			<IncludedEvents>
+				<Event Id="3930136735" Name="dialogue" ObjectPath="\Events\Default Work Unit\dialogue"/>
+				<Event Id="3559787777" Name="enter_menu" ObjectPath="\Events\Menu Events\enter_menu">
+					<IncludedMemoryFiles>
+						<File Id="557938670" Language="SFX">
+							<ShortName>menu_click-2.wav</ShortName>
+							<Path>SFX/menu_click-2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1690420221" Name="exit_menu" ObjectPath="\Events\Menu Events\exit_menu">
+					<IncludedMemoryFiles>
+						<File Id="586971744" Language="SFX">
+							<ShortName>menu_click.wav</ShortName>
+							<Path>SFX/menu_click_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2997463392" Name="kj_hiding" ObjectPath="\Events\Kaiju Events\kj_hiding">
+					<IncludedMemoryFiles>
+						<File Id="71722634" Language="SFX">
+							<ShortName>kj-hiding-sfx.wav</ShortName>
+							<Path>SFX/kj-hiding-sfx_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3668868096" Name="kj_swatting" ObjectPath="\Events\Kaiju Events\kj_swatting">
+					<IncludedMemoryFiles>
+						<File Id="994789114" Language="SFX">
+							<ShortName>kj-swatting.wav</ShortName>
+							<Path>SFX/kj-swatting_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1547342906" Name="kj_walking_land" ObjectPath="\Events\Kaiju Events\kj_walking_land">
+					<IncludedMemoryFiles>
+						<File Id="538212476" Language="SFX">
+							<ShortName>kj-walking_land.wav</ShortName>
+							<Path>SFX/kj-walking_land_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1691912013" Name="kj_walking_ocean" ObjectPath="\Events\Kaiju Events\kj_walking_ocean">
+					<IncludedMemoryFiles>
+						<File Id="874458465" Language="SFX">
+							<ShortName>kj-walking_ocean-v3.wav</ShortName>
+							<Path>SFX/kj-walking_ocean-v3_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2599058686" Name="kjLand_revert" ObjectPath="\Events\Kaiju Events\kjLand_revert">
+					<IncludedMemoryFiles>
+						<File Id="967698737" Language="SFX">
+							<ShortName>kj-land_destransform.wav</ShortName>
+							<Path>SFX/kj-land_destransform_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2215530168" Name="kjLand_transform" ObjectPath="\Events\Kaiju Events\kjLand_transform">
+					<IncludedMemoryFiles>
+						<File Id="289263745" Language="SFX">
+							<ShortName>kj-land_stransform.wav</ShortName>
+							<Path>SFX/kj-land_stransform_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3572203593" Name="kjOcean_revert" ObjectPath="\Events\Kaiju Events\kjOcean_revert">
+					<IncludedMemoryFiles>
+						<File Id="1065484359" Language="SFX">
+							<ShortName>kj-ocean_detransform.wav</ShortName>
+							<Path>SFX/kj-ocean_detransform_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="547923121" Name="kjOcean_transform" ObjectPath="\Events\Kaiju Events\kjOcean_transform">
+					<IncludedMemoryFiles>
+						<File Id="741260625" Language="SFX">
+							<ShortName>kj-ocean_transform.wav</ShortName>
+							<Path>SFX/kj-ocean_transform_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1640086923" Name="mg_detect_player" ObjectPath="\Events\Default Work Unit\mg_detect_player">
+					<IncludedMemoryFiles>
+						<File Id="863993333" Language="SFX">
+							<ShortName>mg_detect.wav</ShortName>
+							<Path>SFX/mg_detect_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1431372833" Name="mg_roaming" ObjectPath="\Events\Default Work Unit\mg_roaming">
+					<IncludedMemoryFiles>
+						<File Id="435202252" Language="SFX">
+							<ShortName>mg_looming-around.wav</ShortName>
+							<Path>SFX/mg_looming-around_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="453573855" Name="remaining_time_eighth" ObjectPath="\Events\Time Marking Events\remaining_time_eighth">
+					<IncludedMemoryFiles>
+						<File Id="998526165" Language="SFX">
+							<ShortName>time-marker_12.wav</ShortName>
+							<Path>SFX/time-marker_12_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3866417551" Name="remaining_time_half" ObjectPath="\Events\Time Marking Events\remaining_time_half">
+					<IncludedMemoryFiles>
+						<File Id="1047544047" Language="SFX">
+							<ShortName>time-marker_50.wav</ShortName>
+							<Path>SFX/time-marker_50_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="712481592" Name="remaining_time_quarter" ObjectPath="\Events\Time Marking Events\remaining_time_quarter">
+					<IncludedMemoryFiles>
+						<File Id="336255004" Language="SFX">
+							<ShortName>time-marker_25.wav</ShortName>
+							<Path>SFX/time-marker_25_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="329813420" Name="scroll_menu" ObjectPath="\Events\Menu Events\scroll_menu">
+					<IncludedMemoryFiles>
+						<File Id="3164643" Language="SFX">
+							<ShortName>menu_select.wav</ShortName>
+							<Path>SFX/menu_select_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+			</IncludedEvents>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

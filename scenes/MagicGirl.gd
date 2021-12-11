@@ -93,6 +93,7 @@ func _process(delta):
 			if global_transform.origin == patrol_point:
 				find_dir()
 			if target_in_cone && target_los:
+				$MGSFX/Detected.post_event()
 				patrol_timer.paused = true
 				self.state = MagGirlState.SEARCH
 		MagGirlState.SEARCH:
@@ -189,6 +190,7 @@ func fly_in(pos, time, length, girl):
 	girl_mode = girl
 	voice.stream = res.get_resource("noescape")
 	voice.play()
+	$MGSFX/Roaming.post_event()
 	patrol_length = length
 	patrol_time = time
 	start_pos = pos

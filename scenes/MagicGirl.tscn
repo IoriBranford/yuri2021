@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/MagicGirl.gd" type="Script" id=1]
 [ext_resource path="res://sfx/noescape.wav" type="AudioStream" id=2]
 [ext_resource path="res://sfx/reppuken.wav" type="AudioStream" id=3]
 [ext_resource path="res://sfx/tooeasy.wav" type="AudioStream" id=4]
+[ext_resource path="res://wwise/runtime/nodes/ak_event.gd" type="Script" id=5]
 [ext_resource path="res://sfx/predictabo.wav" type="AudioStream" id=6]
 
 [sub_resource type="CapsuleShape" id=6]
@@ -62,6 +63,17 @@ shape = SubResource( 10 )
 
 [node name="Voice" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
+
+[node name="MGSFX" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7018, 0 )
+
+[node name="Detected" type="Spatial" parent="MGSFX"]
+script = ExtResource( 5 )
+event = 1640086923
+
+[node name="Roaming" type="Spatial" parent="MGSFX"]
+script = ExtResource( 5 )
+event = 1431372833
 
 [connection signal="timeout" from="PatrolTimer" to="." method="_on_PatrolTimer_timeout"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
