@@ -140,7 +140,9 @@ func walk_toward(dest, delta):
 	translation = translation.move_toward(dest, delta*MOVE_SPEED)
 
 func co_visit_shop(shop):
+	var layer = collision_layer
 	var mask = collision_mask
+	collision_layer = 0
 	collision_mask = 0
 	
 	var dest = (Vector3(translation.x, translation.y, shop.translation.z))
@@ -173,6 +175,7 @@ func co_visit_shop(shop):
 		yield(get_tree(), "physics_frame")
 		walk_toward(dest, get_physics_process_delta_time())
 
+	collision_layer = layer
 	collision_mask = mask
 	emit_signal("shop_exited", shop)
 
