@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/maybe white then.ogg-b6934e4687e2fc39661d20063ff62b47.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_rafa/maybe white then.ogg"
+dest_files=[ "res://.import/maybe white then.ogg-b6934e4687e2fc39661d20063ff62b47.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

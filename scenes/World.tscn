@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://models/MeshLibrary.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://scenes/World.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://scenes/MagicGirl.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/Hud.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ui/1980v202001.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://wwise/runtime/nodes/ak_bank.gd" type="Script" id=7]
+[ext_resource path="res://wwise/runtime/nodes/ak_event_2d.gd" type="Script" id=8]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 6, 2, 80 )
@@ -250,6 +252,21 @@ custom_fonts/font = SubResource( 11 )
 text = "Quit"
 align = 1
 
+[node name="Menu SFX" type="Node2D" parent="TitleScreen/Main/Menu"]
+position = Vector2( -148, -384.5 )
+
+[node name="Enter Menu" type="Node2D" parent="TitleScreen/Main/Menu/Menu SFX"]
+script = ExtResource( 8 )
+event = 3559787777
+
+[node name="Scroll Menu" type="Node2D" parent="TitleScreen/Main/Menu/Menu SFX"]
+script = ExtResource( 8 )
+event = 329813420
+
+[node name="Exit Menu" type="Node2D" parent="TitleScreen/Main/Menu/Menu SFX"]
+script = ExtResource( 8 )
+event = 1690420221
+
 [node name="CreditScreen" type="TextureRect" parent="."]
 visible = false
 anchor_right = 1.0
@@ -462,6 +479,10 @@ shape = SubResource( 26 )
 [node name="CollisionShape" type="CollisionShape" parent="BackWall"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0 )
 shape = SubResource( 27 )
+
+[node name="BankDefault" type="Node" parent="."]
+script = ExtResource( 7 )
+bank = 3909625241
 
 [connection signal="got_item" from="Player" to="Hud" method="_on_player_got_item"]
 [connection signal="shop_entered" from="Player" to="." method="_on_Player_shop_entered"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/eheheh okay thanks.ogg-2009f88bd2e6d26cff9a3f83ca07a28d.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_rafa/eheheh okay thanks.ogg"
+dest_files=[ "res://.import/eheheh okay thanks.ogg-2009f88bd2e6d26cff9a3f83ca07a28d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

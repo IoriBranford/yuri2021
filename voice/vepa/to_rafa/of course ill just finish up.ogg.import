@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/of course ill just finish up.ogg-339bdf7c0506dc300427faf9543b868a.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_rafa/of course ill just finish up.ogg"
+dest_files=[ "res://.import/of course ill just finish up.ogg-339bdf7c0506dc300427faf9543b868a.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -45,6 +45,20 @@
 			"value": ""
 		},
 		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_rafa/ok sure.ogg",
+			"volume": 0
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Normal",
+			"text": "OK, sure."
+		},
+		{
 			"event_id": "jump_point",
 			"jump_point_id": "OMG, yay!"
 		},
@@ -114,6 +128,20 @@
 			"jump_point_id": "Wow, that was a good guess."
 		},
 		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_rafa/uhh orange.ogg",
+			"volume": 0
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Nervous",
+			"text": "Uhh, orange?"
+		},
+		{
 			"character": "character-1638066175.json",
 			"event_id": "dialogic_010",
 			"options": [
@@ -128,6 +156,20 @@
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
+		},
+		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_rafa/ok sure.ogg",
+			"volume": 0
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Normal",
+			"text": "OK, sure."
 		},
 		{
 			"event_id": "jump_point",
@@ -150,6 +192,20 @@
 			"value": ""
 		},
 		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_rafa/uhh red.ogg",
+			"volume": 0
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Nervous",
+			"text": "Uhh, red!"
+		},
+		{
 			"character": "character-1638066175.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
@@ -161,6 +217,20 @@
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
+		},
+		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_rafa/maybe white then.ogg",
+			"volume": 0
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Nervous",
+			"text": "Maybe white, then?"
 		},
 		{
 			"character": "character-1638066175.json",
@@ -183,6 +253,20 @@
 			"value": ""
 		},
 		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_rafa/not really.ogg",
+			"volume": 0
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Freakout",
+			"text": "Not really…"
+		},
+		{
 			"event_id": "jump",
 			"jump_target_id": "Alright, last chance!"
 		},
@@ -198,6 +282,20 @@
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
+		},
+		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_rafa/not really.ogg",
+			"volume": 0
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Freakout",
+			"text": "Not really…"
 		},
 		{
 			"event_id": "jump",

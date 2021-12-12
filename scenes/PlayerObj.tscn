@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/PlayerObj.gd" type="Script" id=1]
 [ext_resource path="res://models/oceankaiju_human_form.fbx" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://textures/particles/SalonSparkle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://textures/particles/MusicNotes.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Chocolatebox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://wwise/runtime/nodes/ak_listener.gd" type="Script" id=7]
+[ext_resource path="res://wwise/runtime/nodes/ak_event.gd" type="Script" id=8]
 
 [sub_resource type="CapsuleShape" id=1]
 height = 1.5
@@ -129,6 +131,25 @@ draw_pass_1 = SubResource( 14 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/enter_shop = SubResource( 15 )
 anims/exit_shop = SubResource( 6 )
+
+[node name="AkListener" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.78907, 0 )
+script = ExtResource( 7 )
+
+[node name="PlayerSFX" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23295, 0 )
+
+[node name="Transform" type="Spatial" parent="PlayerSFX"]
+script = ExtResource( 8 )
+event = 547923121
+
+[node name="Revert" type="Spatial" parent="PlayerSFX"]
+script = ExtResource( 8 )
+event = 3572203593
+
+[node name="Footstep" type="Spatial" parent="PlayerSFX"]
+script = ExtResource( 8 )
+event = 1547342906
 
 [connection signal="timeout" from="Knockback" to="." method="_on_Knockback_timeout"]
 

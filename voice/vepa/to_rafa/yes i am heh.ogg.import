@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/yes i am heh.ogg-c3e053ef705a67da7947135b801e678f.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_rafa/yes i am heh.ogg"
+dest_files=[ "res://.import/yes i am heh.ogg-c3e053ef705a67da7947135b801e678f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

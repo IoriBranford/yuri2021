@@ -4,6 +4,7 @@ export var MOVE_SPEED = 3
 export var KNOCK_TIME = 1
 export var TRANSFORM_CHARGE_TIME = 2
 export var TRANSFORM_REVERT_TIME = 10
+export var FOOTSTEP_SPEED = 0.6
 
 signal transformation_updated
 signal shop_nearby
@@ -23,6 +24,7 @@ var transform_charge = 0 # to 1
 var at_salon = false
 var at_gift = false
 var at_record = false
+var footstep_timer = 0
 
 func smooth_look_at(target, up):
 	var quat = Quat(transform.basis)
@@ -65,6 +67,7 @@ func move_player(delta):
 		smooth_look_at(global_transform.origin + move_dir.normalized(), Vector3.UP)
 		move_dir = move_dir.normalized() * MOVE_SPEED
 		move_and_slide(move_dir, Vector3.UP)
+		sfx_footstep(delta)
 
 func melee_attack():
 	var inst_melee = obj_melee.instance()
@@ -80,10 +83,14 @@ func change_form():
 		collision.translation = COLL_HUMAN.translate
 		collision.shape.radius = COLL_HUMAN.radius
 		collision.shape.height = COLL_HUMAN.height
+		$PlayerSFX/Transform.post_event()
 	else:
 		collision.translation = COLL_KAIJU.translate
 		collision.shape.radius = COLL_KAIJU.radius
 		collision.shape.height = COLL_KAIJU.height
+		$PlayerSFX/Revert.post_event()
+	if nearby_shop:
+		emit_signal("shop_nearby", nearby_shop.name, visited_shops[nearby_shop.name], is_transformed)
 
 func knockback():
 	in_knockback = true
@@ -93,8 +100,8 @@ func _on_Knockback_timeout():
 	in_knockback = false
 	knock_timer.stop()
 
-signal shop_entered(shop)
-signal shop_exited(shop)
+signal shop_entered(shop_trigger)
+signal shop_exited(shop_trigger)
 signal got_item(item)
 
 var co_state = null
@@ -116,10 +123,10 @@ onready var visited_fx_kaiju = {
 }
 
 func connect_to_shop(nodepath:NodePath):
-	var shop:Area = get_node(nodepath) as Area
-	if shop:
-		shop.connect("body_entered", self, "_on_shoparea_body_entered", [shop], 0)
-		shop.connect("body_exited", self, "_on_shoparea_body_exited", [shop], 0)
+	var shop_trigger:Area = get_node(nodepath) as Area
+	if shop_trigger:
+		shop_trigger.connect("body_entered", self, "_on_shoparea_body_entered", [shop_trigger], 0)
+		shop_trigger.connect("body_exited", self, "_on_shoparea_body_exited", [shop_trigger], 0)
 
 func _ready():
 	connect_to_shop("../Salon")
@@ -134,21 +141,32 @@ func walk_toward(dest, delta):
 	smooth_look_at(dest, Vector3.UP)
 	translation = translation.move_toward(dest, delta*MOVE_SPEED)
 
-func co_visit_shop(shop):
+func co_visit_shop(shop_trigger:Spatial):
+	var layer = collision_layer
 	var mask = collision_mask
+	collision_layer = 0
 	collision_mask = 0
-	
-	var dest = (Vector3(translation.x, translation.y, shop.translation.z))
+
+	var dest
+	dest = shop_trigger.global_transform.origin
+	dest.y = global_transform.origin.y
 	while !translation.is_equal_approx(dest):
 		yield(get_tree(), "physics_frame")
 		walk_toward(dest, get_physics_process_delta_time())
 
-	dest = (Vector3(shop.translation.x, translation.y, shop.translation.z))
+	var inside = shop_trigger.get_node_or_null("Inside")
+	if inside:
+		inside = inside.global_transform.origin
+	else:
+		inside = shop_trigger.global_transform.origin
+		inside.x -= 2
+	dest = inside
+	dest.y = global_transform.origin.y
 	while !translation.is_equal_approx(dest):
 		yield(get_tree(), "physics_frame")
 		walk_toward(dest, get_physics_process_delta_time())
 
-	var shopname = shop.name
+	var shopname = shop_trigger.name
 	var dialogue = Dialogic.start(shopname)
 	if dialogue:
 		get_tree().root.add_child(dialogue)
@@ -163,27 +181,35 @@ func co_visit_shop(shop):
 	visited_shops[shopname] = true
 	emit_signal("got_item", shopname)
 
-	dest = (Vector3(shop.translation.x+2, translation.y, shop.translation.z))
+	dest = shop_trigger.global_transform.origin
+	dest.y = global_transform.origin.y
 	while !translation.is_equal_approx(dest):
 		yield(get_tree(), "physics_frame")
 		walk_toward(dest, get_physics_process_delta_time())
 
+	collision_layer = layer
 	collision_mask = mask
-	emit_signal("shop_exited", shop)
+	emit_signal("shop_exited", shop_trigger)
 
-func visit_shop(shop):
+func visit_shop(shop_trigger):
 	if is_transformed and !in_knockback:
-		if !visited_shops[shop.name]:
-			co_state = co_visit_shop(shop)
-			emit_signal("shop_entered", shop)
+		if !visited_shops[shop_trigger.name]:
+			co_state = co_visit_shop(shop_trigger)
+			emit_signal("shop_entered", shop_trigger)
 	
-func _on_shoparea_body_entered(body, shop):
+func _on_shoparea_body_entered(body, shop_trigger):
 	if self == body:
-		nearby_shop = shop
-		emit_signal("shop_nearby", shop.name, visited_shops[shop.name], is_transformed)
+		nearby_shop = shop_trigger
+		emit_signal("shop_nearby", shop_trigger.name, visited_shops[shop_trigger.name], is_transformed)
 
-func _on_shoparea_body_exited(body, shop):
+func _on_shoparea_body_exited(body, shop_trigger):
 	if self == body:
-		if shop == nearby_shop:
+		if shop_trigger == nearby_shop:
 			nearby_shop = null
 			emit_signal("no_shop_nearby")
+			
+func sfx_footstep(delta):
+	if footstep_timer > FOOTSTEP_SPEED:
+		$PlayerSFX/Footstep.post_event()
+		footstep_timer = 0
+	footstep_timer += delta

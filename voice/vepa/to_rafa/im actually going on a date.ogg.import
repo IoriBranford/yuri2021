@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/im actually going on a date.ogg-a2a7fbaf92d589bdb7c78056c7d5cff6.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_rafa/im actually going on a date.ogg"
+dest_files=[ "res://.import/im actually going on a date.ogg-a2a7fbaf92d589bdb7c78056c7d5cff6.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/going good.ogg-56d31648d9379975601ab6cac740e9b8.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_rafa/going good.ogg"
+dest_files=[ "res://.import/going good.ogg-56d31648d9379975601ab6cac740e9b8.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

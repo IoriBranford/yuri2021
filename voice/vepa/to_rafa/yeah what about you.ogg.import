@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/yeah what about you.ogg-a9a331340b0bc4e6107763aa35ccc76b.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_rafa/yeah what about you.ogg"
+dest_files=[ "res://.import/yeah what about you.ogg-a9a331340b0bc4e6107763aa35ccc76b.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

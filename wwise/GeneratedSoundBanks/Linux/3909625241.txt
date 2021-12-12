@@ -1,0 +1,40 @@
+Event	ID	Name			Wwise Object Path	Notes
+	329813420	scroll_menu			\Menu Events\scroll_menu	
+	453573855	remaining_time_eighth			\Time Marking Events\remaining_time_eighth	
+	547923121	kjOcean_transform			\Kaiju Events\kjOcean_transform	
+	712481592	remaining_time_quarter			\Time Marking Events\remaining_time_quarter	
+	1431372833	mg_roaming			\Default Work Unit\mg_roaming	
+	1547342906	kj_walking_land			\Kaiju Events\kj_walking_land	
+	1640086923	mg_detect_player			\Default Work Unit\mg_detect_player	
+	1690420221	exit_menu			\Menu Events\exit_menu	
+	1691912013	kj_walking_ocean			\Kaiju Events\kj_walking_ocean	
+	2215530168	kjLand_transform			\Kaiju Events\kjLand_transform	
+	2599058686	kjLand_revert			\Kaiju Events\kjLand_revert	
+	2997463392	kj_hiding			\Kaiju Events\kj_hiding	
+	3559787777	enter_menu			\Menu Events\enter_menu	
+	3572203593	kjOcean_revert			\Kaiju Events\kjOcean_revert	
+	3668868096	kj_swatting			\Kaiju Events\kj_swatting	
+	3866417551	remaining_time_half			\Time Marking Events\remaining_time_half	
+	3930136735	dialogue			\Default Work Unit\dialogue	
+
+Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
+	611302784	Wwise Silence	Wwise Silence		\Actor-Mixer Hierarchy\Default Work Unit\mg_detect_container\New Sound SFX\Wwise Silence	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	3164643	scroll_menu	Z:\Volumes\GoogleDrive\My Drive\jam\yurijam_wwiseproject 2\.cache\Linux\SFX\menu_select_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\scroll_menu		282304
+	71722634	kj_hiding	Z:\Volumes\GoogleDrive\My Drive\jam\yurijam_wwiseproject 2\.cache\Linux\SFX\kj-hiding-sfx_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\kj_hiding		113464
+	289263745	kjLand_transform	Z:\Volumes\GoogleDrive\My Drive\jam\yurijam_wwiseproject 2\.cache\Linux\SFX\kj-land_stransform_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\kjLand_transform		302464
+	336255004	warning_remaining_time_quarter	Z:\Volumes\GoogleDrive\My Drive\jam\yurijam_wwiseproject 2\.cache\Linux\SFX\time-marker_25_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\warning_remaining_time_quarter		378064
+	435202252	mg_roaming	Z:\Volumes\GoogleDrive\My Drive\jam\yurijam_wwiseproject 2\.cache\Linux\SFX\mg_looming-around_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\mg_roaming		564544
+	538212476	kj_walking_land	Z:\Volumes\GoogleDrive\My Drive\jam\yurijam_wwiseproject 2\.cache\Linux\SFX\kj-walking_land_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\kj_walking_land		113464
+	557938670	enter_menu	Z:\Volumes\GoogleDrive\My Drive\jam\yurijam_wwiseproject 2\.cache\Linux\SFX\menu_click-2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\enter_menu		282304
+	586971744	exit_menu	Z:\Volumes\GoogleDrive\My Drive\jam\yurijam_wwiseproject 2\.cache\Linux\SFX\menu_click_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\exit_menu		282304
+	741260625	kjOcean_transform	Z:\Volumes\GoogleDrive\My Drive\jam\yurijam_wwiseproject 2\.cache\Linux\SFX\kj-ocean_transform_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\kjOcean_transform		264664
+	863993333	mg_detect	Z:\Volumes\GoogleDrive\My Drive\jam\yurijam_wwiseproject 2\.cache\Linux\SFX\mg_detect_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\mg_detect_container\mg_detect		352864
+	874458465	kj_walking_ocean	Z:\Volumes\GoogleDrive\My Drive\jam\yurijam_wwiseproject 2\.cache\Linux\SFX\kj-walking_ocean-v3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\kj_walking_ocean		264664
+	967698737	kjLand_revert	Z:\Volumes\GoogleDrive\My Drive\jam\yurijam_wwiseproject 2\.cache\Linux\SFX\kj-land_destransform_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\kjLand_revert		378064
+	994789114	kj_swatting	Z:\Volumes\GoogleDrive\My Drive\jam\yurijam_wwiseproject 2\.cache\Linux\SFX\kj-swatting_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\kj_swatting		88264
+	998526165	warning_remaining_time_eighth	Z:\Volumes\GoogleDrive\My Drive\jam\yurijam_wwiseproject 2\.cache\Linux\SFX\time-marker_12_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\warning_remaining_time_eighth		378064
+	1047544047	warning_remaining_time_half	Z:\Volumes\GoogleDrive\My Drive\jam\yurijam_wwiseproject 2\.cache\Linux\SFX\time-marker_50_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\warning_remaining_time_half		378064
+	1065484359	kj-ocean_detransform	Z:\Volumes\GoogleDrive\My Drive\jam\yurijam_wwiseproject 2\.cache\Linux\SFX\kj-ocean_detransform_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\kj-ocean_detransform		220196
+

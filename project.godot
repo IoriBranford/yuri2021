@@ -1400,3 +1400,7 @@ player_attack={
 
 vram_compression/import_etc2=false
 environment/default_environment="res://default_env.tres"
+
+[wwise]
+
+common_user_settings/load_init_bank_at_startup=true
