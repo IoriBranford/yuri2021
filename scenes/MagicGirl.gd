@@ -19,7 +19,6 @@ onready var res = $Resources
 onready var mesh = $Mesh
 onready var patrol_timer = $PatrolTimer
 onready var attack_timer = $AttackTimer
-onready var voice = $Voice
 
 var obj_bullet = preload("res://scenes/PushWave.tscn")
 var girl_mode = "Micah"
@@ -108,8 +107,6 @@ func _process(delta):
 				if player.is_transformed:
 					self.state = MagGirlState.PESTER
 				else:
-					voice.stream = res.get_resource("predictabo")
-					voice.play()
 					attack_timer.start(FIRE_RATE)
 					self.state = MagGirlState.ATTACK
 			else:
@@ -158,8 +155,6 @@ func find_dir():
 		patrol_point = global_transform.origin + Vector3.FORWARD * patrol_length
 
 func shoot():
-	voice.stream = res.get_resource("reppuken")
-	voice.play()
 	var inst_bullet = obj_bullet.instance()
 	add_child(inst_bullet)
 	match girl_mode:
@@ -188,8 +183,6 @@ func swat():
 
 func fly_in(pos, time, length, girl):
 	girl_mode = girl
-	voice.stream = res.get_resource("noescape")
-	voice.play()
 	$MGSFX/Roaming.post_event()
 	patrol_length = length
 	patrol_time = time
