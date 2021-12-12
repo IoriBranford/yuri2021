@@ -15,13 +15,21 @@ signal pester
 signal update_hud()
 
 # Accessor vars
-onready var res = $Resources
-onready var mesh = $Mesh
 onready var patrol_timer = $PatrolTimer
 onready var attack_timer = $AttackTimer
+onready var girl_data = {
+	"Rafa":{
+		"model":$Models/MeshRafa,
+		"color":Color(0, 0.5, 0.5)
+	},
+	"Micah":{
+		"model":$Models/MeshMika,
+		"color":Color(1,0,0)
+	}
+}
 
 var obj_bullet = preload("res://scenes/PushWave.tscn")
-var girl_mode = "Micah"
+var girl_mode = "mika"
 var move_dir = Vector3.FORWARD
 var think_time = 5.0
 var state = MagGirlState.IDLE setget set_state
@@ -53,20 +61,20 @@ func set_state(value):
 			is_attacking = false
 			is_pestering = false
 			alert = 0
-			mesh.material_override.albedo_color = Color(0, 0, 1)
+			girl_data[girl_mode].model.material_override.albedo_color = Color(0, 0, 1)
 			$SightCone.visible = true
 		MagGirlState.SEARCH:
 			is_attacking = false
 			is_pestering = false
-			mesh.material_override.albedo_color = Color(1, 1, 0)
+			girl_data[girl_mode].model.material_override.albedo_color = Color(1, 1, 0)
 			$SightCone.visible = true
 		MagGirlState.ATTACK, MagGirlState.PESTER:
-			mesh.material_override.albedo_color = Color(1, 0, 0)
+			girl_data[girl_mode].model.material_override.albedo_color = Color(1, 0, 0)
 			$SightCone.visible = false
 		_:
 			patrol_timer.stop()
 			attack_timer.stop()
-			mesh.material_override.albedo_color = Color(1, 1, 1)
+			girl_data[girl_mode].model.material_override.albedo_color = Color(1, 1, 1)
 			$SightCone.visible = false
 	state = value
 	emit_signal("update_hud", self)
@@ -139,12 +147,12 @@ func _process(delta):
 				global_transform.origin = global_transform.origin.move_toward(home_pos, delta * MOVE_SPEED * 2)
 		MagGirlState.SWATTED:
 			if global_transform.origin == home_pos:
-				mesh.rotation_degrees = Vector3(-90, 0, 0)
+				girl_data[girl_mode].model.rotation_degrees = Vector3(-90, 0, 0)
 				self.state = MagGirlState.IDLE
 				emit_signal("patrol_done")
 			else:
 				var rand_vector = Vector3(randf()-0.5, randf()-0.5, randf()-0.5).normalized()
-				mesh.rotate_object_local(rand_vector, PI)
+				girl_data[girl_mode].model.rotate_object_local(rand_vector, PI)
 				global_transform.origin = global_transform.origin.move_toward(home_pos, delta * MOVE_SPEED * 2)
 
 func find_dir():
@@ -157,13 +165,7 @@ func find_dir():
 func shoot():
 	var inst_bullet = obj_bullet.instance()
 	add_child(inst_bullet)
-	match girl_mode:
-		"Micah":
-			inst_bullet.set_color(Color(0, 0.5, 0.5))
-		"Rafa":
-			inst_bullet.set_color(Color(1, 0, 0))
-		_:
-			inst_bullet.set_color(Color(1, 0, 0))
+	inst_bullet.set_color(girl_data[girl_mode].color)
 	inst_bullet.move_dir = Vector3.BACK
 
 func check_los():
@@ -183,6 +185,8 @@ func swat():
 
 func fly_in(pos, time, length, girl):
 	girl_mode = girl
+	for model in $Models.get_children():
+		model.visible = (model == girl_data[girl_mode].model)
 	$MGSFX/Roaming.post_event()
 	patrol_length = length
 	patrol_time = time
