@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/i get that i really do.ogg-cb39c3e77552cb2d6ca364ddd1e8e9ee.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_rafa/i get that i really do.ogg"
+dest_files=[ "res://.import/i get that i really do.ogg-cb39c3e77552cb2d6ca364ddd1e8e9ee.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -45,6 +45,20 @@
 			"value": ""
 		},
 		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_rafa/going good.ogg",
+			"volume": 0
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Normal",
+			"text": "Going good! Just getting some stuff for today!"
+		},
+		{
 			"character": "character-1638066175.json",
 			"event_id": "dialogic_010",
 			"options": [
@@ -61,11 +75,39 @@
 			"value": ""
 		},
 		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_rafa/of course ill just finish up.ogg",
+			"volume": 0
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "(Don't change)",
+			"text": "Of course! I’ll just finish up my errands and I’ll go somewhere safe. Thank you!"
+		},
+		{
 			"choice": "Yeah, sure. Thanks for the heads up!",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
+		},
+		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_rafa/yeah sure thanks.ogg",
+			"volume": 0
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "(Don't change)",
+			"text": "Yeah, sure. Thanks for the heads up!"
 		},
 		{
 			"event_id": "dialogic_013"
@@ -78,6 +120,20 @@
 			"value": ""
 		},
 		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_rafa/yeah what about you.ogg",
+			"volume": 0
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "(Don't change)",
+			"text": "Yeah… What about you?"
+		},
+		{
 			"character": "character-1638066175.json",
 			"event_id": "dialogic_010",
 			"options": [
@@ -87,11 +143,25 @@
 			"question": "Well, I’m dealing with a big monster instead of hanging out with my girlfriend or reading my books, what a bummer!\nBy the way, that monster might come this way so find somewhere safe to go, OK?"
 		},
 		{
-			"choice": "Oh OK, thank you for telling me! Bye!",
+			"choice": "Oh OK, uh, thanks for telling me! Bye!",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
+		},
+		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_rafa/oh ok uh thanks.ogg",
+			"volume": 0
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "(Don't change)",
+			"text": "Oh OK, uh, thanks for telling me! Bye!"
 		},
 		{
 			"choice": "Cool, I’ll go do that. Bye!",
@@ -99,6 +169,20 @@
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
+		},
+		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_rafa/cool ill go do that.ogg",
+			"volume": 0
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "(Don't change)",
+			"text": "Cool, I’ll go do that. Bye!"
 		},
 		{
 			"event_id": "dialogic_013"

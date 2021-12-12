@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/oh yknow just hanging.ogg-3a04e4d54037c6721a0c90b2c2c1cb3a.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_rafa/oh yknow just hanging.ogg"
+dest_files=[ "res://.import/oh yknow just hanging.ogg-3a04e4d54037c6721a0c90b2c2c1cb3a.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

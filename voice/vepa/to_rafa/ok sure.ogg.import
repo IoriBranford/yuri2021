@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ok sure.ogg-94f1f9e839ea3cbc11a4771c63da69ac.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_rafa/ok sure.ogg"
+dest_files=[ "res://.import/ok sure.ogg-94f1f9e839ea3cbc11a4771c63da69ac.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

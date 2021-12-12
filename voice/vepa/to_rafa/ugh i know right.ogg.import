@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ugh i know right.ogg-f824c2559c2ef185d6a72e438314d1ae.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_rafa/ugh i know right.ogg"
+dest_files=[ "res://.import/ugh i know right.ogg-f824c2559c2ef185d6a72e438314d1ae.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

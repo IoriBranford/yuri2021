@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/yeah i dont think im helping.ogg-a153536aa51751f898ef9be4bb65fef5.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_rafa/yeah i dont think im helping.ogg"
+dest_files=[ "res://.import/yeah i dont think im helping.ogg-a153536aa51751f898ef9be4bb65fef5.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

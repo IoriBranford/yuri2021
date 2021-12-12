@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/uhh orange.ogg-ae4652d019cd2a234a5b028a4d14f1b7.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_rafa/uhh orange.ogg"
+dest_files=[ "res://.import/uhh orange.ogg-ae4652d019cd2a234a5b028a4d14f1b7.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
