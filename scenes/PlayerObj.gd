@@ -5,6 +5,7 @@ export var KNOCK_TIME = 1
 export var TRANSFORM_CHARGE_TIME = 2
 export var TRANSFORM_REVERT_TIME = 10
 export var FOOTSTEP_SPEED = 0.6
+export var GRAVITY = 8
 
 signal transformation_updated
 signal shop_nearby
@@ -13,11 +14,15 @@ signal no_shop_nearby
 const COLL_KAIJU = {"translate":Vector3(0, 1.75, 0), "radius":1, "height":1.5}
 const COLL_HUMAN = {"translate":Vector3(0, 0.875, 0), "radius":0.75, "height":0.25}
 
+const SHOPS_WITH_EXIT_DIALOGUE = {
+	"GiftShop": true
+}
+
 onready var knock_timer = $Knockback
 onready var collision = $PlayerCollision
 
 var obj_melee = preload("res://scenes/MeleeAttack.tscn")
-var move_dir = Vector3.ZERO
+var velocity = Vector3.ZERO
 var in_knockback = false
 var is_transformed = false
 var transform_charge = 0 # to 1
@@ -33,6 +38,7 @@ func smooth_look_at(target, up):
 	transform.basis = Basis(quat)
 
 func move_player(delta):
+	var move_dir = Vector3.ZERO
 	if in_knockback:
 		move_dir = Vector3.BACK
 	else:
@@ -65,9 +71,14 @@ func move_player(delta):
 
 	if move_dir != Vector3.ZERO:
 		smooth_look_at(global_transform.origin + move_dir.normalized(), Vector3.UP)
-		move_dir = move_dir.normalized() * MOVE_SPEED
-		move_and_slide(move_dir, Vector3.UP)
 		sfx_footstep(delta)
+
+	move_dir = move_dir.normalized() * MOVE_SPEED
+	velocity.x = move_dir.x
+	velocity.z = move_dir.z
+
+	velocity.y -= delta*GRAVITY
+	velocity = move_and_slide(velocity, Vector3.UP)
 
 func melee_attack():
 	var inst_melee = obj_melee.instance()
@@ -187,6 +198,12 @@ func co_visit_shop(shop_trigger:Spatial):
 		yield(get_tree(), "physics_frame")
 		walk_toward(dest, get_physics_process_delta_time())
 
+	if SHOPS_WITH_EXIT_DIALOGUE.has(shopname):
+		dialogue = Dialogic.start("%s Exit" % shopname)
+		if dialogue:
+			get_tree().root.add_child(dialogue)
+			yield(dialogue, "timeline_end")
+		
 	collision_layer = layer
 	collision_mask = mask
 	emit_signal("shop_exited", shop_trigger)
