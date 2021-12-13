@@ -45,6 +45,12 @@
 			"value": ""
 		},
 		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Normal",
+			"text": "Doing good today, Captain. How can I help you?"
+		},
+		{
 			"character": "character-1638066167.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
@@ -67,11 +73,23 @@
 			"value": ""
 		},
 		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Normal",
+			"text": "Of course! I’ll just get the stuff I need and head out of here as soon as I can. Thanks!"
+		},
+		{
 			"choice": "Oh, that would suck… Alright, I’ll get out of here soon then. See ya!",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Normal",
+			"text": "Oh, that would suck… Alright, I’ll get out of here soon then. See ya!"
 		},
 		{
 			"event_id": "dialogic_013"
@@ -82,6 +100,12 @@
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Nervous",
+			"text": "Um, good. Yeah, I’m doing good! How are you doing today?"
 		},
 		{
 			"character": "character-1638066167.json",
@@ -100,11 +124,23 @@
 			"value": ""
 		},
 		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Normal",
+			"text": "Got it! Just gonna… go on my merry way..."
+		},
+		{
 			"choice": "Right! Of course! The big, bad monster might get me, that would be so scary… Ok, bye!",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Normal",
+			"text": "Right! Of course! The big, bad monster might get me, that would be so scary… Ok, bye!"
 		},
 		{
 			"event_id": "dialogic_013"

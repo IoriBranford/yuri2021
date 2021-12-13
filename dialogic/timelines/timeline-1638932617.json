@@ -45,6 +45,12 @@
 			"value": ""
 		},
 		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Normal",
+			"text": "Actually, I’m also in a relationship!"
+		},
+		{
 			"character": "character-1638066167.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
@@ -56,6 +62,12 @@
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Normal",
+			"text": "You don’t look that strong. Also, me too."
 		},
 		{
 			"character": "character-1638066167.json",
@@ -74,6 +86,12 @@
 			"value": ""
 		},
 		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Normal",
+			"text": "I would be if you kept bothering me..."
+		},
+		{
 			"character": "",
 			"event_id": "dialogic_001",
 			"portrait": "",
@@ -85,6 +103,12 @@
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Nervous",
+			"text": "Well you see…"
 		},
 		{
 			"character": "",

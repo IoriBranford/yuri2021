@@ -45,6 +45,12 @@
 			"value": ""
 		},
 		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "(Don't change)",
+			"text": "Oh, well..."
+		},
+		{
 			"character": "character-1638066167.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
@@ -56,6 +62,12 @@
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "(Don't change)",
+			"text": "Actually I…"
 		},
 		{
 			"character": "character-1638066167.json",

@@ -45,6 +45,12 @@
 			"value": ""
 		},
 		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I mean, these shops are still open…"
+		},
+		{
 			"character": "character-1638066167.json",
 			"event_id": "dialogic_010",
 			"options": [
@@ -61,11 +67,23 @@
 			"value": ""
 		},
 		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Normal",
+			"text": "Oh, she is nice. I mean, I’ll get out of your hair now!"
+		},
+		{
 			"choice": "I’m sure nothing bad will happen to them!",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Normal",
+			"text": "I’m sure nothing bad will happen to them!"
 		},
 		{
 			"character": "character-1638066167.json",
@@ -82,6 +100,12 @@
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I don’t see any monsters."
 		},
 		{
 			"character": "character-1638066167.json",
