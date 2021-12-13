@@ -10,8 +10,9 @@ gradient = SubResource( 29 )
 
 [sub_resource type="ParticlesMaterial" id=31]
 direction = Vector3( 0, 0, 1 )
+spread = 15.0
 gravity = Vector3( 0, 2, 0 )
-initial_velocity = 1.0
+initial_velocity = 2.0
 color_ramp = SubResource( 30 )
 
 [sub_resource type="SpatialMaterial" id=27]
@@ -22,6 +23,11 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 albedo_texture = ExtResource( 1 )
+emission_enabled = true
+emission = Color( 0, 1, 1, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
 
 [sub_resource type="QuadMesh" id=32]
 material = SubResource( 27 )

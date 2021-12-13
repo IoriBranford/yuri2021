@@ -29,6 +29,11 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 albedo_texture = ExtResource( 1 )
+emission_enabled = true
+emission = Color( 0, 1, 1, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
 
 [sub_resource type="QuadMesh" id=35]
 material = SubResource( 1 )

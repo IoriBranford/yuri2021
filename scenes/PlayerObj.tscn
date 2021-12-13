@@ -97,12 +97,13 @@ material_override = SubResource( 19 )
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, 0 )
 
 [node name="MusicNotes" parent="HumanForm" instance=ExtResource( 5 )]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.5, 0.5 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.25, 0.5 )
 
 [node name="Chocolatebox" parent="HumanForm" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 
 [node name="KaijuForm" type="Spatial" parent="."]
+visible = false
 
 [node name="KaijuModel" type="MeshInstance" parent="KaijuForm"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.75, 0 )
