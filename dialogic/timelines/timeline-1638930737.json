@@ -5,11 +5,11 @@
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_002",
 			"mirror": false,
-			"portrait": "",
+			"portrait": "Human Normal",
 			"position": {
 				"0": false,
-				"1": true,
-				"2": false,
+				"1": false,
+				"2": true,
 				"3": false,
 				"4": false
 			}
@@ -25,7 +25,7 @@
 		{
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_001",
-			"portrait": "Human Normal",
+			"portrait": "(Don't change)",
 			"text": "Alright, I got the chocolates! She was there when they first invented chocolate, but I’m not sure if she loved it or hated it…"
 		},
 		{
