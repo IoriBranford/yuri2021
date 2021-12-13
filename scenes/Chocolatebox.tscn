@@ -3,8 +3,10 @@
 [ext_resource path="res://models/Chocolatebox.fbx" type="PackedScene" id=1]
 
 [sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 1, 0.25098, 0.25098, 1 )
 
 [sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 1, 0.752941, 0.752941, 1 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "idle_wobble"
