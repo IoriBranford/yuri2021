@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/i would be.ogg-ce22191d34f29986562e28f975242c0b.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_mika/i would be.ogg"
+dest_files=[ "res://.import/i would be.ogg-ce22191d34f29986562e28f975242c0b.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

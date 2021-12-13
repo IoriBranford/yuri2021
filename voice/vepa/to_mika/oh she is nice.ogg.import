@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/oh she is nice.ogg-54f01232c15cdfcf53eca479f5a5e170.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_mika/oh she is nice.ogg"
+dest_files=[ "res://.import/oh she is nice.ogg-54f01232c15cdfcf53eca479f5a5e170.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

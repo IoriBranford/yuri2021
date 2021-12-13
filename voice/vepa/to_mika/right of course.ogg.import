@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/right of course.ogg-d9587435b5a200c81ec4e001f5cab793.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_mika/right of course.ogg"
+dest_files=[ "res://.import/right of course.ogg-d9587435b5a200c81ec4e001f5cab793.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

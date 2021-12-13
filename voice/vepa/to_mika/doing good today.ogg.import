@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/doing good today.ogg-c4880046abec73ff6a4415964d6a28a6.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_mika/doing good today.ogg"
+dest_files=[ "res://.import/doing good today.ogg-c4880046abec73ff6a4415964d6a28a6.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

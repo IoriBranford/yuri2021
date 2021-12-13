@@ -45,6 +45,14 @@
 			"value": ""
 		},
 		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_mika/doing good today.ogg",
+			"volume": 0
+		},
+		{
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_001",
 			"portrait": "Human Normal",
@@ -73,6 +81,14 @@
 			"value": ""
 		},
 		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_mika/of course ill just get stuff.ogg",
+			"volume": 0
+		},
+		{
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_001",
 			"portrait": "Human Normal",
@@ -84,6 +100,14 @@
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
+		},
+		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_mika/oh that would suck.ogg",
+			"volume": 0
 		},
 		{
 			"character": "character-1638066149.json",
@@ -108,6 +132,14 @@
 			"text": "Um, good. Yeah, I’m doing good! How are you doing today?"
 		},
 		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_mika/umm good.ogg",
+			"volume": 0
+		},
+		{
 			"character": "character-1638066167.json",
 			"event_id": "dialogic_010",
 			"options": [
@@ -124,6 +156,14 @@
 			"value": ""
 		},
 		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_mika/got it just gonna go.ogg",
+			"volume": 0
+		},
+		{
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_001",
 			"portrait": "Human Normal",
@@ -135,6 +175,14 @@
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
+		},
+		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_mika/right of course.ogg",
+			"volume": 0
 		},
 		{
 			"character": "character-1638066149.json",

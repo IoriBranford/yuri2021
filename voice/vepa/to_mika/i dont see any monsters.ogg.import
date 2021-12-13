@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/i dont see any monsters.ogg-e6a12634324ae03a7709dfb91fb01d01.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_mika/i dont see any monsters.ogg"
+dest_files=[ "res://.import/i dont see any monsters.ogg-e6a12634324ae03a7709dfb91fb01d01.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

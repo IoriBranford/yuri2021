@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/of course ill just get stuff.ogg-debfbf961594e1977d9712d440388c95.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_mika/of course ill just get stuff.ogg"
+dest_files=[ "res://.import/of course ill just get stuff.ogg-debfbf961594e1977d9712d440388c95.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

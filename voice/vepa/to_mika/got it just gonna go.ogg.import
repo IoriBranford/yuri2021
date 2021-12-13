@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/got it just gonna go.ogg-781f3b92a70799e65985948ffb0b8b91.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_mika/got it just gonna go.ogg"
+dest_files=[ "res://.import/got it just gonna go.ogg-781f3b92a70799e65985948ffb0b8b91.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/oh well.ogg-27be1db0cc52c9bb96be4bf71a5674f8.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_mika/oh well.ogg"
+dest_files=[ "res://.import/oh well.ogg-27be1db0cc52c9bb96be4bf71a5674f8.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

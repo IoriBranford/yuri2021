@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/i mean shops are open.ogg-b81a1f8374a77fdba1bf0e28c2596642.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_mika/i mean shops are open.ogg"
+dest_files=[ "res://.import/i mean shops are open.ogg-b81a1f8374a77fdba1bf0e28c2596642.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
