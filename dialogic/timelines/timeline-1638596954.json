@@ -29,6 +29,14 @@
 			}
 		},
 		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_giftshop/hello.ogg",
+			"volume": 0
+		},
+		{
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_001",
 			"portrait": "(Don't change)",
@@ -51,6 +59,14 @@
 			"value": ""
 		},
 		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_giftshop/i totally get that.ogg",
+			"volume": 0
+		},
+		{
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_001",
 			"portrait": "(Don't change)",
@@ -63,6 +79,14 @@
 			"text": "I’m so funny. So what kind of chocolate is your date into?\nMaybe something light like the Milk and Cocoa Variety Box?\nOr maybe something with a little crunch, like this Nutty for Chocolate Date Mix?\nI also have some fudges in case you’re into that…"
 		},
 		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_giftshop/actually can I get two.ogg",
+			"volume": 0
+		},
+		{
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
@@ -73,6 +97,14 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "Oh wow, huge chocolate lovers, are we?"
+		},
+		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_giftshop/you could say that.ogg",
+			"volume": 0
 		},
 		{
 			"character": "character-1638066149.json",
@@ -94,6 +126,14 @@
 			"value": ""
 		},
 		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_giftshop/umm what do you mean.ogg",
+			"volume": 0
+		},
+		{
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_001",
 			"portrait": "Human Normal",
@@ -104,6 +144,14 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "You didn’t like the joke, did you?"
+		},
+		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_giftshop/its not that i didnt like it.ogg",
+			"volume": 0
 		},
 		{
 			"character": "character-1638066149.json",
@@ -118,6 +166,14 @@
 			"text": "Well, if a dog eats chocolate, they… y’know. Die."
 		},
 		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_giftshop/oh thats so sad.ogg",
+			"volume": 0
+		},
+		{
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_001",
 			"portrait": "Human Panic",
@@ -128,6 +184,14 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "I mean, I guess… Is there anything you wanted to get by the way? All of our variety boxes are on display over there."
+		},
+		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_giftshop/hm so many choices.ogg",
+			"volume": 0
 		},
 		{
 			"character": "character-1638066149.json",

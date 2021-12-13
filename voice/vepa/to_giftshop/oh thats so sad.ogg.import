@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/oh thats so sad.ogg-b702bacbc379b832d86e6ab93acc4fb7.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_giftshop/oh thats so sad.ogg"
+dest_files=[ "res://.import/oh thats so sad.ogg-b702bacbc379b832d86e6ab93acc4fb7.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

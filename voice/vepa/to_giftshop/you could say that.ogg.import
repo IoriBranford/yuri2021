@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/you could say that.ogg-d6d5db8e2b0a3b69c128f45123e23eec.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_giftshop/you could say that.ogg"
+dest_files=[ "res://.import/you could say that.ogg-d6d5db8e2b0a3b69c128f45123e23eec.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

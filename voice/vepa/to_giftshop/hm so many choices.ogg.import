@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/hm so many choices.ogg-0a91f9360238f8be8a736fbbfe450c4d.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_giftshop/hm so many choices.ogg"
+dest_files=[ "res://.import/hm so many choices.ogg-0a91f9360238f8be8a736fbbfe450c4d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

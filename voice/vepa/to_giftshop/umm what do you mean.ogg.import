@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/umm what do you mean.ogg-d1b4259ac7ca4f7e4b07945301f7155e.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_giftshop/umm what do you mean.ogg"
+dest_files=[ "res://.import/umm what do you mean.ogg-d1b4259ac7ca4f7e4b07945301f7155e.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

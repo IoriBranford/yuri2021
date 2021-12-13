@@ -15,10 +15,18 @@
 			}
 		},
 		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "res://voice/vepa/to_giftshop/alright i got chocolates.ogg",
+			"volume": 0
+		},
+		{
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_001",
 			"portrait": "Human Normal",
-			"text": "Alright, I got the chocolates!\nShe was there when they first invented chocolate, but I’m not sure if she loved it or hated it…"
+			"text": "Alright, I got the chocolates! She was there when they first invented chocolate, but I’m not sure if she loved it or hated it…"
 		},
 		{
 			"action": "leaveall",
