@@ -29,7 +29,7 @@ onready var girl_data = {
 }
 
 var obj_bullet = preload("res://scenes/PushWave.tscn")
-var girl_mode = "mika"
+var girl_mode = "Micah"
 var move_dir = Vector3.FORWARD
 var think_time = 5.0
 var state = MagGirlState.IDLE setget set_state

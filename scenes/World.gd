@@ -43,6 +43,7 @@ func set_state(value):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
 	$Hud.connect("girlfriend_timeout", self, "cutscene_fail")
 	$Player.add_to_group("player")
 	$Player.connect("shop_nearby", $Hud, "_on_Player_shop_nearby")
@@ -102,7 +103,7 @@ func _physics_process(delta):
 
 func new_patrol():
 	if state == WorldState.ACTIVE:
-		$NextPatrol.start((randi() % 3) + 1)
+		$NextPatrol.start((randi() % 5) + 2)
 
 func cutscene_intro():
 	self.state = WorldState.CUTSCENE
