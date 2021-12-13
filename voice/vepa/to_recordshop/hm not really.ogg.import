@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/hm not really.ogg-de4467052674468ba81708f073d11168.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_recordshop/hm not really.ogg"
+dest_files=[ "res://.import/hm not really.ogg-de4467052674468ba81708f073d11168.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

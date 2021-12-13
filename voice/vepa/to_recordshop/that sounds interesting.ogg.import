@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/that sounds interesting.ogg-cd2657f175a259b73536e7a16a02ff86.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_recordshop/that sounds interesting.ogg"
+dest_files=[ "res://.import/that sounds interesting.ogg-cd2657f175a259b73536e7a16a02ff86.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

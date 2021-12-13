@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/what was that song called.ogg-02fb8194d8cb442921478efe05a76b28.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_recordshop/what was that song called.ogg"
+dest_files=[ "res://.import/what was that song called.ogg-02fb8194d8cb442921478efe05a76b28.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

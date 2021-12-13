@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/yeah why not.ogg-1ff0c25c77501467b54dbdc2a2c46bab.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_recordshop/yeah why not.ogg"
+dest_files=[ "res://.import/yeah why not.ogg-1ff0c25c77501467b54dbdc2a2c46bab.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

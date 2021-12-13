@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/oh right she was like.ogg-21370df0d3500ba1b27e80b7951899de.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_recordshop/oh right she was like.ogg"
+dest_files=[ "res://.import/oh right she was like.ogg-21370df0d3500ba1b27e80b7951899de.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

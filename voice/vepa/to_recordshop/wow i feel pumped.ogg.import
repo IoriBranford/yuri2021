@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/wow i feel pumped.ogg-9d89616d52c6cc9f2916cb74ae871ad9.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_recordshop/wow i feel pumped.ogg"
+dest_files=[ "res://.import/wow i feel pumped.ogg-9d89616d52c6cc9f2916cb74ae871ad9.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

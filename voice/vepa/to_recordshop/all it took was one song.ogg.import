@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/all it took was one song.ogg-81ad2b26a21718cfa3458176defce896.oggstr"
+
+[deps]
+
+source_file="res://voice/vepa/to_recordshop/all it took was one song.ogg"
+dest_files=[ "res://.import/all it took was one song.ogg-81ad2b26a21718cfa3458176defce896.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
