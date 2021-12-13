@@ -13,7 +13,7 @@
 	"portraits": [
 		{
 			"name": "Default",
-			"path": ""
+			"path": "res://textures/portraits/rafa.png"
 		}
 	],
 	"scale": 100

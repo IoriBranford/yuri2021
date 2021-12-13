@@ -29,19 +29,19 @@
 		},
 		{
 			"name": "Human Freakout",
-			"path": "res://textures/portraits/WATER_KAIJU_PORTRAIT_HUMAN_FREAKING_01.png"
+			"path": "res://textures/portraits/vepa.png"
 		},
 		{
 			"name": "Human Nervous",
-			"path": "res://textures/portraits/WATER_KAIJU_PORTRAIT_HUMAN_NERVOUS_01.png"
+			"path": "res://textures/portraits/vepa.png"
 		},
 		{
 			"name": "Human Normal",
-			"path": "res://textures/portraits/WATER_KAIJU_PORTRAIT_HUMAN_NORMAL_01.png"
+			"path": "res://textures/portraits/vepa.png"
 		},
 		{
 			"name": "Human Panic",
-			"path": "res://textures/portraits/WATER_KAIJU_PORTRAIT_HUMAN_PANIC_01.png"
+			"path": "res://textures/portraits/vepa.png"
 		}
 	],
 	"scale": 50

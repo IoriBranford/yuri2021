@@ -13,11 +13,11 @@
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://textures/portraits/LAND_KAIJU_PORTRAIT_NORMAL_01.png"
+			"path": "res://textures/portraits/dvine.png"
 		},
 		{
 			"name": "Talk",
-			"path": "res://textures/portraits/LAND_KAIJU_PORTRAIT_NORMAL_TALKING_01.png"
+			"path": "res://textures/portraits/dvine.png"
 		},
 		{
 			"name": "Angry",
