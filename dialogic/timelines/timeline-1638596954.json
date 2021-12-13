@@ -51,6 +51,12 @@
 			"value": ""
 		},
 		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "(Don't change)",
+			"text": "Ahahaha, I totally get that joke."
+		},
+		{
 			"character": "character-1638929300.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
@@ -88,6 +94,12 @@
 			"value": ""
 		},
 		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Normal",
+			"text": "Umm, what do you mean?"
+		},
+		{
 			"character": "character-1638929300.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
@@ -108,7 +120,7 @@
 		{
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_001",
-			"portrait": "(Don't change)",
+			"portrait": "Human Panic",
 			"text": "Oh, that’s so sad!"
 		},
 		{

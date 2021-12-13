@@ -51,6 +51,12 @@
 			"value": ""
 		},
 		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "(Don't change)",
+			"text": "I really like rock music!"
+		},
+		{
 			"character": "character-1639108113.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
@@ -98,6 +104,12 @@
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "(Don't change)",
+			"text": "I really like R&B!"
 		},
 		{
 			"character": "character-1639108113.json",
