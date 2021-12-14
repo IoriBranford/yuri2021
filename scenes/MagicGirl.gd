@@ -91,6 +91,8 @@ func _ready():
 	patrol_timer.start(patrol_time)
 
 func smooth_look_at(target, up):
+	if transform.origin == target:
+		return
 	var quat = Quat(transform.basis)
 	var destquat = Quat(transform.looking_at(target, up).basis)
 	quat = quat.slerp(destquat, 0.5)
@@ -105,8 +107,8 @@ func _process(delta):
 				patrol_timer.start(patrol_time)
 				self.state = MagGirlState.PATROL
 			else:
+				smooth_look_at(Vector3(start_pos.x, 0, start_pos.z), Vector3.UP)
 				global_transform.origin = global_transform.origin.move_toward(start_pos, delta * MOVE_SPEED * 2)
-				smooth_look_at(start_pos, Vector3.UP)
 		MagGirlState.PATROL:
 			target_los = check_los()
 			global_transform.origin = global_transform.origin.move_toward(patrol_point, delta * MOVE_SPEED)
@@ -162,7 +164,7 @@ func _process(delta):
 				emit_signal("patrol_done")
 			else:
 				global_transform.origin = global_transform.origin.move_toward(home_pos, delta * MOVE_SPEED * 2)
-			smooth_look_at(Vector3(home_pos.x, global_transform.origin.y, home_pos.z), Vector3.UP)
+			smooth_look_at(Vector3(home_pos.x, 0, home_pos.z), Vector3.UP)
 		MagGirlState.SWATTED:
 			if global_transform.origin == home_pos:
 				girl_data[girl_mode].model.rotation_degrees = Vector3.ZERO
