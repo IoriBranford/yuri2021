@@ -49,8 +49,7 @@ func move_player(delta):
 			0,
 			Input.get_axis("ui_right", "ui_left"))
 		if Input.is_action_just_pressed("player_attack"):
-			if nearby_shop:
-				visit_shop(nearby_shop)
+			if nearby_shop && visit_shop(nearby_shop):
 				move_dir = Vector3.ZERO
 			else:
 				melee_attack()
@@ -216,6 +215,8 @@ func visit_shop(shop_trigger):
 		if !visited_shops[shop_trigger.name]:
 			co_state = co_visit_shop(shop_trigger)
 			emit_signal("shop_entered", shop_trigger)
+			return true
+	return false
 	
 func _on_shoparea_body_entered(body, shop_trigger):
 	if self == body:
