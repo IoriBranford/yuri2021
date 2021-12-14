@@ -80,6 +80,7 @@ extents = Vector3( 3, 1, 1 )
 extents = Vector3( 3, 1, 1 )
 
 [sub_resource type="ProceduralSky" id=16]
+sun_energy = 50.0
 
 [sub_resource type="Environment" id=17]
 background_mode = 2
