@@ -10,9 +10,12 @@ onready var menu_items = [
 	$TitleScreen/Main/Menu/Quit
 ]
 
+export var bigfoot_shake_amplitude = .25
+
 var menu_index = 0
 var state = WorldState.TITLE setget set_state
 var sound_on = true
+var cam_shake = 0
 
 func set_state(value):
 	if state == WorldState.CUTSCENE && value != WorldState.CUTSCENE:
@@ -57,6 +60,8 @@ func _ready():
 
 func _physics_process(delta):
 	$CamBase.translation = $Player.translation
+	cam_shake = max(0, cam_shake - delta)
+	$CamBase.translation.y += cam_shake*cos(15*PI*OS.get_ticks_msec()/1000)
 	match state:
 		WorldState.TITLE:
 			if Input.is_action_just_pressed("player_attack"):
@@ -186,3 +191,7 @@ func _on_Player_shop_entered(shop):
 
 func _on_Player_shop_exited(shop):
 	self.state = WorldState.ACTIVE
+
+func _on_Player_footstep(is_kaiju):
+	if is_kaiju:
+		cam_shake = bigfoot_shake_amplitude

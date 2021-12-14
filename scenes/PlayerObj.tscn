@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/PlayerObj.gd" type="Script" id=1]
 [ext_resource path="res://models/oceankaiju_human_form.fbx" type="PackedScene" id=2]
@@ -24,16 +24,20 @@ height = 1.5
 mid_height = 1.5
 
 [sub_resource type="Gradient" id=12]
-colors = PoolColorArray( 0, 1, 1, 1, 0, 0, 1, 0 )
+colors = PoolColorArray( 0.501961, 0.501961, 0.501961, 1, 0.501961, 0.501961, 0.501961, 0 )
 
 [sub_resource type="GradientTexture" id=5]
 gradient = SubResource( 12 )
 
-[sub_resource type="ParticlesMaterial" id=13]
+[sub_resource type="ParticlesMaterial" id=25]
+emission_shape = 5
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 1.0
+emission_ring_height = 1.0
+emission_ring_axis = Vector3( 0, 1, 0 )
 direction = Vector3( 0, 1, 0 )
-spread = 30.0
-gravity = Vector3( 0, 1, 0 )
-initial_velocity = 5.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 2.0
 angular_velocity = 100.0
 color_ramp = SubResource( 5 )
 
@@ -50,6 +54,14 @@ albedo_texture = ExtResource( 3 )
 [sub_resource type="QuadMesh" id=14]
 material = SubResource( 7 )
 size = Vector2( 2, 2 )
+
+[sub_resource type="ParticlesMaterial" id=13]
+direction = Vector3( 0, 1, 0 )
+spread = 30.0
+gravity = Vector3( 0, 1, 0 )
+initial_velocity = 5.0
+angular_velocity = 100.0
+color_ramp = SubResource( 5 )
 
 [sub_resource type="Animation" id=15]
 tracks/0/type = "transform"
@@ -121,6 +133,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1 )
 [node name="Chocolatebox" parent="KaijuForm" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0 )
 
+[node name="FootstepDust" type="Particles" parent="KaijuForm"]
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 25 )
+draw_pass_1 = SubResource( 14 )
+
 [node name="SmokePuff" type="Particles" parent="."]
 emitting = false
 amount = 32
@@ -144,6 +164,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23295, 0 )
 script = ExtResource( 8 )
 event = 547923121
 
+[node name="Attack" type="Spatial" parent="PlayerSFX"]
+script = ExtResource( 8 )
+event = 3668868096
+
 [node name="Revert" type="Spatial" parent="PlayerSFX"]
 script = ExtResource( 8 )
 event = 3572203593
@@ -151,6 +175,10 @@ event = 3572203593
 [node name="Footstep" type="Spatial" parent="PlayerSFX"]
 script = ExtResource( 8 )
 event = 1547342906
+
+[node name="WaterFootstep" type="Spatial" parent="PlayerSFX"]
+script = ExtResource( 8 )
+event = 1691912013
 
 [connection signal="timeout" from="Knockback" to="." method="_on_Knockback_timeout"]
 

@@ -10,6 +10,7 @@ export var GRAVITY = 8
 signal transformation_updated
 signal shop_nearby
 signal no_shop_nearby
+signal footstep(is_kaiju)
 
 const COLL_KAIJU = {"translate":Vector3(0, 1.75, 0), "radius":1, "height":1.5}
 const COLL_HUMAN = {"translate":Vector3(0, 0.875, 0), "radius":0.75, "height":0.25}
@@ -30,6 +31,7 @@ var at_salon = false
 var at_gift = false
 var at_record = false
 var footstep_timer = 0
+var in_water = false
 
 func smooth_look_at(target, up):
 	var quat = Quat(transform.basis)
@@ -84,6 +86,7 @@ func melee_attack():
 	var inst_melee = obj_melee.instance()
 	add_child(inst_melee)
 	inst_melee.translation = Vector3(0, 1, -3)
+	$PlayerSFX/Attack.post_event()
 
 func change_form():
 	is_transformed = !is_transformed
@@ -224,9 +227,23 @@ func _on_shoparea_body_exited(body, shop_trigger):
 		if shop_trigger == nearby_shop:
 			nearby_shop = null
 			emit_signal("no_shop_nearby")
-			
+
+func _on_Water_body_entered(body):
+	if self == body:
+		in_water = true
+
+func _on_Water_body_exited(body):
+	if self == body:
+		in_water = false
+
 func sfx_footstep(delta):
 	if footstep_timer > FOOTSTEP_SPEED:
-		$PlayerSFX/Footstep.post_event()
+		emit_signal("footstep", !is_transformed)
+		if in_water:
+			$PlayerSFX/WaterFootstep.post_event()
+		else:
+			$PlayerSFX/Footstep.post_event()
+			$KaijuForm/FootstepDust.emitting = true
+			$KaijuForm/FootstepDust.restart()
 		footstep_timer = 0
 	footstep_timer += delta
