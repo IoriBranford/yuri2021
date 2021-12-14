@@ -55,26 +55,32 @@ func get_next_pester_dialogue_name():
 		num_pesters[girl_mode] += 1
 	return name
 
+func set_color(model, color):
+	if model is MeshInstance:
+		model.material_override.albedo_color = color
+	for child in model.get_children():
+		set_color(child, color)
+
 func set_state(value):
 	match value:
 		MagGirlState.PATROL:
 			is_attacking = false
 			is_pestering = false
 			alert = 0
-			girl_data[girl_mode].model.material_override.albedo_color = Color(0, 0, 1)
+			set_color(girl_data[girl_mode].model, Color(0, 0, 1))
 			$SightCone.visible = true
 		MagGirlState.SEARCH:
 			is_attacking = false
 			is_pestering = false
-			girl_data[girl_mode].model.material_override.albedo_color = Color(1, 1, 0)
+			set_color(girl_data[girl_mode].model, Color(1, 1, 0))
 			$SightCone.visible = true
 		MagGirlState.ATTACK, MagGirlState.PESTER:
-			girl_data[girl_mode].model.material_override.albedo_color = Color(1, 0, 0)
+			set_color(girl_data[girl_mode].model, Color(1, 0, 0))
 			$SightCone.visible = false
 		_:
 			patrol_timer.stop()
 			attack_timer.stop()
-			girl_data[girl_mode].model.material_override.albedo_color = Color(1, 1, 1)
+			set_color(girl_data[girl_mode].model, Color(1, 1, 1))
 			$SightCone.visible = false
 	state = value
 	emit_signal("update_hud", self)
@@ -83,6 +89,12 @@ func set_state(value):
 func _ready():
 	global_transform.origin = home_pos
 	patrol_timer.start(patrol_time)
+
+func smooth_look_at(target, up):
+	var quat = Quat(transform.basis)
+	var destquat = Quat(transform.looking_at(target, up).basis)
+	quat = quat.slerp(destquat, 0.5)
+	transform.basis = Basis(quat)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -94,9 +106,11 @@ func _process(delta):
 				self.state = MagGirlState.PATROL
 			else:
 				global_transform.origin = global_transform.origin.move_toward(start_pos, delta * MOVE_SPEED * 2)
+				smooth_look_at(start_pos, Vector3.UP)
 		MagGirlState.PATROL:
 			target_los = check_los()
 			global_transform.origin = global_transform.origin.move_toward(patrol_point, delta * MOVE_SPEED)
+			smooth_look_at(global_transform.origin + Vector3.RIGHT, Vector3.UP)
 			if global_transform.origin == patrol_point:
 				find_dir()
 			if target_in_cone && target_los:
@@ -104,6 +118,7 @@ func _process(delta):
 				patrol_timer.paused = true
 				self.state = MagGirlState.SEARCH
 		MagGirlState.SEARCH:
+			smooth_look_at(global_transform.origin + Vector3.RIGHT, Vector3.UP)
 			target_los = check_los()
 			if target_in_cone && target_los:
 				alert += ALERT_RATE
@@ -128,6 +143,7 @@ func _process(delta):
 				global_transform.origin = my_pos.move_toward(move_to, delta * MOVE_SPEED * 2)
 			elif abs(player_pos.z - my_pos.z) > ATTACK_DISTANCE:
 				global_transform.origin = my_pos.move_toward(move_to, delta * MOVE_SPEED)
+			smooth_look_at(Vector3(player_pos.x, global_transform.origin.y, player_pos.z), Vector3.UP)
 		MagGirlState.PESTER:
 			var my_pos = global_transform.origin
 			var player_pos = get_tree().get_nodes_in_group("player")[0].global_transform.origin
@@ -139,15 +155,17 @@ func _process(delta):
 				global_transform.origin = my_pos.move_toward(move_to, delta * MOVE_SPEED)
 			else:
 				emit_signal("pester")
+			smooth_look_at(Vector3(player_pos.x, global_transform.origin.y, player_pos.z), Vector3.UP)
 		MagGirlState.FLY_OUT:
 			if global_transform.origin == home_pos:
 				self.state = MagGirlState.IDLE
 				emit_signal("patrol_done")
 			else:
 				global_transform.origin = global_transform.origin.move_toward(home_pos, delta * MOVE_SPEED * 2)
+			smooth_look_at(Vector3(home_pos.x, global_transform.origin.y, home_pos.z), Vector3.UP)
 		MagGirlState.SWATTED:
 			if global_transform.origin == home_pos:
-				girl_data[girl_mode].model.rotation_degrees = Vector3(-90, 0, 0)
+				girl_data[girl_mode].model.rotation_degrees = Vector3.ZERO
 				self.state = MagGirlState.IDLE
 				emit_signal("patrol_done")
 			else:
