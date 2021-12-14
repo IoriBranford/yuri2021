@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://models/MeshLibrary.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://scenes/World.gd" type="Script" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://ui/1980v202001.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://wwise/runtime/nodes/ak_bank.gd" type="Script" id=7]
 [ext_resource path="res://wwise/runtime/nodes/ak_event_2d.gd" type="Script" id=8]
+[ext_resource path="res://scenes/Shop.tscn" type="PackedScene" id=9]
+[ext_resource path="res://ui/present.png" type="Texture" id=10]
+[ext_resource path="res://ui/musical-notes.png" type="Texture" id=11]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 6, 2, 80 )
@@ -44,6 +47,9 @@ albedo_color = Color( 0, 0.586667, 0.8, 0.501961 )
 [sub_resource type="CubeMesh" id=25]
 size = Vector3( 6, 2, 22 )
 
+[sub_resource type="ConvexPolygonShape" id=28]
+points = PoolVector3Array( 3, 1, 11, 3, -1, 11, 3, 1, -11, -3, 1, 11, -3, -1, 11, 3, -1, -11, -3, 1, -11, -3, -1, -11 )
+
 [sub_resource type="Gradient" id=12]
 offsets = PoolRealArray( 0, 0.25, 0.75, 1 )
 colors = PoolColorArray( 0, 0, 0, 1, 0, 0.5, 0.5, 1, 0, 0.501961, 0.501961, 1, 0, 0, 0, 1 )
@@ -72,8 +78,6 @@ extents = Vector3( 3, 1, 1 )
 
 [sub_resource type="BoxShape" id=6]
 extents = Vector3( 3, 1, 1 )
-
-[sub_resource type="BoxShape" id=7]
 
 [sub_resource type="ProceduralSky" id=16]
 
@@ -141,11 +145,17 @@ mesh = SubResource( 23 )
 skeleton = NodePath("../..")
 material/0 = null
 
-[node name="Water" type="MeshInstance" parent="."]
+[node name="Water" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 51 )
+
+[node name="WaterMesh" type="MeshInstance" parent="Water"]
 material_override = SubResource( 24 )
 mesh = SubResource( 25 )
+skeleton = NodePath("../..")
 material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Water"]
+shape = SubResource( 28 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 60 )
@@ -447,23 +457,20 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40 )
 [node name="CollisionShape" type="CollisionShape" parent="FinishLine"]
 shape = SubResource( 6 )
 
-[node name="Salon" type="Area" parent="."]
+[node name="Salon" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -16 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Salon"]
-shape = SubResource( 7 )
-
-[node name="GiftShop" type="Area" parent="."]
+[node name="GiftShop" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 16 )
 
-[node name="CollisionShape" type="CollisionShape" parent="GiftShop"]
-shape = SubResource( 7 )
+[node name="Sprite3D" parent="GiftShop/Inside" index="0"]
+texture = ExtResource( 10 )
 
-[node name="RecordShop" type="Area" parent="."]
+[node name="RecordShop" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
-[node name="CollisionShape" type="CollisionShape" parent="RecordShop"]
-shape = SubResource( 7 )
+[node name="Sprite3D" parent="RecordShop/Inside" index="0"]
+texture = ExtResource( 11 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 17 )
@@ -484,7 +491,13 @@ shape = SubResource( 27 )
 script = ExtResource( 7 )
 bank = 3909625241
 
+[connection signal="body_entered" from="Water" to="Player" method="_on_Water_body_entered"]
+[connection signal="body_exited" from="Water" to="Player" method="_on_Water_body_exited"]
+[connection signal="footstep" from="Player" to="." method="_on_Player_footstep"]
 [connection signal="got_item" from="Player" to="Hud" method="_on_player_got_item"]
+[connection signal="got_item" from="Player" to="Salon" method="_on_Player_got_item"]
+[connection signal="got_item" from="Player" to="GiftShop" method="_on_Player_got_item"]
+[connection signal="got_item" from="Player" to="RecordShop" method="_on_Player_got_item"]
 [connection signal="shop_entered" from="Player" to="." method="_on_Player_shop_entered"]
 [connection signal="shop_exited" from="Player" to="." method="_on_Player_shop_exited"]
 [connection signal="transformation_updated" from="Player" to="Hud" method="_on_Player_transformation_updated"]
@@ -492,3 +505,6 @@ bank = 3909625241
 [connection signal="timeout" from="Attack" to="." method="_on_Attack_timeout"]
 [connection signal="body_exited" from="OceanEnd" to="." method="_on_OceanEnd_body_exited"]
 [connection signal="body_exited" from="FinishLine" to="." method="_on_FinishLine_body_exited"]
+
+[editable path="GiftShop"]
+[editable path="RecordShop"]
