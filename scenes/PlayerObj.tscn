@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/PlayerObj.gd" type="Script" id=1]
 [ext_resource path="res://models/oceankaiju_human_form.fbx" type="PackedScene" id=2]
@@ -17,11 +17,6 @@ height = 1.5
 [sub_resource type="SpatialMaterial" id=18]
 
 [sub_resource type="SpatialMaterial" id=19]
-
-[sub_resource type="SpatialMaterial" id=16]
-
-[sub_resource type="CapsuleMesh" id=24]
-mid_height = 1.5
 
 [sub_resource type="Gradient" id=12]
 colors = PoolColorArray( 0.501961, 0.501961, 0.501961, 1, 0.501961, 0.501961, 0.501961, 0 )
@@ -115,14 +110,10 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.25, 0.5 )
 [node name="Chocolatebox" parent="HumanForm" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 
-[node name="KaijuForm" type="Spatial" parent="."]
+[node name="KaijuForm" parent="." instance=ExtResource( 2 )]
 
-[node name="KaijuModel" type="MeshInstance" parent="KaijuForm"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.75, 0 )
-material_override = SubResource( 16 )
-mesh = SubResource( 24 )
-skeleton = NodePath("../..")
-material/0 = null
+[node name="RootNode" parent="KaijuForm" index="0"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
 [node name="SalonSparkle" parent="KaijuForm" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
@@ -183,3 +174,4 @@ event = 1691912013
 [connection signal="timeout" from="Knockback" to="." method="_on_Knockback_timeout"]
 
 [editable path="HumanForm"]
+[editable path="KaijuForm"]
