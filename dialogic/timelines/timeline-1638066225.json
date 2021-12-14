@@ -5,7 +5,7 @@
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_002",
 			"mirror": false,
-			"portrait": "Kaiju Panic",
+			"portrait": "Human Normal",
 			"position": {
 				"0": true,
 				"1": false,
@@ -19,7 +19,7 @@
 			"character": "character-1638066160.json",
 			"event_id": "dialogic_002",
 			"mirror": false,
-			"portrait": "Worried",
+			"portrait": "Default",
 			"position": {
 				"0": false,
 				"1": false,
@@ -37,19 +37,19 @@
 		{
 			"character": "character-1638066160.json",
 			"event_id": "dialogic_001",
-			"portrait": "Default",
+			"portrait": "(Don't change)",
 			"text": "Ah don't worry about it, babe. You made it, didnt'cha? Anyway, y'look good! LOVE the haircut!"
 		},
 		{
 			"character": "character-1638066149.json",
 			"event_id": "dialogic_001",
-			"portrait": "Default",
+			"portrait": "(Don't change)",
 			"text": "Hehe, thanks! Want some chocolates?"
 		},
 		{
 			"character": "character-1638066160.json",
 			"event_id": "dialogic_001",
-			"portrait": "Talk",
+			"portrait": "(Don't change)",
 			"text": "Aww, you got me truffles? You're the best!"
 		},
 		{
