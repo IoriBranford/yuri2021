@@ -248,3 +248,24 @@ func sfx_footstep(delta):
 			$KaijuForm/FootstepDust.restart()
 		footstep_timer = 0
 	footstep_timer += delta
+
+func crush_building_underfoot(gridmap:GridMap):
+	if is_transformed:
+		return
+	var cell = gridmap.world_to_map(global_transform.origin)
+	for y in range(cell.y, -1, -1):
+		var cell_item = gridmap.get_cell_item(cell.x, y, cell.z)
+		if cell_item == gridmap.INVALID_CELL_ITEM:
+			continue
+		var mesh_name = gridmap.mesh_library.get_item_name(cell_item)
+		if mesh_name.begins_with("road_") || mesh_name.begins_with("tile_"):
+			break
+		gridmap.set_cell_item(cell.x, y, cell.z, gridmap.INVALID_CELL_ITEM)
+		$PlayerSFX/WaterFootstep.post_event()
+		var smoke = gridmap.get_node_or_null("SmokePuff") as Particles
+		if !smoke:
+			break
+		smoke.translation = gridmap.map_to_world(cell.x, y, cell.z)
+		smoke.emitting = true
+		smoke.restart()
+		break

@@ -97,6 +97,7 @@ func _physics_process(delta):
 					menu_items[i].modulate = Color(1,1,1)
 		WorldState.START, WorldState.ACTIVE:
 			$Player.move_player(delta)
+			$Player.crush_building_underfoot($GridMap)
 		WorldState.CUTSCENE:
 			pass
 		WorldState.FAIL:
