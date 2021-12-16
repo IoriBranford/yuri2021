@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://models/MeshLibrary.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://scenes/World.gd" type="Script" id=2]
@@ -13,6 +13,14 @@
 [ext_resource path="res://ui/musical-notes.png" type="Texture" id=11]
 [ext_resource path="res://textures/particles/smoke_01.png" type="Texture" id=12]
 [ext_resource path="res://ui/Kaiju-logo.png" type="Texture" id=13]
+[ext_resource path="res://addons/zylann.hterrain/hterrain_texture_set.gd" type="Script" id=14]
+[ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=15]
+[ext_resource path="res://terrain/data.hterrain" type="Resource" id=16]
+
+[sub_resource type="Resource" id=35]
+script = ExtResource( 14 )
+mode = 0
+textures = [ [  ], [  ] ]
 
 [sub_resource type="Gradient" id=29]
 colors = PoolColorArray( 0.501961, 0.501961, 0.501961, 1, 0.501961, 0.501961, 0.501961, 0 )
@@ -48,7 +56,7 @@ material = SubResource( 7 )
 size = Vector2( 2, 2 )
 
 [sub_resource type="CubeMesh" id=1]
-size = Vector3( 6, 2, 80 )
+size = Vector3( 64, 2, 80 )
 
 [sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.5, 0.5, 0.5, 1 )
@@ -63,24 +71,14 @@ points = PoolVector3Array( 3, 1, 11, 3, -1, 11, 3, 1, -11, -3, 1, 11, -3, -1, 11
 albedo_color = Color( 0, 0.4, 0.4, 1 )
 
 [sub_resource type="CubeMesh" id=20]
-size = Vector3( 6, 2, 22 )
-
-[sub_resource type="ConvexPolygonShape" id=21]
-points = PoolVector3Array( -3, -1, -2.95, -3, -1, 2.95, 3, 1, -2.95, 3, -1, -2.95, 3, -1, 2.95, 3, 1, 2.95 )
-
-[sub_resource type="SpatialMaterial" id=22]
-albedo_color = Color( 0.8, 0.666667, 0.4, 1 )
-
-[sub_resource type="PrismMesh" id=23]
-left_to_right = 1.0
-size = Vector3( 6, 2, 5.9 )
+size = Vector3( 64, 2, 64 )
 
 [sub_resource type="SpatialMaterial" id=24]
 flags_transparent = true
 albedo_color = Color( 0, 0.586667, 0.8, 0.501961 )
 
 [sub_resource type="CubeMesh" id=25]
-size = Vector3( 6, 2, 22 )
+size = Vector3( 64, 2, 64 )
 
 [sub_resource type="ConvexPolygonShape" id=28]
 points = PoolVector3Array( 3, 1, 11, 3, -1, 11, 3, 1, -11, -3, 1, 11, -3, -1, 11, 3, -1, -11, -3, 1, -11, -3, -1, -11 )
@@ -126,6 +124,23 @@ extents = Vector3( 1, 1, 64 )
 [node name="World" type="Spatial"]
 script = ExtResource( 2 )
 
+[node name="HTerrain" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -128 )
+script = ExtResource( 15 )
+_terrain_data = ExtResource( 16 )
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource( 35 )
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = false
+shader_params/u_tile_reduction = Plane( 0, 0, 0, 0 )
+
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource( 1 )
 cell_size = Vector3( 1, 1, 1 )
@@ -153,6 +168,7 @@ draw_pass_1 = SubResource( 34 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 
 [node name="GroundMesh" type="MeshInstance" parent="Ground"]
+visible = false
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
 
@@ -166,22 +182,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 51 )
 shape = SubResource( 18 )
 
 [node name="Mesh" type="MeshInstance" parent="Seabed"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 51 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.5, 72 )
 material_override = SubResource( 19 )
 mesh = SubResource( 20 )
-skeleton = NodePath("../..")
-material/0 = null
-
-[node name="Beach" type="StaticBody" parent="."]
-
-[node name="CollisionShape" type="CollisionShape" parent="Beach"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, 43 )
-shape = SubResource( 21 )
-
-[node name="Mesh" type="MeshInstance" parent="Beach"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1, 43 )
-material_override = SubResource( 22 )
-mesh = SubResource( 23 )
 skeleton = NodePath("../..")
 material/0 = null
 
@@ -189,6 +192,7 @@ material/0 = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 51 )
 
 [node name="WaterMesh" type="MeshInstance" parent="Water"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 21 )
 material_override = SubResource( 24 )
 mesh = SubResource( 25 )
 skeleton = NodePath("../..")
@@ -235,19 +239,17 @@ __meta__ = {
 }
 
 [node name="Title" type="VBoxContainer" parent="TitleScreen/Main"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 32.0
-margin_bottom = -240.0
+margin_top = 78.0
+margin_right = 1280.0
+margin_bottom = 522.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Title" type="TextureRect" parent="TitleScreen/Main/Title"]
-margin_top = 2.0
 margin_right = 1280.0
-margin_bottom = 391.0
+margin_bottom = 389.0
 texture = ExtResource( 13 )
 stretch_mode = 4
 __meta__ = {
@@ -255,15 +257,15 @@ __meta__ = {
 }
 
 [node name="Subtitle" type="Label" parent="TitleScreen/Main/Title"]
-margin_top = 395.0
+margin_top = 393.0
 margin_right = 1280.0
-margin_bottom = 446.0
+margin_bottom = 444.0
 custom_fonts/font = SubResource( 14 )
 text = "A YuriJam 2021 Game"
 align = 1
 
 [node name="Menu" type="VBoxContainer" parent="TitleScreen/Main"]
-margin_top = 480.0
+margin_top = 526.0
 margin_right = 1280.0
 margin_bottom = 642.0
 alignment = 1
@@ -272,33 +274,32 @@ __meta__ = {
 }
 
 [node name="Start" type="Label" parent="TitleScreen/Main/Menu"]
-margin_top = 23.0
 margin_right = 1280.0
-margin_bottom = 49.0
+margin_bottom = 26.0
 custom_fonts/font = SubResource( 11 )
 text = "Start"
 align = 1
 
 [node name="Sound" type="Label" parent="TitleScreen/Main/Menu"]
-margin_top = 53.0
+margin_top = 30.0
 margin_right = 1280.0
-margin_bottom = 79.0
+margin_bottom = 56.0
 custom_fonts/font = SubResource( 11 )
 text = "Sound: On"
 align = 1
 
 [node name="Credit" type="Label" parent="TitleScreen/Main/Menu"]
-margin_top = 83.0
+margin_top = 60.0
 margin_right = 1280.0
-margin_bottom = 109.0
+margin_bottom = 86.0
 custom_fonts/font = SubResource( 11 )
 text = "Credits"
 align = 1
 
 [node name="Quit" type="Label" parent="TitleScreen/Main/Menu"]
-margin_top = 113.0
+margin_top = 90.0
 margin_right = 1280.0
-margin_bottom = 139.0
+margin_bottom = 116.0
 custom_fonts/font = SubResource( 11 )
 text = "Quit"
 align = 1
