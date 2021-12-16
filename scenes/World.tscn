@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://models/MeshLibrary.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://scenes/World.gd" type="Script" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://addons/zylann.hterrain/hterrain_texture_set.gd" type="Script" id=14]
 [ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=15]
 [ext_resource path="res://terrain/data.hterrain" type="Resource" id=16]
+[ext_resource path="res://sounds/quest_success.ogg" type="AudioStream" id=17]
+[ext_resource path="res://sounds/quest_fail.ogg" type="AudioStream" id=18]
 
 [sub_resource type="Resource" id=35]
 script = ExtResource( 14 )
@@ -242,9 +244,9 @@ __meta__ = {
 }
 
 [node name="Title" type="VBoxContainer" parent="TitleScreen/Main"]
-margin_top = 78.0
+margin_top = 93.0
 margin_right = 1280.0
-margin_bottom = 522.0
+margin_bottom = 537.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -268,9 +270,9 @@ text = "A YuriJam 2021 Game"
 align = 1
 
 [node name="Menu" type="VBoxContainer" parent="TitleScreen/Main"]
-margin_top = 526.0
+margin_top = 541.0
 margin_right = 1280.0
-margin_bottom = 642.0
+margin_bottom = 627.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -283,44 +285,51 @@ custom_fonts/font = SubResource( 11 )
 text = "Start"
 align = 1
 
-[node name="Sound" type="Label" parent="TitleScreen/Main/Menu"]
+[node name="Credit" type="Label" parent="TitleScreen/Main/Menu"]
 margin_top = 30.0
 margin_right = 1280.0
 margin_bottom = 56.0
-custom_fonts/font = SubResource( 11 )
-text = "Sound: On"
-align = 1
-
-[node name="Credit" type="Label" parent="TitleScreen/Main/Menu"]
-margin_top = 60.0
-margin_right = 1280.0
-margin_bottom = 86.0
 custom_fonts/font = SubResource( 11 )
 text = "Credits"
 align = 1
 
 [node name="Quit" type="Label" parent="TitleScreen/Main/Menu"]
-margin_top = 90.0
+margin_top = 60.0
 margin_right = 1280.0
-margin_bottom = 116.0
+margin_bottom = 86.0
 custom_fonts/font = SubResource( 11 )
 text = "Quit"
 align = 1
 
-[node name="Menu SFX" type="Node2D" parent="TitleScreen/Main/Menu"]
-position = Vector2( -148, -384.5 )
+[node name="MenuSFX" type="Node2D" parent="TitleScreen/Main"]
+position = Vector2( -148, 156.5 )
 
-[node name="Enter Menu" type="Node2D" parent="TitleScreen/Main/Menu/Menu SFX"]
+[node name="Enter Menu" type="Node2D" parent="TitleScreen/Main/MenuSFX"]
 script = ExtResource( 8 )
 event = 3559787777
 
-[node name="Scroll Menu" type="Node2D" parent="TitleScreen/Main/Menu/Menu SFX"]
+[node name="Scroll Menu" type="Node2D" parent="TitleScreen/Main/MenuSFX"]
 script = ExtResource( 8 )
 event = 329813420
 
-[node name="Exit Menu" type="Node2D" parent="TitleScreen/Main/Menu/Menu SFX"]
+[node name="Exit Menu" type="Node2D" parent="TitleScreen/Main/MenuSFX"]
 script = ExtResource( 8 )
 event = 1690420221
+
+[node name="Unused" type="Control" parent="TitleScreen/Main"]
+visible = false
+margin_top = 629.0
+margin_right = 1280.0
+margin_bottom = 629.0
+
+[node name="Sound" type="Label" parent="TitleScreen/Main/Unused"]
+visible = false
+margin_top = -60.0
+margin_right = 1280.0
+margin_bottom = -34.0
+custom_fonts/font = SubResource( 11 )
+text = "Sound: On"
+align = 1
 
 [node name="CreditScreen" type="TextureRect" parent="."]
 visible = false
@@ -450,6 +459,11 @@ bank = 3909625241
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( -0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 4, 0 )
 shadow_enabled = true
+
+[node name="WinLoseSoundPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="WinLoseSoundPlayer"]
+resources = [ PoolStringArray( "quest_fail", "quest_success" ), [ ExtResource( 18 ), ExtResource( 17 ) ] ]
 
 [connection signal="body_entered" from="Water" to="Player" method="_on_Water_body_entered"]
 [connection signal="body_exited" from="Water" to="Player" method="_on_Water_body_exited"]

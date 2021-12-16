@@ -3,12 +3,6 @@ extends Spatial
 enum WorldState {TITLE, START, ACTIVE, CUTSCENE, FAIL, END}
 
 onready var hud = $Hud
-onready var menu_items = [
-	$TitleScreen/Main/Menu/Start,
-	$TitleScreen/Main/Menu/Sound,
-	$TitleScreen/Main/Menu/Credit,
-	$TitleScreen/Main/Menu/Quit
-]
 
 export var bigfoot_shake_amplitude = .25
 
@@ -18,30 +12,36 @@ var sound_on = true
 var cam_shake = 0
 
 func set_state(value):
-	if state == WorldState.CUTSCENE && value != WorldState.CUTSCENE:
-		hud.gf_timer.paused = false
 	if state == WorldState.TITLE and value != WorldState.TITLE:
 		$TitleScreen.visible = false
 	match value:
 		WorldState.TITLE:
 			$TitleScreen.visible = true
 			$CreditScreen.visible = false
+			hud.gf_timer.paused = true
 		WorldState.START:
 			$NextPatrol.stop()
+			hud.gf_timer.paused = false
 		WorldState.CUTSCENE:
 			hud.gf_timer.paused = true
 		WorldState.ACTIVE:
-			$NextPatrol.start((randi() % 3) + 1)
+			$NextPatrol.start((randi() % 5) + 6)
+			hud.gf_timer.paused = false
 		WorldState.FAIL:
 			$NextPatrol.stop()
 			$Hud/BigMessage/Label.text = "DATE FAILED"
 			$Hud/BigMessage/Label2.text = "Aw man, you blew it!\nPress attack (Z) to try again!"
 			$Hud/BigMessage.visible = true
+			$WinLoseSoundPlayer.stream = $WinLoseSoundPlayer/ResourcePreloader.get_resource("quest_fail")
+			$WinLoseSoundPlayer.play()
 		WorldState.END:
 			$NextPatrol.stop()
 			$Hud/BigMessage/Label.text = "DATE SUCCESSFUL"
 			$Hud/BigMessage/Label2.text = "Hell yeah! You crushed it!\nPress attack (Z) to restart!"
 			$Hud/BigMessage.visible = true
+			hud.gf_timer.paused = true
+			$WinLoseSoundPlayer.stream = $WinLoseSoundPlayer/ResourcePreloader.get_resource("quest_success")
+			$WinLoseSoundPlayer.play()
 	state = value
 
 # Called when the node enters the scene tree for the first time.
@@ -64,28 +64,31 @@ func _physics_process(delta):
 	$CamBase.translation.y += cam_shake*cos(15*PI*OS.get_ticks_msec()/1000)
 	match state:
 		WorldState.TITLE:
+			var menu_items = $TitleScreen/Main/Menu.get_children()
+			var menu_sfx = $TitleScreen/Main/MenuSFX
 			if Input.is_action_just_pressed("player_attack"):
 				if $CreditScreen.visible:
 					$CreditScreen.visible = false
 				else:
-					match menu_index:
-						0:
+					var menu_item = menu_items[menu_index]
+					match menu_item.name:
+						"Start":
 							$TitleScreen.visible = false
 							self.state = WorldState.START
-							$"TitleScreen/Main/Menu/Menu SFX/Exit Menu".post_event()
+							menu_sfx.get_node("Exit Menu").post_event()
 							cutscene_intro()
-						1:
+						"Sound":
 							sound_on = !sound_on
-						2:
+						"Credit":
 							$CreditScreen.visible = true
-						3:
+						"Quit":
 							get_tree().quit()
 			if Input.is_action_just_pressed("ui_up"):
 				menu_index -= 1
-				$"TitleScreen/Main/Menu/Menu SFX/Scroll Menu".post_event()
+				menu_sfx.get_node("Scroll Menu").post_event()
 			if Input.is_action_just_pressed("ui_down"):
 				menu_index += 1
-				$"TitleScreen/Main/Menu/Menu SFX/Scroll Menu".post_event()
+				menu_sfx.get_node("Scroll Menu").post_event()
 			if menu_index >= menu_items.size():
 				menu_index = menu_items.size() - 1 
 			if menu_index < 0:
@@ -102,10 +105,12 @@ func _physics_process(delta):
 			pass
 		WorldState.FAIL:
 			if Input.is_action_just_pressed("player_attack"):
-				get_tree().reload_current_scene()
+				if !$WinLoseSoundPlayer.playing:
+					get_tree().reload_current_scene()
 		WorldState.END:
 			if Input.is_action_just_pressed("player_attack"):
-				get_tree().reload_current_scene()
+				if !$WinLoseSoundPlayer.playing:
+					get_tree().reload_current_scene()
 
 func new_patrol():
 	if state == WorldState.ACTIVE:
@@ -147,6 +152,7 @@ func cutscene_pester():
 func cutscene_fail():
 	self.state = WorldState.CUTSCENE
 	$MagicGirl.fly_out()
+	$NextPatrol.stop()
 	var new_dialog = Dialogic.start("Fail")
 	add_child(new_dialog)
 	yield(new_dialog, "timeline_end")
@@ -155,7 +161,8 @@ func cutscene_fail():
 
 func cutscene_ending():
 	self.state = WorldState.CUTSCENE
-	$MagicGirl.fly_out()
+	$MagicGirl.swat()
+	$NextPatrol.stop()
 	var new_dialog = Dialogic.start("Ending")
 	add_child(new_dialog)
 	yield(new_dialog, "timeline_end")
