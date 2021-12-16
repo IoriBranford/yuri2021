@@ -116,7 +116,6 @@ func _process(delta):
 			if global_transform.origin == patrol_point:
 				find_dir()
 			if target_in_cone && target_los:
-				$MGSFX/Detected.post_event()
 				patrol_timer.paused = true
 				self.state = MagGirlState.SEARCH
 		MagGirlState.SEARCH:
@@ -129,6 +128,7 @@ func _process(delta):
 				self.state = MagGirlState.PATROL
 			if alert >= 100:
 				var player = get_tree().get_nodes_in_group("player")[0]
+				$MGSFX/Detected.post_event()
 				if player.is_transformed:
 					self.state = MagGirlState.PESTER
 				else:
