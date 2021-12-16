@@ -92,7 +92,7 @@ func _physics_process(delta):
 				menu_index = 0
 			for i in menu_items.size():
 				if i == menu_index:
-					menu_items[menu_index].modulate = Color(1,0,0)
+					menu_items[menu_index].modulate = Color(0,1,0)
 				else:
 					menu_items[i].modulate = Color(1,1,1)
 		WorldState.START, WorldState.ACTIVE:
