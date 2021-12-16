@@ -5,7 +5,7 @@
 			"character": "character-1638066160.json",
 			"event_id": "dialogic_002",
 			"mirror": false,
-			"portrait": "",
+			"portrait": "Default",
 			"position": {
 				"0": false,
 				"1": false,
@@ -17,13 +17,13 @@
 		{
 			"character": "character-1638066160.json",
 			"event_id": "dialogic_001",
-			"portrait": "Worried",
+			"portrait": "(Don't change)",
 			"text": "Man, where IS she? That girl, swear..."
 		},
 		{
 			"character": "character-1638066160.json",
 			"event_id": "dialogic_001",
-			"portrait": "Angry",
+			"portrait": "(Don't change)",
 			"text": "Ah, screw it, I'm outta here."
 		},
 		{
