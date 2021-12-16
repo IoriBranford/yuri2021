@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://models/MeshLibrary.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://scenes/World.gd" type="Script" id=2]
@@ -11,6 +11,41 @@
 [ext_resource path="res://scenes/Shop.tscn" type="PackedScene" id=9]
 [ext_resource path="res://ui/present.png" type="Texture" id=10]
 [ext_resource path="res://ui/musical-notes.png" type="Texture" id=11]
+[ext_resource path="res://textures/particles/smoke_01.png" type="Texture" id=12]
+[ext_resource path="res://ui/Kaiju-logo.png" type="Texture" id=13]
+
+[sub_resource type="Gradient" id=29]
+colors = PoolColorArray( 0.501961, 0.501961, 0.501961, 1, 0.501961, 0.501961, 0.501961, 0 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 29 )
+
+[sub_resource type="ParticlesMaterial" id=33]
+emission_shape = 5
+emission_ring_radius = 2.0
+emission_ring_inner_radius = 0.0
+emission_ring_height = 1.0
+emission_ring_axis = Vector3( 0, 1, 0 )
+direction = Vector3( 0, 1, 0 )
+spread = 30.0
+gravity = Vector3( 0, 1, 0 )
+initial_velocity = 5.0
+angular_velocity = 100.0
+color_ramp = SubResource( 5 )
+
+[sub_resource type="SpatialMaterial" id=7]
+flags_transparent = true
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 12 )
+
+[sub_resource type="QuadMesh" id=34]
+material = SubResource( 7 )
+size = Vector2( 2, 2 )
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 6, 2, 80 )
@@ -52,14 +87,10 @@ points = PoolVector3Array( 3, 1, 11, 3, -1, 11, 3, 1, -11, -3, 1, 11, -3, -1, 11
 
 [sub_resource type="Gradient" id=12]
 offsets = PoolRealArray( 0, 0.25, 0.75, 1 )
-colors = PoolColorArray( 0, 0, 0, 1, 0, 0.5, 0.5, 1, 0, 0.501961, 0.501961, 1, 0, 0, 0, 1 )
+colors = PoolColorArray( 1, 0.686275, 0.905882, 1, 0.964706, 0.278431, 0.760784, 1, 0.964706, 0.278431, 0.760784, 1, 1, 0.686275, 0.905882, 1 )
 
 [sub_resource type="GradientTexture" id=13]
 gradient = SubResource( 12 )
-
-[sub_resource type="DynamicFont" id=9]
-size = 96
-font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=14]
 size = 64
@@ -73,7 +104,7 @@ font_data = ExtResource( 6 )
 size = 32
 font_data = ExtResource( 6 )
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="BoxShape" id=32]
 extents = Vector3( 3, 1, 1 )
 
 [sub_resource type="BoxShape" id=6]
@@ -108,6 +139,15 @@ __meta__ = {
 "_editor_clip_": 0,
 "_editor_floor_": Vector3( 0, 0, 0 )
 }
+
+[node name="SmokePuff" type="Particles" parent="GridMap"]
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 1.0
+visibility_aabb = AABB( -5.15644, -2.37137, -5.92708, 10.5214, 10.1238, 10.9804 )
+process_material = SubResource( 33 )
+draw_pass_1 = SubResource( 34 )
 
 [node name="Ground" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
@@ -187,77 +227,78 @@ __meta__ = {
 }
 
 [node name="Main" type="VBoxContainer" parent="TitleScreen"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -492.0
-margin_top = -110.5
-margin_right = 492.0
-margin_bottom = 110.5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Title" type="VBoxContainer" parent="TitleScreen/Main"]
-margin_right = 984.0
-margin_bottom = 131.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="TitleScreen/Main/Title"]
-margin_right = 984.0
-margin_bottom = 76.0
-custom_fonts/font = SubResource( 9 )
-text = "A LA RECHERCHE DU TEMPS PERDU"
-align = 1
+[node name="Title" type="VBoxContainer" parent="TitleScreen/Main"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 32.0
+margin_bottom = -240.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="TextureRect" parent="TitleScreen/Main/Title"]
+margin_top = 2.0
+margin_right = 1280.0
+margin_bottom = 391.0
+texture = ExtResource( 13 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Subtitle" type="Label" parent="TitleScreen/Main/Title"]
-margin_top = 80.0
-margin_right = 984.0
-margin_bottom = 131.0
+margin_top = 395.0
+margin_right = 1280.0
+margin_bottom = 446.0
 custom_fonts/font = SubResource( 14 )
 text = "A YuriJam 2021 Game"
 align = 1
 
 [node name="Menu" type="VBoxContainer" parent="TitleScreen/Main"]
-margin_top = 135.0
-margin_right = 984.0
-margin_bottom = 251.0
+margin_top = 480.0
+margin_right = 1280.0
+margin_bottom = 642.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Start" type="Label" parent="TitleScreen/Main/Menu"]
-margin_right = 984.0
-margin_bottom = 26.0
+margin_top = 23.0
+margin_right = 1280.0
+margin_bottom = 49.0
 custom_fonts/font = SubResource( 11 )
 text = "Start"
 align = 1
 
 [node name="Sound" type="Label" parent="TitleScreen/Main/Menu"]
-margin_top = 30.0
-margin_right = 984.0
-margin_bottom = 56.0
+margin_top = 53.0
+margin_right = 1280.0
+margin_bottom = 79.0
 custom_fonts/font = SubResource( 11 )
 text = "Sound: On"
 align = 1
 
 [node name="Credit" type="Label" parent="TitleScreen/Main/Menu"]
-margin_top = 60.0
-margin_right = 984.0
-margin_bottom = 86.0
+margin_top = 83.0
+margin_right = 1280.0
+margin_bottom = 109.0
 custom_fonts/font = SubResource( 11 )
 text = "Credits"
 align = 1
 
 [node name="Quit" type="Label" parent="TitleScreen/Main/Menu"]
-margin_top = 90.0
-margin_right = 984.0
-margin_bottom = 116.0
+margin_top = 113.0
+margin_right = 1280.0
+margin_bottom = 139.0
 custom_fonts/font = SubResource( 11 )
 text = "Quit"
 align = 1
@@ -449,7 +490,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 41 )
 
 [node name="CollisionShape" type="CollisionShape" parent="OceanEnd"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 32 )
 
 [node name="FinishLine" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40 )
