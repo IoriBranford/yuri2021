@@ -23,9 +23,10 @@ func set_state(value):
 			$NextPatrol.stop()
 			hud.gf_timer.paused = false
 		WorldState.CUTSCENE:
+			$NextPatrol.stop()
 			hud.gf_timer.paused = true
 		WorldState.ACTIVE:
-			$NextPatrol.start((randi() % 5) + 6)
+			$NextPatrol.start((randi() % 5) + 4)
 			hud.gf_timer.paused = false
 		WorldState.FAIL:
 			$NextPatrol.stop()
@@ -175,7 +176,6 @@ func _on_NextPatrol_timeout():
 		girl = "Micah"
 	else:
 		girl = "Rafa"
-	$NextPatrol.stop()
 	$MagicGirl.global_transform.origin = Vector3(-3, 10, $Player.global_transform.origin.z) 
 	$MagicGirl.home_pos = Vector3(-3, 10, $Player.global_transform.origin.z)
 	$MagicGirl.fly_in(Vector3(-3, 2, $Player.global_transform.origin.z), 15, 10, girl)

@@ -88,7 +88,6 @@ func set_state(value):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	global_transform.origin = home_pos
-	patrol_timer.start(patrol_time)
 
 func smooth_look_at(target, up):
 	if transform.origin == target:
@@ -122,11 +121,11 @@ func _process(delta):
 			smooth_look_at(global_transform.origin + Vector3.RIGHT, Vector3.UP)
 			target_los = check_los()
 			if target_in_cone && target_los:
-				alert += ALERT_RATE
+				alert += ALERT_RATE*delta
 			else:
 				patrol_timer.paused = false
 				self.state = MagGirlState.PATROL
-			if alert >= 100:
+			if alert >= 1:
 				var player = get_tree().get_nodes_in_group("player")[0]
 				$MGSFX/Detected.post_event()
 				if player.is_transformed:
