@@ -2,7 +2,7 @@ extends KinematicBody
 
 export var MOVE_SPEED = 3
 export var KNOCK_TIME = 1
-export var TRANSFORM_CHARGE_TIME = 2
+export var TRANSFORM_CHARGE_TIME = 1
 export var TRANSFORM_REVERT_TIME = 10
 export var FOOTSTEP_SPEED = 0.6
 export var GRAVITY = 8
