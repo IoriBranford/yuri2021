@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/oceankaiju_human_form.fbx-0ad6d3b35a9626c19c3e320fa5be4369.scn"
+path="res://.import/Magical_Girl_Wind.glb-1363138c65212b35eb900a827d614e71.scn"
 
 [deps]
 
-source_file="res://models/oceankaiju_human_form.fbx"
-dest_files=[ "res://.import/oceankaiju_human_form.fbx-0ad6d3b35a9626c19c3e320fa5be4369.scn" ]
+source_file="res://models/wind/Magical_Girl_Wind.glb"
+dest_files=[ "res://.import/Magical_Girl_Wind.glb-1363138c65212b35eb900a827d614e71.scn" ]
 
 [params]
 

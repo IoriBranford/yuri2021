@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://models/land/Kaiju_girl_land.glb" type="PackedScene" id=1]
+[ext_resource path="res://models/land/DefaultMaterial_Mixed_AO.png" type="Texture" id=2]
+[ext_resource path="res://models/land/DefaultMaterial_Roughness.png" type="Texture" id=3]
+[ext_resource path="res://models/land/DefaultMaterial_Base_Color.png" type="Texture" id=4]
+[ext_resource path="res://models/land/DefaultMaterial_Normal_OpenGL.png" type="Texture" id=5]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 4 )
+roughness_texture = ExtResource( 3 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 5 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = ExtResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+
+[node name="Kaiju_girl_land" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[node name="head001" parent="." index="1"]
+material/0 = SubResource( 1 )
+
+[node name="HEad002" parent="." index="2"]
+material/0 = SubResource( 1 )
+
+[node name="Body004" parent="." index="3"]
+material/0 = SubResource( 1 )

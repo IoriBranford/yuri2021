@@ -56,10 +56,11 @@ func get_next_pester_dialogue_name():
 	return name
 
 func set_color(model, color):
-	if model is MeshInstance:
-		model.material_override.albedo_color = color
-	for child in model.get_children():
-		set_color(child, color)
+	pass
+#	if model is MeshInstance:
+#		model.material_override.albedo_color = color
+#	for child in model.get_children():
+#		set_color(child, color)
 
 func set_state(value):
 	match value:

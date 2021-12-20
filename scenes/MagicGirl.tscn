@@ -1,17 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/MagicGirl.gd" type="Script" id=1]
-[ext_resource path="res://models/Magical_girl_WIND.fbx" type="PackedScene" id=2]
+[ext_resource path="res://models/wind/Magical_Girl_Wind.tscn" type="PackedScene" id=2]
 [ext_resource path="res://wwise/runtime/nodes/ak_event.gd" type="Script" id=5]
-
-[sub_resource type="SpatialMaterial" id=8]
-albedo_color = Color( 0, 0.501961, 0.501961, 1 )
-
-[sub_resource type="CapsuleMesh" id=7]
-radius = 0.5
-
-[sub_resource type="SpatialMaterial" id=11]
-albedo_color = Color( 1, 0, 0, 1 )
 
 [sub_resource type="CapsuleShape" id=6]
 radius = 0.5
@@ -29,54 +20,15 @@ script = ExtResource( 1 )
 [node name="Models" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 
-[node name="MeshMika1" type="MeshInstance" parent="Models"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.5, 0 )
-visible = false
-material_override = SubResource( 8 )
-mesh = SubResource( 7 )
-material/0 = null
+[node name="MeshRafa" type="Spatial" parent="Models"]
 
-[node name="MeshRafa1" type="MeshInstance" parent="Models"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.5, 0 )
-visible = false
-material_override = SubResource( 11 )
-mesh = SubResource( 7 )
-skeleton = NodePath("../..")
-material/0 = null
-
-[node name="MeshRafa" parent="Models" instance=ExtResource( 2 )]
-
-[node name="RootNode" parent="Models/MeshRafa" index="0"]
+[node name="Magical_Girl_Wind" parent="Models/MeshRafa" instance=ExtResource( 2 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -2, 0 )
 
-[node name="Body014" parent="Models/MeshRafa/RootNode" index="0"]
-material_override = SubResource( 11 )
+[node name="MeshMika" type="Spatial" parent="Models"]
 
-[node name="Body007" parent="Models/MeshRafa/RootNode" index="1"]
-material_override = SubResource( 11 )
-
-[node name="HEad012" parent="Models/MeshRafa/RootNode" index="2"]
-material_override = SubResource( 11 )
-
-[node name="head" parent="Models/MeshRafa/RootNode" index="3"]
-material_override = SubResource( 11 )
-
-[node name="MeshMika" parent="Models" instance=ExtResource( 2 )]
-
-[node name="RootNode" parent="Models/MeshMika" index="0"]
+[node name="Magical_Girl_Wind" parent="Models/MeshMika" instance=ExtResource( 2 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -2, 0 )
-
-[node name="Body014" parent="Models/MeshMika/RootNode" index="0"]
-material_override = SubResource( 8 )
-
-[node name="Body007" parent="Models/MeshMika/RootNode" index="1"]
-material_override = SubResource( 8 )
-
-[node name="HEad012" parent="Models/MeshMika/RootNode" index="2"]
-material_override = SubResource( 8 )
-
-[node name="head" parent="Models/MeshMika/RootNode" index="3"]
-material_override = SubResource( 8 )
 
 [node name="Collision" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.5, 0 )
@@ -122,6 +74,3 @@ event = 1431372833
 [connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
 [connection signal="body_entered" from="SightCone/SightArea" to="." method="_on_SightArea_body_entered"]
 [connection signal="body_exited" from="SightCone/SightArea" to="." method="_on_SightArea_body_exited"]
-
-[editable path="Models/MeshRafa"]
-[editable path="Models/MeshMika"]

@@ -1,7 +1,7 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/PlayerObj.gd" type="Script" id=1]
-[ext_resource path="res://models/oceankaiju_human_form.fbx" type="PackedScene" id=2]
+[ext_resource path="res://models/water/Kaiju_girl_water.tscn" type="PackedScene" id=2]
 [ext_resource path="res://textures/particles/smoke_01.png" type="Texture" id=3]
 [ext_resource path="res://textures/particles/SalonSparkle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://textures/particles/MusicNotes.tscn" type="PackedScene" id=5]
@@ -11,12 +11,6 @@
 
 [sub_resource type="CapsuleShape" id=1]
 height = 1.5
-
-[sub_resource type="SpatialMaterial" id=17]
-
-[sub_resource type="SpatialMaterial" id=18]
-
-[sub_resource type="SpatialMaterial" id=19]
 
 [sub_resource type="Gradient" id=12]
 colors = PoolColorArray( 0.501961, 0.501961, 0.501961, 1, 0.501961, 0.501961, 0.501961, 0 )
@@ -59,23 +53,9 @@ angular_velocity = 100.0
 color_ramp = SubResource( 5 )
 
 [sub_resource type="Animation" id=15]
-tracks/0/type = "transform"
-tracks/0/path = NodePath("HumanForm")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, -8, 0, 0, 0, 1, 1, 1, 1 )
 
 [sub_resource type="Animation" id=6]
 resource_name = "exit_shop"
-tracks/0/type = "transform"
-tracks/0/path = NodePath("HumanForm")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = PoolRealArray( 0, 1, 0, 0, -8, 0, 1, 0, -4.37114e-08, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, -4.37114e-08, 1, 1, 1 )
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -86,20 +66,11 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.75, 0 )
 shape = SubResource( 1 )
 
-[node name="HumanForm" parent="." instance=ExtResource( 2 )]
+[node name="HumanForm" type="Spatial" parent="."]
 visible = false
 
-[node name="RootNode" parent="HumanForm" index="0"]
+[node name="Kaiju_girl_water" parent="HumanForm" instance=ExtResource( 2 )]
 transform = Transform( -0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, 0 )
-
-[node name="hair" parent="HumanForm/RootNode" index="0"]
-material_override = SubResource( 17 )
-
-[node name="head" parent="HumanForm/RootNode" index="1"]
-material_override = SubResource( 18 )
-
-[node name="body" parent="HumanForm/RootNode" index="2"]
-material_override = SubResource( 19 )
 
 [node name="SalonSparkle" parent="HumanForm" instance=ExtResource( 4 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, 0 )
@@ -108,12 +79,11 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, 0 )
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.25, 0.5 )
 
 [node name="Chocolatebox" parent="HumanForm" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0 )
 
-[node name="KaijuForm" parent="." instance=ExtResource( 2 )]
+[node name="KaijuForm" type="Spatial" parent="."]
 
-[node name="RootNode" parent="KaijuForm" index="0"]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+[node name="Kaiju_girl_water" parent="KaijuForm" instance=ExtResource( 2 )]
 
 [node name="SalonSparkle" parent="KaijuForm" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
@@ -122,7 +92,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1 )
 
 [node name="Chocolatebox" parent="KaijuForm" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.375, 0 )
 
 [node name="FootstepDust" type="Particles" parent="KaijuForm"]
 emitting = false
@@ -172,6 +142,3 @@ script = ExtResource( 8 )
 event = 1691912013
 
 [connection signal="timeout" from="Knockback" to="." method="_on_Knockback_timeout"]
-
-[editable path="HumanForm"]
-[editable path="KaijuForm"]

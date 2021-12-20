@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/Kaiju_girl_land.fbx-adc489b3fc9c6bb2c362865e05249ee3.scn"
+path="res://.import/Kaiju_girl_land.glb-47b3378864202bb1cced8af6b3833850.scn"
 
 [deps]
 
-source_file="res://models/Kaiju_girl_land.fbx"
-dest_files=[ "res://.import/Kaiju_girl_land.fbx-adc489b3fc9c6bb2c362865e05249ee3.scn" ]
+source_file="res://models/land/Kaiju_girl_land.glb"
+dest_files=[ "res://.import/Kaiju_girl_land.glb-47b3378864202bb1cced8af6b3833850.scn" ]
 
 [params]
 

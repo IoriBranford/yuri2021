@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/Magical_girl_WIND.fbx-a3ce0a1dd23a4406111a6654c6c443f2.scn"
+path="res://.import/Kaiju_girl_water.glb-72cc37b7cbd5a80bf0c23c9a8c77fa7e.scn"
 
 [deps]
 
-source_file="res://models/Magical_girl_WIND.fbx"
-dest_files=[ "res://.import/Magical_girl_WIND.fbx-a3ce0a1dd23a4406111a6654c6c443f2.scn" ]
+source_file="res://models/water/Kaiju_girl_water.glb"
+dest_files=[ "res://.import/Kaiju_girl_water.glb-72cc37b7cbd5a80bf0c23c9a8c77fa7e.scn" ]
 
 [params]
 
