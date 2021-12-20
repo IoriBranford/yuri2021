@@ -1,11 +1,8 @@
 [gd_resource type="Environment" load_steps=2 format=2]
 
-[sub_resource type="ProceduralSky" id=1]
+[sub_resource type="ProceduralSky" id=16]
 
 [resource]
-background_mode = 3
-background_sky = SubResource( 1 )
-background_color = Color( 0.3306, 0.38, 0.3306, 1 )
-fog_height_min = 0.0
-fog_height_max = 100.0
-ssao_quality = 0
+background_mode = 2
+background_sky = SubResource( 16 )
+background_sky_custom_fov = 90.0
