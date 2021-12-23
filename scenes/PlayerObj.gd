@@ -1,6 +1,8 @@
 extends KinematicBody
 
 export var MOVE_SPEED = 3
+export var KAIJU_MOVE_ACCEL = 9
+export var HUMAN_MOVE_ACCEL = 18
 export var KNOCK_TIME = 1
 export var TRANSFORM_CHARGE_TIME = 1
 export var TRANSFORM_REVERT_TIME = 10
@@ -75,8 +77,10 @@ func move_player(delta):
 		sfx_footstep(delta)
 
 	move_dir = move_dir.normalized() * MOVE_SPEED
-	velocity.x = move_dir.x
-	velocity.z = move_dir.z
+	var move_accel = HUMAN_MOVE_ACCEL if is_transformed else KAIJU_MOVE_ACCEL
+	move_accel *= delta
+	velocity.x = move_toward(velocity.x, move_dir.x, move_accel)
+	velocity.z = move_toward(velocity.z, move_dir.z, move_accel)
 
 	velocity.y -= delta*GRAVITY
 	velocity = move_and_slide(velocity, Vector3.UP)
