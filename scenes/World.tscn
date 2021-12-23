@@ -461,7 +461,7 @@ script = ExtResource( 7 )
 bank = 3909625241
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( -0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 4, 0 )
+transform = Transform( -0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, 0.353553, -0.612372, 0, 4, 0 )
 shadow_enabled = true
 
 [node name="WinLoseSoundPlayer" type="AudioStreamPlayer" parent="."]
