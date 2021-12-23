@@ -78,6 +78,7 @@ size = Vector3( 64, 2, 64 )
 
 [sub_resource type="SpatialMaterial" id=24]
 flags_transparent = true
+flags_do_not_receive_shadows = true
 albedo_color = Color( 0, 0.586667, 0.8, 0.501961 )
 
 [sub_resource type="CubeMesh" id=25]
