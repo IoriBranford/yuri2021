@@ -126,18 +126,18 @@
 			"value": ""
 		},
 		{
-			"character": "character-1638066149.json",
-			"event_id": "dialogic_001",
-			"portrait": "Human Nervous",
-			"text": "Um, good. Yeah, I’m doing good! How are you doing today?"
-		},
-		{
 			"audio": "play",
 			"audio_bus": "Master",
 			"event_id": "dialogic_030",
 			"event_name": "AudioEvent",
 			"file": "res://voice/vepa/to_mika/umm good.ogg",
 			"volume": 0
+		},
+		{
+			"character": "character-1638066149.json",
+			"event_id": "dialogic_001",
+			"portrait": "Human Nervous",
+			"text": "Um, good. Yeah, I’m doing good! How are you doing today?"
 		},
 		{
 			"character": "character-1638066167.json",
