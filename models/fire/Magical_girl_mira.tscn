@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://models/fire/DefaultMaterial_Base_Color.png" type="Texture" id=1]
+[ext_resource path="res://models/fire/DefaultMaterial_Metallic.png" type="Texture" id=2]
+[ext_resource path="res://models/fire/DefaultMaterial_Roughness.png" type="Texture" id=3]
+[ext_resource path="res://models/fire/Magical_girl_mira.glb" type="PackedScene" id=4]
+[ext_resource path="res://models/fire/DefaultMaterial_Normal_OpenGL.png" type="Texture" id=5]
+[ext_resource path="res://models/fire/DefaultMaterial_Mixed_AO.png" type="Texture" id=6]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 1 )
+metallic_texture = ExtResource( 2 )
+roughness_texture = ExtResource( 3 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 5 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = ExtResource( 6 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+
+[node name="Magical_girl_mira" instance=ExtResource( 4 )]
+
+[node name="dress002" parent="." index="1"]
+material/0 = SubResource( 1 )
+
+[node name="Feet002" parent="." index="2"]
+material/0 = SubResource( 1 )
+
+[node name="Hair001" parent="." index="3"]
+material/0 = SubResource( 1 )
+
+[node name="Hands001" parent="." index="4"]
+material/0 = SubResource( 1 )
+
+[node name="shirt002" parent="." index="5"]
+material/0 = SubResource( 1 )
+
+[node name="head001" parent="." index="6"]
+material/0 = SubResource( 1 )
